@@ -1,0 +1,3 @@
+.text {
+  @apply text-base text-red-300 md:text-[66px] md:text-green-700;
+}

@@ -16,12 +16,10 @@
     /* @apply rounded-md border border-slate-600 bg-slate-700 bg-transparent p-2 outline-none focus:border-slate-300 placeholder:text-white/50 placeholder:text-sm; */
   }
   .container {
-    /* @apply max-w-[1000]; */
-    /* @apply max-w-[1000]; */
-    @apply px-4 w-full bg-bgRed xs:bg-bgIndigo xs:w-[375px] md:w-[768px] md:bg-bgGreen mx-auto
+    @apply mx-auto w-full bg-bgRed px-4 xs:w-[375px] xs:bg-bgIndigo md:w-[768px] md:bg-bgGreen;
   }
   .section {
-    @apply w-full py-5 bg-gray-300
+    @apply w-full bg-gray-300 py-5;
   }
 }
 
