@@ -4,22 +4,22 @@
 
 @layer base {
   body {
-    /* @apply text-sm; */
+    @apply font-raleway bg-[#0A0F13] text-[#E0E0E0];
   }
 }
 
 @layer components {
-  .btn {
-    /* @apply flex gap-2 items-center text-white py-2 px-4 rounded-md disabled:bg-gray-400 disabled:hover:bg-gray-400; */
-  }
-  .input {
-    /* @apply rounded-md border border-slate-600 bg-slate-700 bg-transparent p-2 outline-none focus:border-slate-300 placeholder:text-white/50 placeholder:text-sm; */
+  .section {
+    @apply w-full py-5 md:py-[30px] xl:py-10;
   }
   .container {
-    @apply mx-auto w-full bg-bgRed px-4 xs:w-[375px] xs:bg-bgIndigo md:w-[768px] md:bg-bgGreen;
+    @apply mx-auto w-full px-4 xs:w-[375px] md:w-[768px] md:px-6 xl:w-[1280px] xl:px-8;
   }
-  .section {
-    @apply w-full bg-gray-300 py-5;
+  .nav-link {
+    @apply font-raleway relative text-base font-normal leading-none text-[#d6d6d6] transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-[24px];
+  }
+  .btn {
+    @apply text-primary hover:text-secondary hover:border-primary hover:bg-primary font-raleway rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center text-[14px] font-normal leading-none transition-all duration-200 ease-linear md:p-2 xl:p-4 xl:text-[18px];
   }
 }
 

@@ -8,16 +8,16 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs': '375px',
+        xs: '375px',
       },
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
+        raleway: ['var(--font-raleway)'],
+        nautigal: ['var(--font-nautigal)'],
       },
       colors: {
-        bgRed: '#f44336',
-        bgIndigo: '#3f51b5',
-        bgGreen: '#4caf50'
-      }
+        primary: '#D6D6D6',
+        secondary: '#0A0F13',
+      },
     },
   },
   plugins: [],
