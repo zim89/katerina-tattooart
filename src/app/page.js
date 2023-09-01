@@ -7,7 +7,7 @@ import Reviews from '@/components/Reviews/Reviews';
 
 export default function Home() {
   return (
-    <main>
+    <main className='mx-auto max-w-[1440px]'>
       <Hero />
       <Features />
       <Gallery />

@@ -1,0 +1,75 @@
+'use client';
+import Image from 'next/image';
+import { useState } from 'react';
+
+const Burger = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      {/* Burger menu */}
+      <button
+        className='group relative z-10 block h-5 w-[30px] md:hidden'
+        onClick={(e) => {
+          e.currentTarget.classList.toggle('active');
+          setIsOpen(!isOpen);
+        }}
+      >
+        <span className='absolute left-0 top-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:translate-y-2 group-[.active]:rotate-45'></span>
+        <span className='absolute left-0 top-[9px] h-[2px] w-full bg-[#D6D6D6] transition-opacity group-[.active]:opacity-0'></span>
+        <span className='absolute bottom-0 left-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:-translate-y-[10px] group-[.active]:-rotate-45'></span>
+      </button>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className='fixed bottom-0 left-0 right-0 top-0 flex justify-center bg-black bg-opacity-75'>
+          <nav className='mt-[65px]  w-[243px] bg-[#393E41] pt-[25px]'>
+            <ul className='flex flex-col items-center gap-[18px]'>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Про нас
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Галерея
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Догляд
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Ціна
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Відгуки
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  Контакти
+                </a>
+              </li>
+              <li>
+                <a href='#' className='mobile-link'>
+                  UA
+                </a>
+              </li>
+              <li>
+                <a href='#' className='relative block h-10 w-10'>
+                  <Image src='/icons/user.svg' fill alt='User image' />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
+    </>
+  );
+};
+export default Burger;
