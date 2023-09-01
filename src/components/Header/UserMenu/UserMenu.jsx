@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 const UserMenu = () => {
   return (
@@ -9,11 +9,8 @@ const UserMenu = () => {
         </a>
       </li>
       <li>
-        <a
-          href='#'
-          className='relative block h-[22px] w-[22px] xl:h-11 xl:w-11'
-        >
-          <Image src='/icons/user.svg' fill alt='User image' />
+        <a href='#'>
+          <UserCircleIcon className='h-[22px] w-[22px] stroke-[1px] xl:h-11 xl:w-11' />
         </a>
       </li>
     </ul>

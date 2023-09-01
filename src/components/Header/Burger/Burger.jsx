@@ -1,19 +1,22 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleBurger = (e) => {
+    e.currentTarget.classList.toggle('active');
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
       {/* Burger menu */}
       <button
         className='group relative z-10 block h-5 w-[30px] md:hidden'
-        onClick={(e) => {
-          e.currentTarget.classList.toggle('active');
-          setIsOpen(!isOpen);
-        }}
+        onClick={handleBurger}
       >
         <span className='absolute left-0 top-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:translate-y-2 group-[.active]:rotate-45'></span>
         <span className='absolute left-0 top-[9px] h-[2px] w-full bg-[#D6D6D6] transition-opacity group-[.active]:opacity-0'></span>
@@ -61,8 +64,8 @@ const Burger = () => {
                 </a>
               </li>
               <li>
-                <a href='#' className='relative block h-10 w-10'>
-                  <Image src='/icons/user.svg' fill alt='User image' />
+                <a href='#'>
+                  <UserCircleIcon className='h-10 w-10 stroke-[1px]' />
                 </a>
               </li>
             </ul>
