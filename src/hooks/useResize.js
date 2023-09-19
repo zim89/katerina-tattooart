@@ -5,7 +5,7 @@ const SCREEN_MD = 768;
 const SCREEN_XL = 1280;
 
 const useResize = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = (e) => {
