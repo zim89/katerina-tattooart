@@ -1,0 +1,39 @@
+.wrap {
+  @apply hidden;
+}
+
+.title {
+  @apply mb-8 md:hidden;
+}
+
+.content {
+  @apply md:flex md:flex-row md:justify-center md:gap-8 xl:gap-[200px];
+}
+
+.colLeft {
+  @apply md:block;
+}
+
+.colRight {
+  @apply md:block;
+}
+
+.subtitle {
+  @apply mb-8 text-center text-2xl font-medium text-[#e0e0e0] md:mb-6 md:text-[24px] md:leading-[32.736px] xl:mb-10 xl:text-[40px] xl:leading-[54.56px];
+}
+
+.list {
+  @apply mx-auto w-[295px] list-outside list-disc md:mb-[26px] md:w-auto;
+}
+
+.listMargin {
+  @apply md:ml-[15px] xl:ml-[18px];
+}
+
+.listItem {
+  @apply text-left text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-[18px] md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
+}
+
+.text {
+  @apply text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-[18px] md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
+}
