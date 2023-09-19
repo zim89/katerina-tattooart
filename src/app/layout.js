@@ -1,7 +1,9 @@
-import Header from '@/components/Header/Header';
-import './globals.css';
 import { Raleway, The_Nautigal } from 'next/font/google';
-import Footer from '@/components/Footer/Footer';
+
+import Header from '@/modules/Header';
+import Footer from '@/modules/Footer';
+
+import './globals.css';
 
 const raleway = Raleway({
   weight: ['400', '500'],
