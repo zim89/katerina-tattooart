@@ -7,9 +7,9 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 
 import styles from './styles.module.css';
-import clsx from 'clsx';
 
 const Features = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
