@@ -15,7 +15,7 @@ const Burger = () => {
     <>
       {/* Burger menu */}
       <button
-        className='group relative z-10 block h-5 w-[30px] md:hidden'
+        className='group relative z-50 block h-5 w-[30px] md:hidden'
         onClick={handleBurger}
       >
         <span className='absolute left-0 top-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:translate-y-2 group-[.active]:rotate-45'></span>
@@ -25,8 +25,8 @@ const Burger = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className='fixed bottom-0 left-0 right-0 top-0 flex justify-center bg-black bg-opacity-75'>
-          <nav className='mt-[65px]  w-[243px] bg-[#393E41] pt-[25px]'>
+        <div className='over fixed bottom-0 left-0 right-0 top-0 z-40 flex justify-center bg-black bg-opacity-75'>
+          <nav className='mt-[65px]  w-[243px] overscroll-none bg-[#393E41] pt-[25px]'>
             <ul className='flex flex-col items-center gap-[18px]'>
               <li>
                 <a href='#' className='mobile-link'>
