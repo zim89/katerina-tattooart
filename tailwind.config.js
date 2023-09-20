@@ -14,6 +14,7 @@ module.exports = {
       fontFamily: {
         raleway: ['var(--font-raleway)'],
         nautigal: ['var(--font-nautigal)'],
+        inter: ['var(--font-inter)'],
       },
       colors: {
         primary: '#D6D6D6',

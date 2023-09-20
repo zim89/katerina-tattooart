@@ -1,4 +1,4 @@
-import { Raleway, The_Nautigal } from 'next/font/google';
+import { Raleway, The_Nautigal, Inter } from 'next/font/google';
 
 import Header from '@/modules/Header';
 import Footer from '@/modules/Footer';
@@ -18,6 +18,14 @@ const nautigal = The_Nautigal({
   display: 'swap',
   variable: '--font-nautigal',
 });
+
+const inter = Inter({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
 export const metadata = {
   title: 'Katerina TattooArt',
   description: 'Katerina TattooArt',
@@ -25,7 +33,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className={`${raleway.variable} ${nautigal.variable}`}>
+    <html
+      lang='en'
+      className={`${raleway.variable} ${nautigal.variable} ${inter.variable}`}
+    >
       <body>
         <Header />
         {children}
