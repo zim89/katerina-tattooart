@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify';
+
 import Contacts from '@/modules/Contacts';
 import Features from '@/modules/Features';
 import Gallery from '@/modules/Gallery';
@@ -14,6 +16,19 @@ export default function Home() {
       <Price />
       <Reviews />
       <Contacts />
+
+      <ToastContainer
+        position='top-right'
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </main>
   );
 }
