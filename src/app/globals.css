@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --toastify-color-success: #16a34a !important;
+  }
+
   body {
     @apply bg-[#0A0F13] font-raleway text-[#E0E0E0];
   }
@@ -10,7 +14,7 @@
 
 @layer components {
   .section {
-    @apply w-full py-5 md:py-[30px] xl:py-10;
+    @apply w-full py-10 md:py-[60px] xl:py-20;
   }
   .container {
     @apply mx-auto w-full px-4 xs:w-[375px] md:w-[768px] md:px-10 xl:w-[1280px];
@@ -23,6 +27,10 @@
   }
   .btn {
     @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 xl:p-4 xl:text-[18px];
+  }
+
+  .btnSubmit {
+    @apply mx-auto block rounded-lg border-[0.25px] border-[#0A0F13] bg-[#0A0F13] p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
   }
 
   .input {
@@ -43,6 +51,7 @@
   }
 }
 
+/* SWIPER */
 .swiper-slide {
   @apply flex items-center justify-center text-center text-base font-medium text-[#e0e0e0];
 }
@@ -73,4 +82,21 @@
 
 .swiper-pagination-bullet-active {
   @apply text-[32px] xl:text-[40px];
+}
+
+/* TOASTIFY */
+.Toastify__toast-theme--dark {
+  @apply !rounded-2xl border-[0.5px] !border-[#D6D6D6] !bg-[#2C3134];
+}
+
+.Toastify__toast-body {
+  @apply !bg-transparent !p-3 !font-raleway !text-base !font-normal !leading-normal !text-[#D6D6D6];
+}
+
+.Toastify__toast-icon {
+  @apply !h-6 !w-6;
+}
+
+.Toastify__close-button > svg {
+  @apply !h-6 !w-6;
 }

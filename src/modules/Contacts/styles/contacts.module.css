@@ -1,0 +1,31 @@
+.title {
+  @apply mb-6 text-center text-[24px] font-medium leading-normal text-[#ECECEC] md:mb-[30px] md:text-[32px] xl:mb-20 xl:text-[40px];
+}
+
+.form {
+  @apply mx-auto block md:w-[470px] xl:w-[620px];
+}
+
+.metaWrap {
+  @apply mb-4 grid grid-cols-2 gap-[14px] md:mb-[18px] md:gap-[18px] xl:mb-6 xl:gap-[26px];
+}
+
+.inputWrap {
+  @apply relative;
+}
+
+.input {
+  @apply w-full resize-none rounded-xl border-[0.5px] border-white bg-transparent p-3 text-[16px] font-normal leading-normal outline-none placeholder:text-[#d6d6d6] placeholder:opacity-[0.6] md:text-[18px];
+}
+
+.submit {
+  @apply mt-6 xl:mt-10;
+}
+
+.error {
+  @apply border-red-500/80;
+}
+
+.errorBox {
+  @apply absolute -top-[9px] left-4 bg-[#0A0F13] px-1 text-[12px] font-normal leading-normal text-red-500/80 md:-top-[10px] md:text-[14px] xl:text-[16px];
+}
