@@ -22,6 +22,8 @@ module.exports = {
       },
       backgroundImage: {
         'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
+        'gallery-md': `url(/images/gallery/bg-tablet.svg)`,
+        'gallery-lg': `url(/images/gallery/bg-desktop.svg)`,
       },
     },
   },
