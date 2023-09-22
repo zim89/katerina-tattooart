@@ -32,7 +32,7 @@ const imagesDesktop = [
 const PicturesSwiper = () => {
   const { isScreenMobile, isScreenDesktop } = useResize();
   return (
-    <div className='md:bg-gallery-md lg:bg-gallery-lg md flex h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat lg:h-[814px]'>
+    <div className='md flex h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:bg-gallery-md lg:bg-gallery-lg xl:h-[814px]'>
       {isScreenMobile ? (
         <Swiper
           centeredSlides
