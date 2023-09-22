@@ -32,7 +32,7 @@ const PicturesSwiper = () => {
         modules={[EffectCreative]}
       >
         {images.map((url) => (
-          <SwiperSlide key={url} className='w-[250px]'>
+          <SwiperSlide key={url} className='!flex w-[250px]'>
             <Image
               alt='Тату'
               src={url}

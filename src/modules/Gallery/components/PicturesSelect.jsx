@@ -37,15 +37,15 @@ const PicturesSelect = ({ className }) => {
       defaultValue={options[2]}
       options={options}
       components={{ DropdownIndicator }}
-      className={className}
+      className={`${className} relative z-10`}
       classNames={{
         control: (state) =>
           clsx(
-            'p-2 bg-white/[.14] rounded-lg max-w-max min-w-[137px] leading-[19px]',
+            'p-2 bg-[#303538] rounded-lg max-w-max min-w-[137px] leading-[19px]',
             state.menuIsOpen && 'rounded-b-none'
           ),
         menuList: () =>
-          'bg-white/[.14] px-2.5 pb-4 pt-1.5 space-y-4 rounded-b-lg',
+          'bg-[#303538] px-2.5 pb-4 pt-1.5 space-y-4 rounded-b-lg',
       }}
     />
   );
