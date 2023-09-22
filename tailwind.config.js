@@ -20,6 +20,9 @@ module.exports = {
         primary: '#D6D6D6',
         secondary: '#0A0F13',
       },
+      backgroundImage: {
+        'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
+      },
     },
   },
   plugins: [],
