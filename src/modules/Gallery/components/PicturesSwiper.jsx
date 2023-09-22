@@ -38,7 +38,7 @@ const PicturesSwiper = () => {
               src={url}
               width={250}
               height={313}
-              className='rounded-[10px]'
+              className='rounded-[10px] border-[.597px] border-secondary'
             />
           </SwiperSlide>
         ))}
