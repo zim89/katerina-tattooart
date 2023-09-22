@@ -30,6 +30,7 @@ const imagesDesktop = [
 ];
 
 const PicturesSwiper = () => {
+  // FIXME: useResize does not work on initial load
   const { isScreenMobile, isScreenDesktop } = useResize();
   return (
     <div className='md flex h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:bg-gallery-md lg:bg-gallery-lg xl:h-[814px]'>
@@ -76,7 +77,7 @@ const PicturesSwiper = () => {
                 src={url}
                 width={i > 0 ? 294 : 428}
                 height={i > 0 ? 281 : 465}
-                className='rounded-[10px] border-[.597px] border-secondary'
+                className='rounded-[14.222px] border-[.889px] border-secondary'
               />
             </li>
           ))}
@@ -94,7 +95,7 @@ const PicturesSwiper = () => {
                 src={url}
                 width={i > 0 ? 158 : 229}
                 height={i > 0 ? 151 : 250}
-                className='rounded-[10px] border-[.597px] border-secondary'
+                className='rounded-lg border-[.478px] border-secondary'
               />
             </li>
           ))}
