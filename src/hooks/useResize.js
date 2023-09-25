@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const SCREEN_SM = 375;
-const SCREEN_MD = 768;
-const SCREEN_XL = 1280;
+const SCREEN_MD = 767;
+const SCREEN_XL = 1279;
 
 const useResize = () => {
   const [width, setWidth] = useState(0);
@@ -19,9 +19,9 @@ const useResize = () => {
 
   return {
     width,
-    isScreenMobile: width < SCREEN_MD,
-    isScreenTablet: width >= SCREEN_MD,
-    isScreenDesktop: width >= SCREEN_XL,
+    isScreenMobile: width <= SCREEN_MD,
+    isScreenTablet: width > SCREEN_MD,
+    isScreenDesktop: width > SCREEN_XL,
   };
 };
 
