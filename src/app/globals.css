@@ -16,29 +16,36 @@
   .section {
     @apply w-full py-10 md:py-[60px] xl:py-20;
   }
+
   .container {
     @apply mx-auto w-full px-4 xs:w-[375px] md:w-[768px] md:px-10 xl:w-[1280px];
   }
+
   .nav-link {
     @apply relative whitespace-nowrap font-raleway text-base font-normal leading-none text-[#d6d6d6] transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-[24px];
   }
+
   .mobile-link {
     @apply font-raleway text-base font-normal leading-none text-[#d6d6d6];
   }
+  .caption {
+    @apply font-raleway text-[24px] font-medium leading-normal text-[#ECECEC] md:text-[32px] xl:text-[40px];
+  }
+
   .btn {
     @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 xl:p-4 xl:text-[18px];
   }
 
   .btnSubmit {
-    @apply mx-auto block rounded-lg border-[0.25px] border-[#0A0F13] bg-[#0A0F13] p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
+    @apply mx-auto block rounded-lg border-[0.25px] border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
   }
 
   .input {
-    @apply w-full rounded-xl border-[0.5px] border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-[18px];
+    @apply w-full resize-none rounded-xl border-[0.5px] border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-[18px];
   }
 
   .backdrop {
-    @apply absolute bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black bg-opacity-75;
+    @apply fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black bg-opacity-75;
   }
 }
 
