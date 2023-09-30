@@ -18,7 +18,12 @@ const ReviewItem = ({ style, review }) => {
   return (
     <div className={clsx(style, styles.wrap)}>
       <div className={styles.avaThumb}>
-        <Image src={review.avatarUri} fill alt='User avatar' />
+        <Image
+          src={review.avatarUri}
+          fill
+          alt='User avatar'
+          sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
+        />
       </div>
       <div className={styles.content}>
         <div className={styles.header}>

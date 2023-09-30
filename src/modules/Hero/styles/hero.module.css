@@ -1,0 +1,41 @@
+.hero {
+  @apply pb-5 md:pb-[30px] xl:pb-10;
+}
+
+.wrap {
+  @apply relative w-full;
+}
+
+.imageThumb {
+  @apply relative mx-auto h-[348px] w-[244px] md:h-[696px] md:w-[488px] xl:h-[1036px] xl:w-[727px];
+}
+
+/* TITLE */
+.titleWrap {
+  @apply absolute -left-[4px] top-[148px] flex gap-[62px] md:left-[22px] md:top-[302px] md:gap-[137px] xl:left-[43px] xl:top-[355px] xl:gap-[209px];
+}
+
+.title {
+  @apply font-nautigal text-[56px] font-normal leading-normal text-white md:text-[100px] xl:text-[180px];
+}
+
+.titleLeft {
+  @apply absolute left-0 top-[152px] md:left-[24px] md:top-[302px] xl:left-[40px] xl:top-[358px];
+}
+
+.titleRight {
+  @apply absolute left-[200px] top-[152px] md:left-[410px] md:top-[302px] xl:left-[707px] xl:top-[355px];
+}
+
+/* SLOGAN */
+.slogan {
+  @apply text-[12px] font-normal leading-normal tracking-[0.96px] text-[#E0E0E0] text-opacity-40 md:text-[14px] md:tracking-[1.12px] xl:text-[20px] xl:tracking-[1.6px];
+}
+
+.sloganLeft {
+  @apply absolute left-2 top-[11px] md:left-[130px] md:top-4 xl:left-[280px] xl:top-6;
+}
+
+.sloganRight {
+  @apply absolute right-0 top-[11px] md:right-[114px] md:top-4 xl:right-[275px] xl:top-6;
+}

@@ -1,42 +1,52 @@
 'use client';
-
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import clsx from 'clsx';
 
-import useResize from '@/hooks/useResize';
+import useScreenSize from '@/hooks/useScreenSize';
+import styles from './styles/hero.module.css';
 
 const Hero = () => {
-  const { isScreenTablet, isScreenDesktop } = useResize();
-  let src = '/images/hero/mobile-hero-img@2x.png';
-  if (isScreenTablet) src = '/images/hero/tablet-hero-img@2x.png';
-  if (isScreenDesktop) src = '/images/hero/desktop-hero-img@2x.png';
+  const [imageSrc, setImageSrc] = useState(
+    '/images/hero/mobile-hero-img@2x.png'
+  );
+  const screen = useScreenSize();
+
+  useEffect(() => {
+    if (screen.width >= 768) {
+      setImageSrc('/images/hero/tablet-hero-img@2x.png');
+    }
+    if (screen.width >= 1280) {
+      setImageSrc('/images/hero/desktop-hero-img@2x.png');
+    }
+  }, [screen]);
 
   return (
-    <div className='pb-5 md:pb-[30px] xl:pb-10'>
+    <div className={styles.hero}>
       <div className='container'>
-        <div className='relative w-full'>
-          <div className='relative mx-auto h-[348px] w-[244px] md:h-[696px] md:w-[488px] xl:h-[1036px] xl:w-[727px]'>
+        <div className={styles.wrap}>
+          <div className={styles.imageThumb}>
             <Image
               alt='Hero image'
-              src={src}
+              src={imageSrc}
               fill
               placeholder='blur'
-              blurDataURL={src}
+              blurDataURL={imageSrc}
+              sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
             />
           </div>
 
           {/* Title */}
-          <p className='absolute left-0 top-[152px] font-nautigal text-[56px] font-normal leading-normal text-white md:left-[41px] md:top-[310px] md:text-[100px] xl:left-[50px] xl:top-[358px] xl:text-[180px]'>
-            Katerina
-          </p>
-          <p className='absolute left-[200px] top-[152px] font-nautigal text-[56px] font-normal leading-normal text-white md:left-[425px] md:top-[310px] md:text-[100px] xl:left-[710px] xl:top-[358px] xl:text-[180px]'>
-            Tattooart
-          </p>
+          <div className={styles.titleWrap}>
+            <span className={styles.title}>Katerina</span>
+            <span className={styles.title}>Tattooart</span>
+          </div>
 
           {/* Slogan */}
-          <p className='absolute left-3 top-[11px] text-[12px] font-normal leading-[0.96px] text-[#E0E0E0] text-opacity-40 md:left-[155px] md:top-4 md:text-[14px] md:leading-[1.12px] xl:left-[310px] xl:top-6 xl:text-[20px] xl:leading-[1.6px]'>
+          <p className={clsx(styles.slogan, styles.sloganLeft)}>
             Приношу біль для
           </p>
-          <p className='absolute right-[6px] top-[11px] text-[12px] font-normal leading-[0.96px] text-[#E0E0E0] text-opacity-40 md:left-[440px] md:top-4 md:text-[14px] md:leading-[1.12px] xl:left-[720px] xl:top-6 xl:text-[20px] xl:leading-[1.6px]'>
+          <p className={clsx(styles.slogan, styles.sloganRight)}>
             вашого задоволення
           </p>
         </div>
