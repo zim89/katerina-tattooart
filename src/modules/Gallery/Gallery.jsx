@@ -1,6 +1,20 @@
 import PicturesSelect from './components/PicturesSelect';
 import PicturesSwiper from './components/PicturesSwiper';
 
+import handTattooImage1 from '/public/images/gallery/hand-tattoo-1.jpeg';
+import handTattooImage2 from '/public/images/gallery/hand-tattoo-2.jpeg';
+import handTattooImage3 from '/public/images/gallery/hand-tattoo-3.jpeg';
+import handTattooImage4 from '/public/images/gallery/hand-tattoo-4.jpeg';
+import handTattooImage5 from '/public/images/gallery/hand-tattoo-5.jpeg';
+
+const images = [
+  handTattooImage1,
+  handTattooImage2,
+  handTattooImage3,
+  handTattooImage4,
+  handTattooImage5,
+];
+
 const Gallery = () => {
   return (
     <section className='section'>
@@ -14,7 +28,7 @@ const Gallery = () => {
             <PicturesSelect />
           </div>
         </div>
-        <PicturesSwiper />
+        <PicturesSwiper images={images} />
       </div>
     </section>
   );

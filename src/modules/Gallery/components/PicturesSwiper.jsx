@@ -3,35 +3,10 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative } from 'swiper/modules';
 import useResize from '@/hooks/useResize';
-import clsx from 'clsx';
 
-const imagesMobile = [
-  '/images/gallery/mobile/pic-1.png',
-  '/images/gallery/mobile/pic-2.png',
-  '/images/gallery/mobile/pic-3.png',
-  '/images/gallery/mobile/pic-4.png',
-  '/images/gallery/mobile/pic-5.png',
-];
-
-const imagesTablet = [
-  '/images/gallery/tablet/pic-1.png',
-  '/images/gallery/tablet/pic-2.png',
-  '/images/gallery/tablet/pic-3.png',
-  '/images/gallery/tablet/pic-4.png',
-  '/images/gallery/tablet/pic-5.png',
-];
-
-const imagesDesktop = [
-  '/images/gallery/desktop/pic-1.png',
-  '/images/gallery/desktop/pic-2.png',
-  '/images/gallery/desktop/pic-3.png',
-  '/images/gallery/desktop/pic-4.png',
-  '/images/gallery/desktop/pic-5.png',
-];
-
-const PicturesSwiper = () => {
+const PicturesSwiper = ({ images = [] }) => {
   // FIXME: useResize does not work on initial load
-  const { isScreenMobile, isScreenDesktop } = useResize();
+  const { isScreenMobile } = useResize();
   return (
     <div className='md flex h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:bg-gallery-md lg:bg-gallery-lg xl:h-[814px]'>
       {isScreenMobile ? (
@@ -51,51 +26,36 @@ const PicturesSwiper = () => {
             },
           }}
           modules={[EffectCreative]}
+          className='w-full'
         >
-          {imagesMobile.map((url) => (
-            <SwiperSlide key={url} className='!flex w-[250px]'>
+          {images.map((image) => (
+            <SwiperSlide key={image.src} className='!flex w-[250px]'>
               <Image
                 alt='Тату'
-                src={url}
-                width={250}
-                height={313}
-                className='rounded-[10px] border-[.597px] border-secondary'
+                src={image}
+                sizes='250px'
+                className='h-[313px] w-[250px] rounded-[10px] border-[.597px] border-secondary object-cover'
               />
             </SwiperSlide>
           ))}
         </Swiper>
-      ) : isScreenDesktop ? (
-        <ul className='grid grid-cols-3 grid-rows-2 gap-y-14 first:row-span-2'>
-          {imagesTablet.map((url, i) => (
-            <li
-              key={url}
-              className='flex items-center justify-center'
-              style={{ gridArea: i === 0 && '1 / 2 / 3 / 3' }}
-            >
-              <Image
-                alt='Тату'
-                src={url}
-                width={i > 0 ? 294 : 428}
-                height={i > 0 ? 281 : 465}
-                className='rounded-[14.222px] border-[.889px] border-secondary'
-              />
-            </li>
-          ))}
-        </ul>
       ) : (
         <ul className='grid grid-cols-3 grid-rows-2 gap-y-14 first:row-span-2'>
-          {imagesTablet.map((url, i) => (
+          {images.map((image, i) => (
             <li
-              key={url}
-              className='flex items-center justify-center'
+              key={image.src}
+              className='group flex items-center justify-center'
               style={{ gridArea: i === 0 && '1 / 2 / 3 / 3' }}
             >
               <Image
                 alt='Тату'
-                src={url}
-                width={i > 0 ? 158 : 229}
-                height={i > 0 ? 151 : 250}
-                className='rounded-lg border-[.478px] border-secondary'
+                src={image}
+                sizes={
+                  i > 0
+                    ? '(min-width: 1280px) 294px, 158px'
+                    : '(min-width: 1280px) 428px, 229px'
+                }
+                className='h-[151px] w-[158px] rounded-lg border-[.478px] border-secondary object-cover group-first:h-[250px] group-first:w-[229px] xl:h-[281px] xl:w-[294px] xl:rounded-[14.222px] xl:border-[.889px] xl:group-first:h-[465px] xl:group-first:w-[428px]'
               />
             </li>
           ))}
