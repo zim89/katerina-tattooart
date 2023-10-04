@@ -6,7 +6,6 @@ import Footer from '@/modules/Footer';
 import './globals.css';
 
 const raleway = Raleway({
-  weight: ['400', '500'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-raleway',
@@ -20,7 +19,6 @@ const nautigal = The_Nautigal({
 });
 
 const inter = Inter({
-  weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
