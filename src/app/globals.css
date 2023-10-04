@@ -33,7 +33,7 @@
   }
 
   .btn {
-    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 xl:p-4 xl:text-[18px];
+    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-[18px] xl:p-4;
   }
 
   .btnSubmit {

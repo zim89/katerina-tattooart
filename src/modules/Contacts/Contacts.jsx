@@ -27,7 +27,7 @@ const Contacts = () => {
   };
 
   return (
-    <div className='section'>
+    <div className={styles.wrap}>
       <div className='container'>
         <h2 className={styles.title}>Зв’язатись з нами</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

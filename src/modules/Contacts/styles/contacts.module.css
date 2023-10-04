@@ -1,3 +1,7 @@
+.wrap {
+  @apply mb-10 md:mb-[60px] xl:mb-20;
+}
+
 .title {
   @apply mb-6 text-center text-[24px] font-medium leading-normal text-[#ECECEC] md:mb-[30px] md:text-[32px] xl:mb-20 xl:text-[40px];
 }
