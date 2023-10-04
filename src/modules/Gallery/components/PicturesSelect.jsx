@@ -1,8 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import makeAnimated from 'react-select/animated';
 import Select, { components } from 'react-select';
+import { useId } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const options = [
@@ -31,9 +31,11 @@ const DropdownIndicator = (props) => {
 };
 
 const PicturesSelect = ({ className }) => {
+  const selectId = useId();
   return (
     <Select
       unstyled
+      instanceId={selectId}
       defaultValue={options[2]}
       options={options}
       components={{ DropdownIndicator }}
