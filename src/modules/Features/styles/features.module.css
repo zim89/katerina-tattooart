@@ -1,3 +1,7 @@
+.features {
+  @apply mb-10 md:mb-[60px] xl:mb-20;
+}
+
 .wrap {
   @apply hidden;
 }

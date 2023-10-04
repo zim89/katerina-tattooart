@@ -10,7 +10,7 @@ import {
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/outline';
 
-import styles from './styles/styles.module.css';
+import styles from './styles/features.module.css';
 
 import 'swiper/css';
 
@@ -34,7 +34,7 @@ const Features = () => {
   };
 
   return (
-    <div className='section'>
+    <div className={styles.features}>
       <Swiper
         modules={[Thumbs, Pagination]}
         slidesPerView={1.5}
