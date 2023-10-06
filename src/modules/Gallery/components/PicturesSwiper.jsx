@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative } from 'swiper/modules';
 import { splitArray } from '@/helpers';
+import 'swiper/css';
 
 const PicturesSwiper = ({ images = [] }) => {
   const splitImages = splitArray(images);
