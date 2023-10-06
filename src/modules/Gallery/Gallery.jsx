@@ -1,13 +1,51 @@
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useEffect, useState } from 'react';
+
 import PicturesSelect from './components/PicturesSelect';
 import PicturesSwiper from './components/PicturesSwiper';
 
-import { supabase } from '@/lib/config';
+const DEFAULT_OPTION = { value: '*', label: 'Усi' };
 
-const Gallery = async () => {
-  const { data: images, error } = await supabase
-    .from('gallery')
-    .select()
-    .order('order', { ascending: true });
+const Gallery = () => {
+  const [images, setImages] = useState([]);
+  const [types, setTypes] = useState([DEFAULT_OPTION]);
+  const [selectedType, setSelectedType] = useState({
+    value: '*',
+    label: 'Усi',
+  });
+
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    (async () => {
+      const query = supabase
+        .from('gallery')
+        .select()
+        .order('order', { ascending: true });
+
+      if (selectedType.id) query.eq('type', selectedType.id);
+
+      // TODO: Do something on error...
+      const { data: images } = await query;
+
+      setImages(images ?? []);
+    })();
+  }, [selectedType, supabase]);
+
+  useEffect(() => {
+    (async () => {
+      // TODO: Do something on error...
+      const { data: types } = await supabase.from('gallery-types').select();
+
+      types.unshift(DEFAULT_OPTION);
+      setTypes(types ?? []);
+    })();
+  }, [supabase]);
+
+  const onSelect = (type) => {
+    setSelectedType(type);
+  };
 
   return (
     <section className='section'>
@@ -18,7 +56,7 @@ const Gallery = async () => {
             Галерея робіт
           </h2>
           <div className='mb-2 flex justify-end xl:mb-4'>
-            <PicturesSelect />
+            <PicturesSelect options={types} onSelect={onSelect} />
           </div>
         </div>
         <PicturesSwiper images={images} />

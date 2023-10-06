@@ -5,16 +5,6 @@ import Select, { components } from 'react-select';
 import { useId } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
-const options = [
-  { value: 'all', label: 'Усі' },
-  { value: 'legs', label: 'На нозі' },
-  { value: 'hands', label: 'На руці' },
-  { value: 'back', label: 'На спині' },
-  { value: 'body', label: 'На тулубі' },
-  { value: 'shoulders', label: 'На плечах' },
-  { value: 'neck', label: 'На шиї' },
-];
-
 const DropdownIndicator = (props) => {
   const { menuIsOpen } = props.selectProps;
 
@@ -30,14 +20,16 @@ const DropdownIndicator = (props) => {
   );
 };
 
-const PicturesSelect = ({ className }) => {
+const PicturesSelect = ({ className, options = [], onSelect }) => {
   const selectId = useId();
   return (
     <Select
       unstyled
+      placeholder='Виберіть...'
       instanceId={selectId}
-      defaultValue={options[2]}
+      defaultValue={options[0]}
       options={options}
+      onChange={onSelect}
       components={{ DropdownIndicator }}
       className={`${className || ''} relative z-10`}
       classNames={{
