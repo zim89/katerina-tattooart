@@ -17,6 +17,8 @@ const PicturesSwiper = ({ images = [] }) => {
         <SwiperSlide key={i} className='!flex flex-col justify-center'>
           <Swiper
             centeredSlides
+            observer
+            observeParents
             slidesPerView={1.5}
             spaceBetween={16}
             effect='creative'
