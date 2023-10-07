@@ -15,11 +15,11 @@
 }
 
 .username {
-  @apply text-[18px] font-medium leading-normal text-[#E0E0E0] md:text-[20px] xl:text-[24px];
+  @apply text-lg font-medium leading-normal text-[#E0E0E0] md:text-[20px] xl:text-[24px];
 }
 
 .createdAt {
-  @apply font-inter text-[16px] font-normal leading-normal text-[#E0E0E0] xl:text-[18px];
+  @apply font-inter text-[16px] font-normal leading-normal text-[#E0E0E0] xl:text-lg;
 }
 
 .textWrap {
@@ -27,5 +27,5 @@
 }
 
 .text {
-  @apply line-clamp-3 text-left text-base leading-[21.824px] text-[#D6D6D6] md:line-clamp-4 md:text-[18px] md:leading-[24.552px] xl:line-clamp-3;
+  @apply line-clamp-3 text-left text-base leading-[21.824px] text-[#D6D6D6] md:line-clamp-4 md:text-lg md:leading-[24.552px] xl:line-clamp-3;
 }

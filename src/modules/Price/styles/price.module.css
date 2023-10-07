@@ -45,11 +45,11 @@
 }
 
 .text {
-  @apply border-r-1 w-[162px] border-[#D6D6D6] pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-[18px] xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
+  @apply border-r-1 w-[162px] border-[#D6D6D6] pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-lg xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
 }
 
 .price {
-  @apply pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal text-[#ECECEC] md:pb-2 md:pt-2 md:align-baseline md:text-[18px] xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
+  @apply pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal text-[#ECECEC] md:pb-2 md:pt-2 md:align-baseline md:text-lg xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
 }
 
 .firstItem {
@@ -71,7 +71,7 @@
 }
 
 .item {
-  @apply border-1 flex h-[80px] w-[128px] items-center justify-center rounded-lg border-[#D6D6D6] text-center text-base font-normal leading-normal text-[#E0E0E0] md:h-[81px] md:w-[166px] md:text-[18px] md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
+  @apply border-1 flex h-[80px] w-[128px] items-center justify-center rounded-lg border-[#D6D6D6] text-center text-base font-normal leading-normal text-[#E0E0E0] md:h-[81px] md:w-[166px] md:text-lg md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
 }
 
 /* BUTTON */

@@ -29,7 +29,7 @@
   }
 
   .btn {
-    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-[18px] xl:p-4;
+    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-lg xl:p-4;
   }
 
   .btnSubmit {
@@ -37,7 +37,7 @@
   }
 
   .input {
-    @apply border-1 w-full resize-none rounded-xl border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-[18px];
+    @apply border-1 w-full resize-none rounded-xl border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-lg;
   }
 
   .backdrop {

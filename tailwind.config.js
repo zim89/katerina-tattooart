@@ -20,6 +20,10 @@ module.exports = {
       borderWidth: {
         1: '0.5px',
       },
+      spacing: {
+        3.75: '0.9375rem',
+        4.5: '1.125rem',
+      },
       backgroundImage: {
         'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
         'gallery-md': `url(/images/gallery/bg-tablet.svg)`,

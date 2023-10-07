@@ -11,7 +11,7 @@
 }
 
 .metaWrap {
-  @apply mb-4 grid grid-cols-2 gap-[14px] md:mb-[18px] md:gap-[18px] xl:mb-6 xl:gap-[26px];
+  @apply md:mb-4.5 md:gap-4.5 mb-4 grid grid-cols-2 gap-[14px] xl:mb-6 xl:gap-[26px];
 }
 
 .inputWrap {
@@ -19,7 +19,7 @@
 }
 
 .input {
-  @apply border-1 w-full resize-none rounded-xl border-white bg-transparent p-3 text-[16px] font-normal leading-normal outline-none placeholder:text-[#d6d6d6] placeholder:opacity-[0.6] md:text-[18px];
+  @apply border-1 w-full resize-none rounded-xl border-white bg-transparent p-3 text-[16px] font-normal leading-normal outline-none placeholder:text-[#d6d6d6] placeholder:opacity-[0.6] md:text-lg;
 }
 
 .submit {

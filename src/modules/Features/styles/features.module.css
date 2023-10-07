@@ -31,13 +31,13 @@
 }
 
 .listMargin {
-  @apply md:ml-[15px] xl:ml-[18px];
+  @apply md:ml-3.75 xl:ml-4.5;
 }
 
 .listItem {
-  @apply text-left text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-[18px] md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
+  @apply text-left text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-lg md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
 }
 
 .text {
-  @apply text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-[18px] md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
+  @apply text-base font-normal leading-[25.664px] text-[#e0e0e0] md:text-lg md:leading-[24.552px] xl:text-[24px] xl:leading-[32.736px];
 }

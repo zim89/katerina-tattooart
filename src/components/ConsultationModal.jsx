@@ -31,7 +31,7 @@ const ConsultationModal = ({ handleOpenModal }) => {
           </label>
 
           <button
-            className='btn mx-auto mt-9 block rounded-xl md:mt-8 md:p-4 md:text-[18px]'
+            className='btn mx-auto mt-9 block rounded-xl md:mt-8 md:p-4 md:text-lg'
             type='button'
             onClick={handleOpenModal}
           >

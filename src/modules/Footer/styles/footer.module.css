@@ -7,7 +7,7 @@
 }
 
 .text {
-  @apply mb-6 text-center text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:mb-4 md:text-[16px] md:tracking-[1.28px] xl:mb-5 xl:text-[18px] xl:tracking-[1.44px];
+  @apply mb-6 text-center text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:mb-4 md:text-[16px] md:tracking-[1.28px] xl:mb-5 xl:text-lg xl:tracking-[1.44px];
 }
 
 .list {
@@ -23,11 +23,11 @@
 }
 
 .thumb {
-  @apply relative h-[18px] w-[18px] md:h-5 md:w-5;
+  @apply h-4.5 w-4.5 relative md:h-5 md:w-5;
 }
 
 .socialLabel {
-  @apply hidden font-raleway text-[18px] font-medium text-[#ECECEC] md:inline xl:text-[20px];
+  @apply hidden font-raleway text-lg font-medium text-[#ECECEC] md:inline xl:text-[20px];
 }
 
 .telLabel {
@@ -35,7 +35,7 @@
 }
 
 .year {
-  @apply font-inter text-center text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:text-[16px] md:tracking-[1.28px] xl:text-[18px] xl:tracking-[1.44px];
+  @apply text-center font-inter text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:text-[16px] md:tracking-[1.28px] xl:text-lg xl:tracking-[1.44px];
 }
 
 .leftLogoThumb {
