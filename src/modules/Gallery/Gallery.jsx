@@ -1,32 +1,52 @@
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useEffect, useState } from 'react';
+
 import PicturesSelect from './components/PicturesSelect';
 import PicturesSwiper from './components/PicturesSwiper';
 
-// TODO: Move this somewhere...
-import handTattooImage1 from '/public/images/gallery/hand-tattoo-1.jpeg';
-import handTattooImage2 from '/public/images/gallery/hand-tattoo-2.jpeg';
-import handTattooImage3 from '/public/images/gallery/hand-tattoo-3.jpeg';
-import handTattooImage4 from '/public/images/gallery/hand-tattoo-4.jpeg';
-import handTattooImage5 from '/public/images/gallery/hand-tattoo-5.jpeg';
-import handTattooImage6 from '/public/images/gallery/hand-tattoo-6.jpeg';
-import handTattooImage7 from '/public/images/gallery/hand-tattoo-7.jpeg';
-import handTattooImage8 from '/public/images/gallery/hand-tattoo-8.jpeg';
-import handTattooImage9 from '/public/images/gallery/hand-tattoo-9.jpeg';
-import handTattooImage10 from '/public/images/gallery/hand-tattoo-10.jpeg';
-
-const images = [
-  handTattooImage1,
-  handTattooImage2,
-  handTattooImage3,
-  handTattooImage4,
-  handTattooImage5,
-  handTattooImage6,
-  handTattooImage7,
-  handTattooImage8,
-  handTattooImage9,
-  handTattooImage10,
-];
+const DEFAULT_OPTION = { value: '*', label: 'Усi' };
 
 const Gallery = () => {
+  const [images, setImages] = useState([]);
+  const [types, setTypes] = useState([DEFAULT_OPTION]);
+  const [selectedType, setSelectedType] = useState({
+    value: '*',
+    label: 'Усi',
+  });
+
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    (async () => {
+      const query = supabase
+        .from('gallery')
+        .select()
+        .order('order', { ascending: true });
+
+      if (selectedType.id) query.eq('type', selectedType.id);
+
+      // TODO: Do something on error...
+      const { data: images } = await query;
+
+      setImages(images ?? []);
+    })();
+  }, [selectedType, supabase]);
+
+  useEffect(() => {
+    (async () => {
+      // TODO: Do something on error...
+      const { data: types } = await supabase.from('gallery-types').select();
+
+      types.unshift(DEFAULT_OPTION);
+      setTypes(types ?? []);
+    })();
+  }, [supabase]);
+
+  const onSelect = (type) => {
+    setSelectedType(type);
+  };
+
   return (
     <section className='section'>
       <div className='container'>
@@ -36,7 +56,7 @@ const Gallery = () => {
             Галерея робіт
           </h2>
           <div className='mb-2 flex justify-end xl:mb-4'>
-            <PicturesSelect />
+            <PicturesSelect options={types} onSelect={onSelect} />
           </div>
         </div>
         <PicturesSwiper images={images} />

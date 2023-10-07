@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative } from 'swiper/modules';
 import { splitArray } from '@/helpers';
+import 'swiper/css';
 
 const PicturesSwiper = ({ images = [] }) => {
   const splitImages = splitArray(images);
@@ -17,6 +18,8 @@ const PicturesSwiper = ({ images = [] }) => {
         <SwiperSlide key={i} className='!flex flex-col justify-center'>
           <Swiper
             centeredSlides
+            observer
+            observeParents
             slidesPerView={1.5}
             spaceBetween={16}
             effect='creative'
@@ -34,11 +37,13 @@ const PicturesSwiper = ({ images = [] }) => {
             className='w-full md:!hidden'
           >
             {images.map((image) => (
-              <SwiperSlide key={image.src} className='!flex w-[250px]'>
+              <SwiperSlide key={image.id} className='!flex w-[250px]'>
                 <Image
-                  alt='Тату'
-                  src={image}
+                  alt={image.alt ?? 'Тату'}
+                  src={image.url}
                   sizes='250px'
+                  width={image.width}
+                  height={image.height}
                   className='h-[313px] w-[250px] rounded-[10px] border-[.597px] border-secondary object-cover'
                 />
               </SwiperSlide>
@@ -47,18 +52,20 @@ const PicturesSwiper = ({ images = [] }) => {
           <ul className='hidden grid-cols-3 grid-rows-2 gap-y-14 first:row-span-2 md:grid'>
             {images.map((image, i) => (
               <li
-                key={image.src}
+                key={image.id}
                 className='group flex items-center justify-center'
                 style={{ gridArea: i === 0 && '1 / 2 / 3 / 3' }}
               >
                 <Image
-                  alt='Тату'
-                  src={image}
+                  alt={image.alt ?? 'Тату'}
+                  src={image.url}
                   sizes={
                     i > 0
                       ? '(min-width: 1280px) 294px, 158px'
                       : '(min-width: 1280px) 428px, 229px'
                   }
+                  width={image.width}
+                  height={image.height}
                   className='h-[151px] w-[158px] rounded-lg border-[.478px] border-secondary object-cover group-first:h-[250px] group-first:w-[229px] xl:h-[281px] xl:w-[294px] xl:rounded-[14.222px] xl:border-[.889px] xl:group-first:h-[465px] xl:group-first:w-[428px]'
                 />
               </li>
