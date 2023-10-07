@@ -1,5 +1,5 @@
 .modal {
-  @apply border-1 relative rounded-2xl border-[#D6D6D6] bg-[#2C3134] px-[30px] pb-[30px] pt-10;
+  @apply px-7.5 pb-7.5 relative rounded-2xl border-1 border-[#D6D6D6] bg-[#2C3134] pt-10;
 }
 
 .closeBtn {

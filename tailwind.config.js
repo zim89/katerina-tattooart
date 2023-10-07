@@ -28,6 +28,7 @@ module.exports = {
         3.75: '.9375rem',
         4.5: '1.125rem',
         5.5: '1.375rem',
+        7.5: '1.875rem',
         9.5: '2.375rem',
         16.5: '4.0625rem',
       },
@@ -38,6 +39,9 @@ module.exports = {
         5.1: '1.3125rem',
       },
       backgroundImage: {
+        'hero-sm': 'url(/images/hero/bg-mobile.png)',
+        'hero-md': 'url(/images/hero/bg-tablet.png)',
+        'hero-lg': 'url(/images/hero/bg-desktop.png)',
         'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
         'gallery-md': `url(/images/gallery/bg-tablet.svg)`,
         'gallery-lg': `url(/images/gallery/bg-desktop.svg)`,

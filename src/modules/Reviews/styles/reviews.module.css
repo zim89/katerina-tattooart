@@ -1,9 +1,9 @@
 /* .reviews {
-  @apply relative w-full pb-10 pt-5 md:py-[30px] xl:pb-20 xl:pt-10;
+  @apply relative w-full pb-10 pt-5 md:py-7.5 xl:pb-20 xl:pt-10;
 } */
 
 .reviews {
-  @apply relative mb-10 w-full pb-10 md:mb-[52px] md:pb-[30px] xl:mb-20 xl:pb-20;
+  @apply md:pb-7.5 relative mb-10 w-full pb-10 md:mb-[52px] xl:mb-20 xl:pb-20;
 }
 
 /* TODO: fix arbitrary value */

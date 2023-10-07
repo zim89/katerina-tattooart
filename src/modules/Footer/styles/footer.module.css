@@ -11,7 +11,7 @@
 }
 
 .list {
-  @apply mb-4 flex list-none justify-center gap-4 md:mb-5 md:gap-10 xl:gap-[30px];
+  @apply xl:gap-7.5 mb-4 flex list-none justify-center gap-4 md:mb-5 md:gap-10;
 }
 
 .item {
@@ -23,7 +23,7 @@
 }
 
 .thumb {
-  @apply h-4.5 w-4.5 relative md:h-5 md:w-5;
+  @apply relative h-4.5 w-4.5 md:h-5 md:w-5;
 }
 
 .socialLabel {
