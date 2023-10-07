@@ -1,15 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const burgerBtn = useRef(null);
 
-  const handleBurger = (e) => {
-    e.currentTarget.classList.toggle('active');
+  const handleBurger = () => {
+    burgerBtn.current?.classList.toggle('active');
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const closeMenu = (e) => {
+      if (!e.matches) return;
+      burgerBtn.current?.classList.remove('active');
+      setIsOpen(false);
+    };
+
+    window
+      .matchMedia('(min-width: 768px)')
+      .addEventListener('change', closeMenu);
+
+    return () => {
+      window.removeEventListener('change', closeMenu);
+    };
+  }, []);
 
   return (
     <>
@@ -17,6 +34,7 @@ const Burger = () => {
 
       <button
         className='group z-50 block h-12 w-12 md:hidden'
+        ref={burgerBtn}
         onClick={handleBurger}
       >
         <div className='relative h-5'>
