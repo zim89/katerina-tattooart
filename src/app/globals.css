@@ -25,9 +25,6 @@
     @apply hidden md:flex md:items-center md:gap-2 xl:gap-6;
   }
 
-  .mobile-link {
-    @apply font-raleway text-base font-normal leading-none text-[#d6d6d6];
-  }
   .caption {
     @apply font-raleway text-[24px] font-medium leading-normal text-[#ECECEC] md:text-[32px] xl:text-[40px];
   }

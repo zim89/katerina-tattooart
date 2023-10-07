@@ -12,7 +12,7 @@ const DropdownIndicator = (props) => {
     <components.DropdownIndicator {...props}>
       <ChevronDownIcon
         className={clsx(
-          'xl:top-3.75 xl:right-4.5 absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-[9px] md:top-[11px] md:h-[17px] md:w-[17px] xl:h-[34px] xl:w-[34px]',
+          'absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-[9px] md:top-[11px] md:h-[17px] md:w-[17px] xl:right-4.5 xl:top-3.75 xl:h-[34px] xl:w-[34px]',
           menuIsOpen && '-scale-y-100'
         )}
       />
@@ -31,7 +31,7 @@ const PicturesSelect = ({ className, options = [], onSelect }) => {
       options={options}
       onChange={onSelect}
       components={{ DropdownIndicator }}
-      className={`${className || ''} relative z-10`}
+      className={`${className || ''} z-[2]`}
       classNames={{
         control: (state) =>
           clsx(
