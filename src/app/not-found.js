@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function NotFound() {
   // TODO: Change pixels to rem
   return (
-    <main className='mx-auto max-w-[1440px]'>
+    <>
       <section className='pb-[148px] pt-[206px]'>
         <div className='container flex flex-col items-center'>
           <h2 className='font-inter text-[132px]/[160px] font-bold text-primary/20 md:text-[196px]/[237px] xl:text-[349px]/[422px]'>
@@ -17,6 +17,6 @@ export default function NotFound() {
           </Link>
         </div>
       </section>
-    </main>
+    </>
   );
 }
