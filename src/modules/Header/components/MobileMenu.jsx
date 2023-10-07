@@ -6,8 +6,8 @@ import { UserCircleIcon } from '@heroicons/react/24/outline';
 const MobileMenu = () => {
   return (
     <div className='fixed bottom-0 left-0 right-0 top-0 flex justify-center bg-black bg-opacity-75'>
-      <nav className='mt-[65px]  w-[243px] bg-[#393E41] pt-[25px]'>
-        <ul className='gap-4.5 flex flex-col items-center'>
+      <nav className='mt-16.5 w-[243px] bg-[#393E41] pt-[25px]'>
+        <ul className='flex flex-col items-center gap-4.5'>
           <li>
             <a href='#' className='mobile-link'>
               Про нас
