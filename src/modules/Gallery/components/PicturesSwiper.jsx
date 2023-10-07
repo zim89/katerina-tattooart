@@ -20,17 +20,17 @@ const PicturesSwiper = ({ images = [] }) => {
             centeredSlides
             observer
             observeParents
-            slidesPerView={1.5}
+            slidesPerView={1.345}
             spaceBetween={16}
             effect='creative'
             creativeEffect={{
               prev: {
                 scale: 0.5,
-                translate: ['-80%', 0, 0],
+                translate: [-120, 0, 0],
               },
               next: {
                 scale: 0.5,
-                translate: ['80%', 0, 0],
+                translate: [120, 0, 0],
               },
             }}
             modules={[EffectCreative]}
