@@ -8,7 +8,7 @@ const Header = () => {
     // TODO: Do we need limits for border? `mx-auto max-w-[1440px]`
     <header className='border-b-1 border-b-white/60'>
       <div className='container'>
-        <div className='py-3.75 md:py-4.5 flex items-center justify-between xl:py-4'>
+        <div className='md:py-4.5 flex items-center justify-between py-[.4375rem] xl:py-4'>
           <Logo />
           <Navbar />
           <UserMenu />

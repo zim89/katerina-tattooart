@@ -14,13 +14,16 @@ const Burger = () => {
   return (
     <>
       {/* Burger menu */}
+
       <button
-        className='group relative z-50 block h-5 w-[30px] md:hidden'
+        className='group z-50 block h-12 w-12 md:hidden'
         onClick={handleBurger}
       >
-        <span className='absolute left-0 top-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:translate-y-2 group-[.active]:rotate-45'></span>
-        <span className='absolute left-0 top-[9px] h-[2px] w-full bg-[#D6D6D6] transition-opacity group-[.active]:opacity-0'></span>
-        <span className='absolute bottom-0 left-0 h-[2px] w-full bg-[#D6D6D6] transition-transform group-[.active]:-translate-y-[10px] group-[.active]:-rotate-45'></span>
+        <div className='relative h-5'>
+          <span className='w-9.5 left-1.1 absolute top-0 h-0.5 rounded bg-primary transition-transform group-[.active]:top-[11px] group-[.active]:rotate-45'></span>
+          <span className='w-9.5 left-1.1 absolute top-[10px] h-0.5 rounded bg-primary transition-opacity group-[.active]:opacity-0'></span>
+          <span className='w-9.5 left-1.1 absolute top-[20px] h-0.5 rounded bg-primary transition-transform group-[.active]:top-[11px] group-[.active]:-rotate-45'></span>
+        </div>
       </button>
 
       {/* Mobile menu */}
