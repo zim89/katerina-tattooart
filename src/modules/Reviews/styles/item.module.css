@@ -11,7 +11,7 @@
 }
 
 .header {
-  @apply mb-[6px] flex items-end justify-between md:mb-[7px] xl:mb-2;
+  @apply md:mb-1.75 mb-[6px] flex items-end justify-between xl:mb-2;
 }
 
 .username {

@@ -35,11 +35,11 @@ const PicturesSelect = ({ className, options = [], onSelect }) => {
       classNames={{
         control: (state) =>
           clsx(
-            'p-2 bg-[#303538] rounded-lg max-w-max min-w-[137px] leading-[19px] md:text-lg/[21px] md:px-[9px] md:py-[7px] xl:p-4.5 xl:text-2xl/7 xl:min-w-[274px]',
+            'p-2 bg-[#303538] rounded-lg max-w-max min-w-[137px] leading-[19px] md:text-lg/[21px] md:px-[9px] md:py-1.75 xl:p-4.5 xl:text-2xl/7 xl:min-w-[274px]',
             state.menuIsOpen && 'rounded-b-none'
           ),
         menuList: () =>
-          'bg-[#303538] px-2.5 pb-4 pt-1.5 space-y-4 md:space-y-3 xl:space-y-4.5 md:px-[9px] md:pb-[9px] md:pt-[7px] xl:px-4.5 xl:pb-3 xl:pt-0 rounded-b-lg leading-[19px] md:text-lg/[21px] xl:text-2xl/[28px] !max-h-none',
+          'bg-[#303538] px-2.5 pb-4 pt-1.5 space-y-4 md:space-y-3 xl:space-y-4.5 md:px-[9px] md:pb-[9px] md:pt-1.75 xl:px-4.5 xl:pb-3 xl:pt-0 rounded-b-lg leading-[19px] md:text-lg/[21px] xl:text-2xl/[28px] !max-h-none',
         indicatorsContainer: () => 'h-0',
       }}
     />
