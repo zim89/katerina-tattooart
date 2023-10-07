@@ -6,6 +6,7 @@
   @apply relative mb-10 w-full pb-10 md:mb-[52px] md:pb-[30px] xl:mb-20 xl:pb-20;
 }
 
+/* TODO: fix arbitrary value */
 .divider {
   @apply absolute bottom-0 left-0 h-[0.5px] w-full;
 }

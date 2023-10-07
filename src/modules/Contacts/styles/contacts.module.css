@@ -19,7 +19,7 @@
 }
 
 .input {
-  @apply w-full resize-none rounded-xl border-[0.5px] border-white bg-transparent p-3 text-[16px] font-normal leading-normal outline-none placeholder:text-[#d6d6d6] placeholder:opacity-[0.6] md:text-[18px];
+  @apply border-1 w-full resize-none rounded-xl border-white bg-transparent p-3 text-[16px] font-normal leading-normal outline-none placeholder:text-[#d6d6d6] placeholder:opacity-[0.6] md:text-[18px];
 }
 
 .submit {

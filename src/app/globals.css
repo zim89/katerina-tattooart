@@ -37,7 +37,7 @@
   }
 
   .input {
-    @apply w-full resize-none rounded-xl border-[0.5px] border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-[18px];
+    @apply border-1 w-full resize-none rounded-xl border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-[18px];
   }
 
   .backdrop {
@@ -89,7 +89,7 @@
 
 /* TOASTIFY */
 .Toastify__toast-theme--dark {
-  @apply !rounded-2xl border-[0.5px] !border-[#D6D6D6] !bg-[#2C3134];
+  @apply border-1 !rounded-2xl !border-[#D6D6D6] !bg-[#2C3134];
 }
 
 .Toastify__toast-body {

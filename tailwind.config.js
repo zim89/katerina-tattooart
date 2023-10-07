@@ -8,17 +8,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      screens: {
-        xs: '375px',
-      },
       fontFamily: {
         raleway: ['var(--font-raleway)'],
         nautigal: ['var(--font-nautigal)'],
         inter: ['var(--font-inter)'],
       },
       colors: {
-        primary: '#D6D6D6',
-        secondary: '#0A0F13',
+        primary: '#d6d6d6',
+        secondary: '#0a0f13',
+      },
+      borderWidth: {
+        1: '0.5px',
       },
       backgroundImage: {
         'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
