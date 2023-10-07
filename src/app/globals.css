@@ -18,7 +18,11 @@
   }
 
   .nav-link {
-    @apply relative whitespace-nowrap font-raleway text-base font-normal leading-none text-[#d6d6d6] transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-[24px];
+    @apply relative whitespace-nowrap font-normal leading-[1.1875] text-primary transition-colors duration-200 ease-linear after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-2xl/7;
+  }
+
+  .nav-list {
+    @apply hidden md:flex md:items-center md:gap-2 xl:gap-6;
   }
 
   .mobile-link {
@@ -29,15 +33,15 @@
   }
 
   .btn {
-    @apply border-0.5 bg-white/14 xl:border-1 xl:text-lg/5.1 whitespace-nowrap rounded-lg border-white p-2.5 text-center text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:p-4;
+    @apply whitespace-nowrap rounded-lg border-0.5 border-white bg-white/14 p-2.5 text-center text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:border-1 xl:p-4 xl:text-lg/5.1;
   }
 
   .btnSubmit {
-    @apply border-0.5 mx-auto block rounded-lg border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
+    @apply mx-auto block rounded-lg border-0.5 border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
   }
 
   .input {
-    @apply border-1 w-full resize-none rounded-xl border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-lg;
+    @apply w-full resize-none rounded-xl border-1 border-white bg-[#393E41] p-[10px] font-raleway text-base font-normal leading-none text-primary outline-none focus:bg-[#2C3134] md:px-4 md:py-[14px] md:text-lg;
   }
 
   .backdrop {
@@ -89,7 +93,7 @@
 
 /* TOASTIFY */
 .Toastify__toast-theme--dark {
-  @apply border-1 !rounded-2xl !border-[#D6D6D6] !bg-[#2C3134];
+  @apply !rounded-2xl border-1 !border-[#D6D6D6] !bg-[#2C3134];
 }
 
 .Toastify__toast-body {
