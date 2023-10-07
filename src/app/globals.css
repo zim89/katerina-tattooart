@@ -29,11 +29,11 @@
   }
 
   .btn {
-    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white bg-opacity-[0.14] p-[10px] text-center font-raleway text-[14px] font-normal leading-none text-primary transition-all duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-lg xl:p-4;
+    @apply border-0.5 bg-white/14 xl:border-1 xl:text-lg/5.1 whitespace-nowrap rounded-lg border-white p-2.5 text-center text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:p-4;
   }
 
   .btnSubmit {
-    @apply mx-auto block rounded-lg border-[0.25px] border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
+    @apply border-0.5 mx-auto block rounded-lg border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
   }
 
   .input {

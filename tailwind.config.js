@@ -18,11 +18,19 @@ module.exports = {
         secondary: '#0a0f13',
       },
       borderWidth: {
+        0.5: '0.25px',
         1: '0.5px',
       },
       spacing: {
         3.75: '0.9375rem',
         4.5: '1.125rem',
+        5.5: '1.3125rem',
+      },
+      opacity: {
+        14: '.14',
+      },
+      lineHeight: {
+        5.1: '1.3125rem',
       },
       backgroundImage: {
         'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
