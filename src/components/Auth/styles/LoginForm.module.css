@@ -1,0 +1,29 @@
+.form {
+}
+
+.input {
+  @apply mb-6;
+}
+
+.error {
+  @apply border-red-500/80;
+}
+
+.errorBox {
+  @apply mb-1 text-[12px] font-normal leading-normal text-red-500/80;
+}
+
+.submit {
+  @apply mx-auto mt-8 block border-transparent bg-transparent px-4 py-2 text-[20px] text-[#D6D6D6];
+}
+.passField {
+  @apply relative;
+}
+
+.showPassBtn {
+  @apply absolute right-0 top-1/2  z-20 flex  items-center justify-center;
+}
+
+.showPassIcon {
+  @apply h-6 w-6 stroke-[1px];
+}

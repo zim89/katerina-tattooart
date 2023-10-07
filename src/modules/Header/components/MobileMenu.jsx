@@ -1,5 +1,6 @@
 // FIXME: Unused
 
+import Avatar from './Avatar';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 const MobileMenu = () => {
@@ -43,9 +44,7 @@ const MobileMenu = () => {
             </a>
           </li>
           <li>
-            <a href='#' className=''>
-              <UserCircleIcon className='h-10 w-10' />
-            </a>
+            <Avatar />
           </li>
         </ul>
       </nav>
