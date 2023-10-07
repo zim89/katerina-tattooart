@@ -1,9 +1,9 @@
 .modal {
-  @apply relative mx-4 w-full rounded-xl border border-[#D6D6D6] bg-[#2C3134] px-4 pb-9 pt-[82px] md:mx-auto md:w-[651px] md:border-[1.5px] md:py-8 md:pl-6 md:pr-12 xl:w-[710px] xl:px-6 xl:py-10;
+  @apply bg-dark-slate relative mx-4 w-full rounded-xl border border-primary px-4 pb-9 pt-[82px] md:mx-auto md:w-[651px] md:border-[1.5px] md:py-8 md:pl-6 md:pr-12 xl:w-[710px] xl:px-6 xl:py-10;
 }
 
 .closeBtn {
-  @apply absolute right-[10px] top-[10px] h-8 w-8 md:right-4 md:top-4 md:h-6 md:w-6;
+  @apply absolute right-2.5 top-2.5 h-8 w-8 md:right-4 md:top-4 md:h-6 md:w-6;
 }
 
 .input {
@@ -15,9 +15,9 @@
 }
 
 .errorBox {
-  @apply mb-1 text-[12px] font-normal leading-normal text-red-500/80;
+  @apply mb-1 text-xs font-normal leading-normal text-red-500/80;
 }
 
 .submit {
-  @apply relative mx-auto mt-9 block font-raleway text-base font-normal leading-normal text-[#D6D6D6] transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 md:mt-8 xl:mt-10 xl:text-2xl;
+  @apply relative mx-auto mt-9 block font-raleway text-base font-normal leading-normal text-primary transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 md:mt-8 xl:mt-10 xl:text-2xl;
 }

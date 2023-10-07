@@ -38,9 +38,9 @@ const Burger = () => {
         onClick={handleBurger}
       >
         <div className='relative h-5'>
-          <span className='group-[.active]:top-2.75 absolute left-1.1 top-0 h-0.5 w-9.5 rounded bg-primary transition-transform group-[.active]:rotate-45'></span>
-          <span className='absolute left-1.1 top-[10px] h-0.5 w-9.5 rounded bg-primary transition-opacity group-[.active]:opacity-0'></span>
-          <span className='group-[.active]:top-2.75 absolute left-1.1 top-[20px] h-0.5 w-9.5 rounded bg-primary transition-transform group-[.active]:-rotate-45'></span>
+          <span className='absolute left-1.1 top-0 h-0.5 w-9.5 rounded bg-primary transition-transform group-[.active]:top-2.75 group-[.active]:rotate-45'></span>
+          <span className='absolute left-1.1 top-2.5 h-0.5 w-9.5 rounded bg-primary transition-opacity group-[.active]:opacity-0'></span>
+          <span className='absolute left-1.1 top-5 h-0.5 w-9.5 rounded bg-primary transition-transform group-[.active]:top-2.75 group-[.active]:-rotate-45'></span>
         </div>
       </button>
 

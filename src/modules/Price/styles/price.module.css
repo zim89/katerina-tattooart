@@ -1,5 +1,5 @@
 .wrap {
-  @apply mb-10 md:mb-[60px] xl:mb-[87px];
+  @apply md:mb-15 mb-10 xl:mb-[87px];
 }
 
 .title {
@@ -12,7 +12,7 @@
 
 /* BG IMAGE */
 .thumb {
-  @apply absolute -right-[16px] top-0 -z-[1] h-[316px] w-full md:-right-10 md:h-[393px] xl:h-full;
+  @apply absolute -right-4 top-0 -z-[1] h-[316px] w-full md:-right-10 md:h-[393px] xl:h-full;
 }
 
 .bgImage {
@@ -37,7 +37,7 @@
 }
 
 .row {
-  @apply border-b-1 border-[#D6D6D6];
+  @apply border-b-1 border-primary;
 }
 
 .row:last-child {
@@ -45,11 +45,11 @@
 }
 
 .text {
-  @apply w-[162px] border-r-1 border-[#D6D6D6] pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-lg xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
+  @apply w-[162px] border-r-1 border-primary pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-lg xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
 }
 
 .price {
-  @apply pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal text-[#ECECEC] md:pb-2 md:pt-2 md:align-baseline md:text-lg xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
+  @apply text-light-gray pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal md:pb-2 md:pt-2 md:align-baseline md:text-lg xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
 }
 
 .firstItem {
@@ -62,19 +62,19 @@
 
 /* SUBTITLE */
 .subtitle {
-  @apply mb-6 text-[20px] font-medium leading-normal text-[#ECECEC] md:mb-4 md:text-[24px] xl:mb-10 xl:text-[38px];
+  @apply text-light-gray mb-6 text-xl font-medium leading-normal md:mb-4 md:text-2xl xl:mb-10 xl:text-[38px];
 }
 
 /* LIST */
 .list {
-  @apply mb-10 flex list-none flex-wrap gap-[14px] md:mb-9 md:w-[340px] md:gap-2 xl:mb-20 xl:w-[488px] xl:gap-10;
+  @apply mb-10 flex list-none flex-wrap gap-3.5 md:mb-9 md:w-[340px] md:gap-2 xl:mb-20 xl:w-[488px] xl:gap-10;
 }
 
 .item {
-  @apply text-gray flex h-[80px] w-[128px] items-center justify-center rounded-lg border-1 border-[#D6D6D6] text-center text-base font-normal leading-normal md:h-[81px] md:w-[166px] md:text-lg md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
+  @apply flex h-[80px] w-[128px] items-center justify-center rounded-lg border-1 border-primary text-center text-base font-normal leading-normal text-gray md:h-[81px] md:w-[166px] md:text-lg md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
 }
 
 /* BUTTON */
 .btn {
-  @apply mx-auto block px-[66px] py-[14px] md:px-[10px] md:py-[10px] xl:px-4 xl:py-4;
+  @apply mx-auto block px-[66px] py-3.5 md:px-2.5 md:py-2.5 xl:px-4 xl:py-4;
 }

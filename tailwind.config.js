@@ -13,25 +13,37 @@ module.exports = {
         nautigal: ['var(--font-nautigal)'],
         inter: ['var(--font-inter)'],
       },
+      fontSize: {
+        '2.5xl': '2rem',
+        '4.5xl': '2.5rem',
+      },
       colors: {
         primary: '#d6d6d6',
         secondary: '#0a0f13',
         gray: '#e0e0e0',
+        'light-gray': '#ececec',
+        'dark-slate': '#2c3134',
       },
       borderWidth: {
         0.5: '.25px',
         1: '.5px',
       },
+      borderRadius: {
+        '2lg': '10px',
+      },
       spacing: {
         px: '1px',
         1.1: '.3125rem',
         1.75: '.4375rem',
+        2.1: '.5625rem',
         2.75: '.6875rem',
         3.75: '.9375rem',
         4.5: '1.125rem',
         5.5: '1.375rem',
+        6.5: '1.625rem',
         7.5: '1.875rem',
         9.5: '2.375rem',
+        15: '3.75rem',
         16.5: '4.0625rem',
       },
       opacity: {

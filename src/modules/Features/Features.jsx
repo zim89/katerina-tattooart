@@ -96,7 +96,7 @@ const Features = () => {
                       Зафіксувати плівкою або рулонним пластирем.
                     </li>
                   </ul>
-                  <p className={clsx(styles.text, 'mt-[32px] xl:text-left')}>
+                  <p className={clsx(styles.text, 'mt-2.5xl xl:text-left')}>
                     Такі перев’язки робити кожні 6 годин
                   </p>
                 </div>

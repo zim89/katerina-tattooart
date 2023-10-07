@@ -1,5 +1,5 @@
 .modal {
-  @apply px-7.5 pb-7.5 relative rounded-2xl border-1 border-[#D6D6D6] bg-[#2C3134] pt-10;
+  @apply bg-dark-slate relative rounded-2xl border-1 border-primary px-7.5 pb-7.5 pt-10;
 }
 
 .closeBtn {
@@ -7,7 +7,7 @@
 }
 
 .title {
-  @apply mb-6 text-center text-2xl font-normal leading-normal text-[#D6D6D6];
+  @apply mb-6 text-center text-2xl font-normal leading-normal text-primary;
 }
 
 .authText {

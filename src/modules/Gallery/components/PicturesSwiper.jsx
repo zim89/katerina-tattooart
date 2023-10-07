@@ -12,7 +12,7 @@ const PicturesSwiper = ({ images = [] }) => {
   return (
     <Swiper
       direction='vertical'
-      className='h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:flex md:bg-gallery-md lg:bg-gallery-lg xl:h-[814px]'
+      className='lg:bg-gallery-lg h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:flex md:bg-gallery-md xl:h-[814px]'
     >
       {splitImages.map((images, i) => (
         <SwiperSlide key={i} className='!flex flex-col justify-center'>
@@ -44,7 +44,7 @@ const PicturesSwiper = ({ images = [] }) => {
                   sizes='250px'
                   width={image.width}
                   height={image.height}
-                  className='h-[313px] w-[250px] rounded-[10px] border-[.597px] border-secondary object-cover'
+                  className='rounded-2lg h-[313px] w-[250px] border-[.597px] border-secondary object-cover'
                 />
               </SwiperSlide>
             ))}

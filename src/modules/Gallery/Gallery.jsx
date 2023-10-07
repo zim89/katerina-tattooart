@@ -52,7 +52,7 @@ const Gallery = () => {
       <div className='container'>
         <div className='md:flex md:items-end md:justify-between'>
           {/* TODO: remove hardcoded values */}
-          <h2 className='mb-4 font-raleway text-2xl/7 font-medium md:mb-8 md:text-[32px]/[38px] xl:mb-20 xl:text-[40px]/[47px]'>
+          <h2 className='md:text-2.5xl/[38px] xl:text-4.5xl/[47px] mb-4 font-raleway text-2xl/7 font-medium md:mb-8 xl:mb-20'>
             Галерея робіт
           </h2>
           <div className='mb-2 flex justify-end xl:mb-4'>

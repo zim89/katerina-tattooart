@@ -3,11 +3,11 @@
 }
 
 .avaThumb {
-  @apply relative h-10 w-10 flex-none rounded-full xl:h-[60px] xl:w-[60px];
+  @apply xl:h-15 xl:w-15 relative h-10 w-10 flex-none rounded-full;
 }
 
 .content {
-  @apply grow pr-[10px] md:pr-0;
+  @apply grow pr-2.5 md:pr-0;
 }
 
 .header {
@@ -15,17 +15,17 @@
 }
 
 .username {
-  @apply text-gray text-lg font-medium leading-normal md:text-[20px] xl:text-[24px];
+  @apply text-lg font-medium leading-normal text-gray md:text-xl xl:text-2xl;
 }
 
 .createdAt {
-  @apply text-gray font-inter text-[16px] font-normal leading-normal xl:text-lg;
+  @apply font-inter text-base font-normal leading-normal text-gray xl:text-lg;
 }
 
 .textWrap {
-  @apply h-[74px] border-b border-b-[#D6D6D6] pb-2 md:h-[107px] xl:h-[90px] xl:pb-4;
+  @apply h-[74px] border-b border-b-primary pb-2 md:h-[107px] xl:h-[90px] xl:pb-4;
 }
 
 .text {
-  @apply line-clamp-3 text-left text-base leading-[21.824px] text-[#D6D6D6] md:line-clamp-4 md:text-lg md:leading-[24.552px] xl:line-clamp-3;
+  @apply line-clamp-3 text-left text-base leading-[21.824px] text-primary md:line-clamp-4 md:text-lg md:leading-[24.552px] xl:line-clamp-3;
 }

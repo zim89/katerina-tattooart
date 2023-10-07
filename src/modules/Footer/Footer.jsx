@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import styles from './styles/footer.module.css';
 
+import logo from '/public/icons/logo.svg';
+import logoRev from '/public/icons/logo-rev.svg';
+
 const Footer = () => {
   return (
     <footer className={styles.footer}>
@@ -50,13 +53,17 @@ const Footer = () => {
           </ul>
           <p className={styles.year}>2023</p>
 
-          <div className={styles.leftLogoThumb}>
-            <Image src='/icons/logo.svg' alt='User image' fill />
-          </div>
+          <Image
+            src={logo}
+            alt='Катерина Татту Лого'
+            className={styles.leftLogoThumb}
+          />
 
-          <div className={styles.rightLogoThumb}>
-            <Image src='/icons/logo-rev.svg' alt='User image' fill />
-          </div>
+          <Image
+            src={logoRev}
+            alt='Катерина Татту Лого'
+            className={styles.rightLogoThumb}
+          />
         </div>
       </div>
     </footer>
