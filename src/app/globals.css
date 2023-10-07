@@ -17,10 +17,6 @@
     @apply w-full py-10 md:py-[60px] xl:py-20;
   }
 
-  .container {
-    @apply mx-auto w-full px-4 xs:w-[375px] md:w-[768px] md:px-10 xl:w-[1280px];
-  }
-
   .nav-link {
     @apply relative whitespace-nowrap font-raleway text-base font-normal leading-none text-[#d6d6d6] transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-[24px];
   }

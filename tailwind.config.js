@@ -26,6 +26,19 @@ module.exports = {
         'gallery-lg': `url(/images/gallery/bg-desktop.svg)`,
       },
     },
+    screens: {
+      sm: '375px',
+      md: '768px',
+      xl: '1440px',
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        md: '2.5rem',
+        xl: '5rem',
+      },
+    },
   },
   plugins: [],
 };
