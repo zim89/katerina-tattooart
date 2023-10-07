@@ -31,5 +31,5 @@
 }
 
 .errorBox {
-  @apply absolute -top-[9px] left-4 bg-[#0A0F13] px-1 text-[12px] font-normal leading-normal text-red-500/80 md:-top-[10px] md:text-[14px] xl:-top-[12px] xl:text-[16px];
+  @apply absolute -top-[9px] left-4 bg-secondary px-1 text-[12px] font-normal leading-normal text-red-500/80 md:-top-[10px] md:text-[14px] xl:-top-[12px] xl:text-[16px];
 }

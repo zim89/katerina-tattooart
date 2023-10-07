@@ -24,11 +24,11 @@
 }
 
 .bgGradientToTop {
-  @apply bg-gradient-to-t from-[#0a0f13] from-[0.76%] to-transparent to-[12.92%];
+  @apply bg-gradient-to-t from-secondary from-[0.76%] to-transparent to-[12.92%];
 }
 
 .bgGradientToRight {
-  @apply bg-gradient-to-r from-[#0a0f13] from-[24.21%] to-transparent to-[35.38%];
+  @apply bg-gradient-to-r from-secondary from-[24.21%] to-transparent to-[35.38%];
 }
 
 /* TABLE */
@@ -45,7 +45,7 @@
 }
 
 .text {
-  @apply border-r-1 w-[162px] border-[#D6D6D6] pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-lg xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
+  @apply w-[162px] border-r-1 border-[#D6D6D6] pb-4 pt-4 align-baseline text-base font-normal leading-normal text-white md:w-[244px] md:pb-2 md:pt-2 md:text-lg xl:w-[348px] xl:pb-4 xl:pt-4 xl:text-2xl;
 }
 
 .price {
@@ -71,7 +71,7 @@
 }
 
 .item {
-  @apply border-1 flex h-[80px] w-[128px] items-center justify-center rounded-lg border-[#D6D6D6] text-center text-base font-normal leading-normal text-[#E0E0E0] md:h-[81px] md:w-[166px] md:text-lg md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
+  @apply text-gray flex h-[80px] w-[128px] items-center justify-center rounded-lg border-1 border-[#D6D6D6] text-center text-base font-normal leading-normal md:h-[81px] md:w-[166px] md:text-lg md:leading-[1.1] xl:h-[109px] xl:w-[224px] xl:leading-[24.552px];
 }
 
 /* BUTTON */

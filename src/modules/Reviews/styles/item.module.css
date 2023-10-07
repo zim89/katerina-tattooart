@@ -11,15 +11,15 @@
 }
 
 .header {
-  @apply md:mb-1.75 mb-[6px] flex items-end justify-between xl:mb-2;
+  @apply mb-[6px] flex items-end justify-between md:mb-1.75 xl:mb-2;
 }
 
 .username {
-  @apply text-lg font-medium leading-normal text-[#E0E0E0] md:text-[20px] xl:text-[24px];
+  @apply text-gray text-lg font-medium leading-normal md:text-[20px] xl:text-[24px];
 }
 
 .createdAt {
-  @apply font-inter text-[16px] font-normal leading-normal text-[#E0E0E0] xl:text-lg;
+  @apply text-gray font-inter text-[16px] font-normal leading-normal xl:text-lg;
 }
 
 .textWrap {

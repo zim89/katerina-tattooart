@@ -13,12 +13,14 @@ const Hero = () => {
           </div>
 
           {/* Slogan */}
-          <p className={clsx(styles.slogan, styles.sloganLeft)}>
-            Приношу біль для
-          </p>
-          <p className={clsx(styles.slogan, styles.sloganRight)}>
-            вашого задоволення
-          </p>
+          <div className={styles.sloganWrap}>
+            <p className={clsx(styles.slogan, styles.sloganLeft)}>
+              Приношу біль для
+            </p>
+            <p className={clsx(styles.slogan, styles.sloganRight)}>
+              вашого задоволення
+            </p>
+          </div>
         </div>
       </div>
     </section>

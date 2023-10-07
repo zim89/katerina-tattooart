@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-[#0A0F13] font-raleway text-[#E0E0E0];
+    @apply text-gray bg-secondary font-raleway;
   }
 }
 
@@ -34,7 +34,7 @@
   }
 
   .btnSubmit {
-    @apply mx-auto block rounded-lg border-0.5 border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-[#0A0F13] focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-[#0A0F13] md:text-[20px] xl:text-[24px];
+    @apply mx-auto block rounded-lg border-0.5 border-transparent bg-transparent p-[10px] font-raleway text-base font-normal leading-normal text-white transition-colors hover:border-[#D6D6D6] hover:bg-[#D6D6D6] hover:text-secondary focus:border-[#D6D6D6] focus:bg-[#D6D6D6] focus:text-secondary md:text-[20px] xl:text-[24px];
   }
 
   .input {
@@ -57,7 +57,7 @@
 
 /* SWIPER */
 .swiper-slide {
-  @apply flex items-center justify-center text-center text-base font-medium text-[#e0e0e0];
+  @apply text-gray flex items-center justify-center text-center text-base font-medium;
 }
 
 .swiper-slide-next {
@@ -81,7 +81,7 @@
 }
 
 .swiper-pagination-bullet {
-  @apply cursor-pointer self-baseline text-[20px] font-medium text-[#E0E0E0] xl:text-[24px];
+  @apply text-gray cursor-pointer self-baseline text-[20px] font-medium xl:text-[24px];
 }
 
 .swiper-pagination-bullet-active {

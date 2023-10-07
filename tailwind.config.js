@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         primary: '#d6d6d6',
         secondary: '#0a0f13',
+        gray: '#e0e0e0',
       },
       borderWidth: {
         0.5: '.25px',
@@ -25,6 +26,7 @@ module.exports = {
         px: '1px',
         1.1: '.3125rem',
         1.75: '.4375rem',
+        2.75: '.6875rem',
         3.75: '.9375rem',
         4.5: '1.125rem',
         5.5: '1.375rem',
@@ -36,6 +38,7 @@ module.exports = {
         14: '.14',
       },
       lineHeight: {
+        3.5: '.875rem',
         5.1: '1.3125rem',
       },
       backgroundImage: {

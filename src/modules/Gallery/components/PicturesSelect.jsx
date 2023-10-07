@@ -12,7 +12,7 @@ const DropdownIndicator = (props) => {
     <components.DropdownIndicator {...props}>
       <ChevronDownIcon
         className={clsx(
-          'absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-[9px] md:top-[11px] md:h-[17px] md:w-[17px] xl:right-4.5 xl:top-3.75 xl:h-[34px] xl:w-[34px]',
+          'md:top-2.75 absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-[9px] md:h-[17px] md:w-[17px] xl:right-4.5 xl:top-3.75 xl:h-[34px] xl:w-[34px]',
           menuIsOpen && '-scale-y-100'
         )}
       />
