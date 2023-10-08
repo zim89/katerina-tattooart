@@ -1,5 +1,5 @@
 .footer {
-  @apply mx-auto max-w-[1440px] bg-[#393E41];
+  @apply bg-[#393E41];
 }
 
 .wrap {
@@ -7,41 +7,41 @@
 }
 
 .text {
-  @apply mb-6 text-center text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:mb-4 md:text-[16px] md:tracking-[1.28px] xl:mb-5 xl:text-[18px] xl:tracking-[1.44px];
+  @apply mb-6 text-center text-sm font-normal tracking-[1.12px] text-primary md:mb-4 md:text-base md:tracking-[1.28px] xl:mb-5 xl:text-lg xl:tracking-[1.44px];
 }
 
 .list {
-  @apply mb-4 flex list-none justify-center gap-4 md:mb-5 md:gap-10 xl:gap-[30px];
+  @apply mb-4 flex list-none justify-center gap-4 md:mb-5 md:gap-10 xl:gap-7.5;
 }
 
 .item {
-  @apply flex items-center gap-[9px]  md:gap-[10px];
+  @apply gap-2.1 flex items-center  md:gap-2.5;
 }
 
 .link {
-  @apply flex h-9 w-9 items-center justify-center rounded-[9px] border border-[#D6D6D6] transition-colors duration-200 ease-linear hover:border-white md:h-10 md:w-10;
+  @apply flex h-9 w-9 items-center justify-center rounded-[.5625rem] border border-primary transition-colors duration-200 ease-linear hover:border-white md:h-10 md:w-10;
 }
 
 .thumb {
-  @apply relative h-[18px] w-[18px] md:h-5 md:w-5;
+  @apply relative h-4.5 w-4.5 md:h-5 md:w-5;
 }
 
 .socialLabel {
-  @apply hidden font-raleway text-[18px] font-medium text-[#ECECEC] md:inline xl:text-[20px];
+  @apply text-light-gray hidden font-raleway text-lg font-medium md:inline xl:text-xl;
 }
 
 .telLabel {
-  @apply font-inter text-[14px] font-normal text-[#ECECEC] md:text-[16px];
+  @apply text-light-gray font-inter text-sm font-normal md:text-base;
 }
 
 .year {
-  @apply font-inter text-center text-[14px] font-normal tracking-[1.12px] text-[#D6D6D6] md:text-[16px] md:tracking-[1.28px] xl:text-[18px] xl:tracking-[1.44px];
+  @apply text-center font-inter text-sm font-normal tracking-[1.12px] text-primary md:text-base md:tracking-[1.28px] xl:text-lg xl:tracking-[1.44px];
 }
 
 .leftLogoThumb {
-  @apply absolute bottom-6 left-0 h-[32px] w-[27px] md:bottom-8 xl:bottom-10 xl:h-[63px] xl:w-[53px];
+  @apply absolute bottom-6 left-0 md:bottom-8 xl:bottom-10 xl:h-[63px] xl:w-[53px];
 }
 
 .rightLogoThumb {
-  @apply absolute bottom-6 right-0 h-[32px] w-[27px] md:bottom-8 xl:bottom-10 xl:h-[63px] xl:w-[53px];
+  @apply absolute bottom-6 right-0 md:bottom-8 xl:bottom-10 xl:h-[63px] xl:w-[53px];
 }

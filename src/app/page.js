@@ -9,7 +9,7 @@ import Reviews from '@/modules/Reviews';
 
 export default function Home() {
   return (
-    <main className='mx-auto max-w-[1440px]'>
+    <>
       <Hero />
       <Features />
       <Gallery />
@@ -29,6 +29,6 @@ export default function Home() {
         pauseOnHover
         theme='dark'
       />
-    </main>
+    </>
   );
 }

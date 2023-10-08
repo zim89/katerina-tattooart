@@ -13,8 +13,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='flex gap-[10px] xl:gap-[54px]'>
-        <ul className='hidden md:flex md:items-center md:gap-2 xl:gap-6'>
+      <nav className='xl:gap-16.5 flex gap-2.5'>
+        <ul className='nav-list'>
           <li>
             <a className='nav-link' href='#'>
               Про нас
@@ -31,10 +31,12 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+
         <button type='button' className='btn' onClick={handleOpenModal}>
           Безкоштовна консультація
         </button>
-        <ul className='hidden md:flex md:items-center md:gap-2 xl:gap-6'>
+
+        <ul className='nav-list'>
           <li>
             <a className='nav-link' href='#'>
               Ціна

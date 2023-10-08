@@ -9,10 +9,15 @@ const Avatar = () => {
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
-      <button type='button' onClick={toggleModal}>
-        <UserCircleIcon className='h-[22px] w-[22px] stroke-[1px] xl:h-11 xl:w-11' />
+      <button
+        className='transition-colors duration-200 hover:text-white'
+        type='button'
+        onClick={toggleModal}
+      >
+        <UserCircleIcon className='h-5.5 w-5.5 stroke-1 xl:h-11 xl:w-11' />
       </button>
 
       {isOpen && <AuthModal toggleModal={toggleModal} />}

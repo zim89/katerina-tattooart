@@ -12,16 +12,12 @@ const UserMenu = async () => {
   } = await supabase.auth.getUser();
 
   return (
-    <ul className='hidden md:flex md:items-center md:gap-2 xl:gap-10'>
-      <li>
-        <a className='nav-link' href='#'>
-          UA
-        </a>
-      </li>
-      <li>
-        <Avatar />
-      </li>
-    </ul>
+    <div className='hidden md:flex md:items-center md:gap-2 xl:gap-10'>
+      <a className='nav-link xl:text-lg/5.1 xl:text-primary' href='#'>
+        UA
+      </a>
+      <Avatar />
+    </div>
   );
 };
 
