@@ -5,6 +5,8 @@ import Select, { components } from 'react-select';
 import { useId } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
+import { useSearchParams } from '@/hooks/useSearchParams';
+
 const DropdownIndicator = (props) => {
   const { menuIsOpen } = props.selectProps;
 
@@ -12,7 +14,7 @@ const DropdownIndicator = (props) => {
     <components.DropdownIndicator {...props}>
       <ChevronDownIcon
         className={clsx(
-          'md:right-2.1 absolute right-2.5 top-2 h-6 w-6 transition-transform md:top-2.75 md:h-[17px] md:w-[17px] xl:right-4.5 xl:top-3.75 xl:h-[34px] xl:w-[34px]',
+          'absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-2.1 md:top-2.75 md:h-[17px] md:w-[17px] xl:right-4.5 xl:top-3.75 xl:h-[34px] xl:w-[34px]',
           menuIsOpen && '-scale-y-100'
         )}
       />
@@ -20,16 +22,18 @@ const DropdownIndicator = (props) => {
   );
 };
 
-const PicturesSelect = ({ className, options = [], onSelect }) => {
+const PicturesSelect = ({ className, options = [], defaultId = 0 }) => {
+  const [, setSearchParams] = useSearchParams();
   const selectId = useId();
+
   return (
     <Select
       unstyled
       placeholder='Виберіть...'
       instanceId={selectId}
-      defaultValue={options[0]}
+      defaultValue={options[defaultId]}
       options={options}
-      onChange={onSelect}
+      onChange={(type) => setSearchParams('filter', type.id || 0)}
       components={{ DropdownIndicator }}
       className={`${className || ''} z-[2]`}
       classNames={{
