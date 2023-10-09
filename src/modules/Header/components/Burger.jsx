@@ -1,21 +1,31 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
   const burgerBtn = useRef(null);
+  const targetElement = useRef(document.querySelector('.mobile-menu'));
 
   const handleBurger = () => {
     burgerBtn.current?.classList.toggle('active');
     setIsOpen(!isOpen);
+    !isOpen
+      ? disableBodyScroll(targetElement)
+      : enableBodyScroll(targetElement);
   };
 
   useEffect(() => {
     const closeMenu = (e) => {
       if (!e.matches) return;
       burgerBtn.current?.classList.remove('active');
+      enableBodyScroll(targetElement);
       setIsOpen(false);
     };
 
@@ -24,6 +34,7 @@ const Burger = () => {
       .addEventListener('change', closeMenu);
 
     return () => {
+      clearAllBodyScrollLocks();
       window.removeEventListener('change', closeMenu);
     };
   }, []);
@@ -46,7 +57,7 @@ const Burger = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className='fixed bottom-0 left-0 right-0 top-[3.9375rem] flex justify-center bg-secondary/80'>
+        <div className='mobile-menu fixed bottom-0 left-0 right-0 top-[3.9375rem] flex justify-center bg-secondary/80'>
           <nav className='z-10 overscroll-none bg-[#393E41] px-[5.375rem] py-[1.5625rem]'>
             <ul className='flex flex-col items-center gap-4.5'>
               {/* TODO: add links to sections */}
