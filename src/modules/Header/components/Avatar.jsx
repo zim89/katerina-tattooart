@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { UserCircleIcon } from '@heroicons/react/24/outline';
+import { UserCircle2 } from 'lucide-react';
 import { AuthModal } from '@/components/Auth';
 
 const Avatar = () => {
@@ -17,7 +17,7 @@ const Avatar = () => {
         type='button'
         onClick={toggleModal}
       >
-        <UserCircleIcon className='h-5.5 w-5.5 stroke-1 xl:h-11 xl:w-11' />
+        <UserCircle2 className='h-6 w-6 stroke-1 xl:h-11 xl:w-11' />
       </button>
 
       {isOpen && <AuthModal toggleModal={toggleModal} />}

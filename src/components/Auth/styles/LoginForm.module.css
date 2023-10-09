@@ -6,22 +6,22 @@
 }
 
 .error {
-  @apply border-red-500/80;
+  @apply !border-red-500/80;
 }
 
 .errorBox {
-  @apply mb-1 text-xs font-normal leading-normal text-red-500/80;
+  @apply absolute -top-4 left-0 text-xs text-red-500/80;
 }
 
 .submit {
-  @apply mx-auto mt-8 block border-transparent bg-transparent px-4 py-2 text-xl text-primary;
+  @apply mx-auto mt-6 block border-transparent bg-transparent !px-8 !py-2 !text-lg text-primary;
 }
-.passField {
+.inputField {
   @apply relative;
 }
 
 .showPassBtn {
-  @apply absolute right-0 top-1/2  z-20 flex  items-center justify-center;
+  @apply absolute right-3 top-1/2 flex -translate-y-1/2  items-center justify-center;
 }
 
 .showPassIcon {

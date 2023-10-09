@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { X } from 'lucide-react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import {
@@ -40,7 +40,7 @@ const AuthModal = ({ toggleModal }) => {
     <div className='backdrop'>
       <div className={styles.modal}>
         <button type='button' className={styles.closeBtn} onClick={onClose}>
-          <XMarkIcon />
+          <X className={styles.closeBtnIcon} />
         </button>
 
         <h2 className={styles.title}>{isLogin ? 'Увійти' : 'Реєстрація'}</h2>
@@ -65,13 +65,13 @@ const AuthModal = ({ toggleModal }) => {
         ) : (
           <div className={styles.authText}>
             Вже є акаунт?{' '}
-            <button
+            <span
               type='button'
               onClick={toggleAuth}
               className={styles.authTextBtn}
             >
               Увійти
-            </button>
+            </span>
           </div>
         )}
       </div>

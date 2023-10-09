@@ -14,7 +14,7 @@
 
 @layer components {
   .section {
-    @apply md:py-15 py-10 xl:py-20;
+    @apply py-10 md:py-15 xl:py-20;
   }
 
   .nav-link {
@@ -26,7 +26,7 @@
   }
 
   .caption {
-    @apply text-light-gray md:text-2.5xl text-2xl font-medium xl:text-4xl;
+    @apply text-2xl font-medium text-light-gray md:text-2.5xl xl:text-4xl;
   }
 
   .btn {
@@ -38,7 +38,7 @@
   }
 
   .input {
-    @apply focus:bg-dark-slate w-full resize-none rounded-xl border-1 border-white bg-[#393E41] p-2.5 font-raleway text-base/none text-primary outline-none md:px-4 md:py-3.5 md:text-lg;
+    @apply w-full resize-none rounded-xl border-1 border-white bg-[#393E41] p-2.5 font-raleway text-base/none text-primary outline-none focus:bg-dark-slate md:px-4 md:text-lg;
   }
 
   .backdrop {
@@ -81,7 +81,7 @@
 
 /* TOASTIFY */
 .Toastify__toast-theme--dark {
-  @apply !bg-dark-slate !rounded-2xl border-1 !border-primary;
+  @apply !rounded-2xl border-1 !border-primary !bg-dark-slate;
 }
 
 .Toastify__toast-body {
