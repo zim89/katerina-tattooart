@@ -3,7 +3,7 @@ import { supabase } from '@/lib/config';
 import PicturesSelect from './components/PicturesSelect';
 import PicturesSwiper from './components/PicturesSwiper';
 
-const DEFAULT_OPTION = { value: '*', label: 'Усi' };
+const DEFAULT_OPTION = { id: 0, value: '*', label: 'Усi' };
 
 const Gallery = async ({ filter }) => {
   const query = supabase
