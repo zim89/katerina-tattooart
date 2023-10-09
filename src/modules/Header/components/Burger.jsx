@@ -5,10 +5,12 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { UserCircle2 } from 'lucide-react';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const supabase = createClientComponentClient();
   const burgerBtn = useRef(null);
   const mobileMenu = useRef();
 
