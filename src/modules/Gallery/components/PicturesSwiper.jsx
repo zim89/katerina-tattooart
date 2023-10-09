@@ -26,11 +26,11 @@ const PicturesSwiper = ({ images = [] }) => {
             creativeEffect={{
               prev: {
                 scale: 0.5,
-                translate: [-120, 0, 0],
+                translate: [-200, 0, 0],
               },
               next: {
                 scale: 0.5,
-                translate: [120, 0, 0],
+                translate: [200, 0, 0],
               },
             }}
             modules={[EffectCreative]}
@@ -44,7 +44,7 @@ const PicturesSwiper = ({ images = [] }) => {
                   sizes='250px'
                   width={image.width}
                   height={image.height}
-                  className='rounded-2lg h-[313px] w-[250px] border-[.597px] border-secondary object-cover'
+                  className='h-[313px] w-[250px] rounded-2lg border-[.597px] border-secondary object-cover'
                 />
               </SwiperSlide>
             ))}

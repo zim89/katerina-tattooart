@@ -7,12 +7,12 @@ import Hero from '@/modules/Hero';
 import Price from '@/modules/Price';
 import Reviews from '@/modules/Reviews';
 
-export default function Home() {
+export default function Home({ searchParams: { filter } }) {
   return (
     <>
       <Hero />
       <Features />
-      <Gallery />
+      <Gallery filter={filter} />
       <Price />
       <Reviews />
       <Contacts />

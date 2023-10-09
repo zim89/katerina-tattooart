@@ -6,7 +6,7 @@ import Footer from '@/modules/Footer';
 import './globals.css';
 
 const raleway = Raleway({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-raleway',
 });

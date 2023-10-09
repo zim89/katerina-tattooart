@@ -1,0 +1,15 @@
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdown > input[type='checkbox']:checked ~ ul {
+  @apply scale-y-100;
+}
+
+.dropdown > [type='checkbox']:checked + label {
+  @apply rounded-b-none;
+}
+
+.dropdown > [type='checkbox']:checked + label svg {
+  @apply -scale-y-100;
+}
