@@ -1,19 +1,23 @@
 .modal {
-  @apply bg-dark-slate relative rounded-2xl border-1 border-primary px-7.5 pb-7.5 pt-10;
+  @apply border-1.5 relative w-1/2 rounded-3xl border-primary bg-dark-slate px-8 pb-10 pt-15 xl:w-96 xl:px-10;
 }
 
 .closeBtn {
-  @apply absolute right-3 top-3 h-6 w-6;
+  @apply absolute right-4 top-4 text-primary transition-colors duration-200 hover:text-white;
+}
+
+.closeBtnIcon {
+  @apply h-7 w-7;
 }
 
 .title {
-  @apply mb-6 text-center text-2xl font-normal leading-normal text-primary;
+  @apply mb-6 text-center text-xl font-medium uppercase  text-primary xl:text-2xl;
 }
 
 .authText {
-  @apply mt-8;
+  @apply mt-6 text-center text-base;
 }
 
 .authTextBtn {
-  @apply text-blue-400;
+  @apply text-blue-400 transition-colors duration-200 hover:text-blue-500;
 }
