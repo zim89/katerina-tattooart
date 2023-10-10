@@ -2,18 +2,18 @@
 
 import { useState } from 'react';
 
-import ConsultationModal from '@/components/ConsultationModal';
+import ConsultationModal from '@/components/ConsultationModal/ConsultationModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenModal = () => {
+  const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <>
-      <nav className='xl:gap-16.5 flex gap-2.5'>
+      <nav className='flex gap-2.5 xl:gap-16.5'>
         <ul className='nav-list'>
           <li>
             <a className='nav-link' href='#'>
@@ -32,7 +32,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <button type='button' className='btn' onClick={handleOpenModal}>
+        <button type='button' className='btn' onClick={toggleModal}>
           Безкоштовна консультація
         </button>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      {isOpen && <ConsultationModal handleOpenModal={handleOpenModal} />}
+      {isOpen && <ConsultationModal toggleModal={toggleModal} />}
     </>
   );
 };
