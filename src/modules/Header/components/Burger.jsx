@@ -10,6 +10,7 @@ import { UserCircle2 } from 'lucide-react';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const supabase = createClientComponentClient();
   const burgerBtn = useRef(null);
   const mobileMenu = useRef();
@@ -21,6 +22,13 @@ const Burger = () => {
   };
 
   useEffect(() => {
+    (async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user ?? null);
+    })();
+
     const closeMenu = (e) => {
       if (!e.matches) return;
       burgerBtn.current?.classList.remove('active');
@@ -36,7 +44,7 @@ const Burger = () => {
       clearAllBodyScrollLocks();
       window.removeEventListener('change', closeMenu);
     };
-  }, []);
+  }, [supabase]);
 
   return (
     <>
