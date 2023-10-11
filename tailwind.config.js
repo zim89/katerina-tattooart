@@ -61,6 +61,9 @@ module.exports = {
         'gallery-sm': 'url(/images/gallery/bg-mobile.svg)',
         'gallery-md': 'url(/images/gallery/bg-tablet.svg)',
         'gallery-lg': 'url(/images/gallery/bg-desktop.svg)',
+        'price-sm': 'url(/images/price/bg-mobile.png)',
+        'price-md': 'url(/images/price/bg-tablet.png)',
+        'price-lg': 'url(/images/price/bg-desktop.png)',
       },
     },
     screens: {

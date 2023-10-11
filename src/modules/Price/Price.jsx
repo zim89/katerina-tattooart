@@ -31,12 +31,12 @@ const Price = () => {
             <div
               className={clsx(styles.bgGradientBox, styles.bgGradientToRight)}
             ></div>
-            <Image
+            {/* <Image
               src={imageSrc}
               alt='Background image'
               fill
               className={styles.bgImage}
-            />
+            /> */}
           </div>
 
           <table className={styles.table}>
