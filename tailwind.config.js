@@ -58,9 +58,9 @@ module.exports = {
         'hero-sm': 'url(/images/hero/bg-mobile.png)',
         'hero-md': 'url(/images/hero/bg-tablet.png)',
         'hero-lg': 'url(/images/hero/bg-desktop.png)',
-        'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
-        'gallery-md': `url(/images/gallery/bg-tablet.svg)`,
-        'gallery-lg': `url(/images/gallery/bg-desktop.svg)`,
+        'gallery-sm': 'url(/images/gallery/bg-mobile.svg)',
+        'gallery-md': 'url(/images/gallery/bg-tablet.svg)',
+        'gallery-lg': 'url(/images/gallery/bg-desktop.svg)',
       },
     },
     screens: {
