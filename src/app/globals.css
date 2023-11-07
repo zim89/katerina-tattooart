@@ -89,7 +89,7 @@
 }
 
 .Toastify__toast-body {
-  @apply !bg-transparent !p-3 !font-raleway !text-base !font-normal !leading-normal !text-primary;
+  @apply !bg-transparent !p-3 !font-raleway !text-sm !font-normal !leading-normal !text-primary;
 }
 
 .Toastify__toast-icon {

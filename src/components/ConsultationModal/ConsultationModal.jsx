@@ -21,9 +21,8 @@ const schema = yup
     username: yup.string().required("Обов'язкове поле"),
     phone: yup
       .string()
-      .min(14, "Обов'язкове поле")
-      .max(14, "Обов'язкове поле")
-      .required("Обов'язкове поле"),
+      .required("Обов'язкове поле")
+      .matches(/\+38\d{3} \d{3}-\d{2}-\d{2}/, 'Не валідний телефон'),
     message: yup.string().required("Обов'язкове поле"),
   })
   .required();
@@ -102,7 +101,7 @@ const ConsultationModal = ({ toggleModal }) => {
                   <InputMask
                     {...field}
                     className={clsx('input', errors.phone && styles.error)}
-                    mask='+38\099 9999999'
+                    mask='+38\099 999-99-99'
                     maskChar={null}
                     placeholder='Телефон:'
                     autoComplete='off'
