@@ -1,19 +1,17 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { X } from 'lucide-react';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
-import clsx from 'clsx';
 
-import styles from '../styles/AuthModal.module.css';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+
+import styles from '../styles/AuthModal.module.css';
 
 const AuthModal = ({ toggleModal }) => {
   const [isLogin, setIsLogin] = useState(true);

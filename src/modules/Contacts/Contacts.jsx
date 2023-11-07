@@ -27,9 +27,9 @@ const Contacts = () => {
   };
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} id='contacts'>
       <div className='container'>
-        <h2 className={styles.title}>Зв’язатись з нами</h2>
+        <h2 className={styles.title}>Зв&apos;язатись з нами</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.metaWrap}>
             {/* Name INPUT */}
@@ -41,7 +41,7 @@ const Contacts = () => {
                 autoComplete='off'
               />
               {errors.name && (
-                <div className={styles.errorBox}>Обов'язкове поле</div>
+                <div className={styles.errorBox}>Обов&apos;язкове поле</div>
               )}
             </div>
 
@@ -64,7 +64,7 @@ const Contacts = () => {
                 )}
               />
               {errors.phone && (
-                <div className={styles.errorBox}>Обов'язкове поле</div>
+                <div className={styles.errorBox}>Обов&apos;язкове поле</div>
               )}
             </div>
           </div>
@@ -78,7 +78,7 @@ const Contacts = () => {
               placeholder='Повідомлення:'
             />
             {errors.message && (
-              <div className={styles.errorBox}>Обов'язкове поле</div>
+              <div className={styles.errorBox}>Обов&apos;язкове поле</div>
             )}
           </div>
 
