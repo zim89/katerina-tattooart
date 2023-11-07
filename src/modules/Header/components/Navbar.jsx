@@ -1,11 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-scroll';
 
 import ConsultationModal from '@/components/ConsultationModal/ConsultationModal';
+import useScreenSize from '@/hooks/useScreenSize';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [offset, setOffset] = useState(-140);
+  const screen = useScreenSize();
+
+  useEffect(() => {
+    if (screen.width >= 768 && screen.width < 1280) {
+      setOffset(-100);
+    }
+  }, [screen]);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -16,19 +26,40 @@ const Navbar = () => {
       <nav className='flex gap-2.5 xl:gap-16.5'>
         <ul className='nav-list'>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='hero'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Про нас
-            </a>
+            </Link>
           </li>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='galery'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Галерея
-            </a>
+            </Link>
           </li>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='features'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Догляд
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -38,19 +69,40 @@ const Navbar = () => {
 
         <ul className='nav-list'>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='price'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Ціна
-            </a>
+            </Link>
           </li>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='reviews'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Відгуки
-            </a>
+            </Link>
           </li>
           <li>
-            <a className='nav-link' href='#'>
+            <Link
+              className='nav-link'
+              to='contacts'
+              spy={true}
+              smooth={true}
+              offset={offset}
+              duration={400}
+            >
               Контакти
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

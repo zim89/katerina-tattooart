@@ -14,9 +14,12 @@ const UserMenu = async () => {
 
   return (
     <div className='hidden md:flex md:items-center md:gap-2 xl:gap-10'>
-      <a className='nav-link xl:text-lg/5.1 xl:text-primary' href='#'>
+      <span
+        className='nav-link cursor-pointer xl:text-lg/5.1 xl:text-primary'
+        href='#'
+      >
         UA
-      </a>
+      </span>
       {!user ? (
         <Avatar />
       ) : (

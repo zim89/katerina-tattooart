@@ -44,7 +44,7 @@ const Reviews = () => {
 
   return (
     <>
-      <div className={styles.reviews}>
+      <div className={styles.reviews} id='reviews'>
         <div className={styles.divider}></div>
         <div className='container'>
           <div className={styles.wrap}>

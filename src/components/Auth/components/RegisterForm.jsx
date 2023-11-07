@@ -46,13 +46,18 @@ const RegisterForm = ({ toggleModal }) => {
   });
 
   const onSubmit = async ({ email, password }) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
+
+    if (data) {
+      toast.error(`Користувач ${email} уже зареєстрований!`);
+      return;
+    }
 
     if (error) {
       toast.error('Невдала спроба реєстрації');

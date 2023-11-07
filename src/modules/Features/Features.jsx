@@ -34,7 +34,7 @@ const Features = () => {
   };
 
   return (
-    <div className={styles.features}>
+    <div className={styles.features} id='features'>
       <Swiper
         modules={[Thumbs, Pagination]}
         slidesPerView={1.5}

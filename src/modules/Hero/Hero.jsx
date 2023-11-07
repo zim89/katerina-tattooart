@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className='container'>
-        <div className={styles.wrap}>
+        <div className={styles.wrap} id='hero'>
           {/* Title */}
           <div className={styles.titleWrap}>
             <span className={styles.title}>Katerina</span>
