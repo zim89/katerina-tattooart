@@ -19,7 +19,7 @@ const Price = () => {
   }, [screen]);
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} id='price'>
       <div className='container'>
         <h2 className={clsx('caption', styles.title)}>Ціна татуювання</h2>
 

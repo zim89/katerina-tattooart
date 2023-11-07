@@ -55,7 +55,9 @@ const ReviewModal = ({ showModal }) => {
         </button>
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          {errors.name && <p className={styles.errorBox}>Обов'язкове поле</p>}
+          {errors.name && (
+            <p className={styles.errorBox}>Обов&apos;язкове поле</p>
+          )}
           <input
             {...register('name', { required: true })}
             className={clsx('input', styles.input, errors.name && styles.error)}
@@ -64,7 +66,7 @@ const ReviewModal = ({ showModal }) => {
           />
 
           {errors.message && (
-            <p className={styles.errorBox}>Обов'язкове поле</p>
+            <p className={styles.errorBox}>Обов&apos;язкове поле</p>
           )}
           <textarea
             {...register('message', { required: true })}

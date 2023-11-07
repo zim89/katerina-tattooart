@@ -22,7 +22,7 @@ const Gallery = async ({ filter }) => {
   return (
     <section className='section'>
       <div className='container'>
-        <div className='md:flex md:items-end md:justify-between'>
+        <div className='md:flex md:items-end md:justify-between' id='galery'>
           {/* TODO: remove hardcoded values */}
           <h2 className='mb-4 font-raleway text-2xl/7 font-medium md:mb-8 md:text-2.5xl/[38px] xl:mb-20 xl:text-4.5xl/[47px]'>
             Галерея робіт

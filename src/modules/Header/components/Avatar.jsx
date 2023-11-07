@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { UserCircle2 } from 'lucide-react';
 import { AuthModal } from '@/components/Auth';
 
-const Avatar = () => {
+const Avatar = ({ styles }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const classes = styles ? styles : 'h-6 w-6 stroke-1 xl:h-11 xl:w-11';
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -17,7 +18,7 @@ const Avatar = () => {
         type='button'
         onClick={toggleModal}
       >
-        <UserCircle2 className='h-6 w-6 stroke-1 xl:h-11 xl:w-11' />
+        <UserCircle2 className={classes} />
       </button>
 
       {isOpen && <AuthModal toggleModal={toggleModal} />}
