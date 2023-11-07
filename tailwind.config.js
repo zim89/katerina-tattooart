@@ -20,9 +20,12 @@ module.exports = {
       colors: {
         primary: '#d6d6d6',
         secondary: '#0a0f13',
+        time: '#393e41',
         gray: '#e0e0e0',
         'light-gray': '#ececec',
         'dark-slate': '#2c3134',
+        'brand-red': '#ff3b30',
+        'brand-blue': '#4355fa',
       },
       borderWidth: {
         0.5: '.25px',
