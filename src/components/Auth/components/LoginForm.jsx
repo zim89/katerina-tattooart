@@ -1,14 +1,14 @@
 'use client';
-import { useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import clsx from 'clsx';
 import { Eye, EyeOff } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import clsx from 'clsx';
+import * as yup from 'yup';
 import styles from '../styles/LoginForm.module.css';
 
 const schema = yup
@@ -50,10 +50,12 @@ const LoginForm = ({ toggleModal }) => {
       email,
       password,
     });
+
     if (error) {
       toast.error('Невірний email або пароль');
       return;
     }
+
     toast.success('Ви успішно увійшли!');
     router.refresh();
     toggleModal();
