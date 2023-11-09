@@ -1,12 +1,10 @@
 'use client';
 import { DatePicker } from '@/components/DatePicker';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from '@/components/ui/select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -16,7 +14,6 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock';
 import clsx from 'clsx';
-import { set } from 'date-fns';
 import { Clock, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -28,7 +25,8 @@ import styles from './SessionModal.module.css';
 
 const schema = yup
   .object({
-    datetime: yup.date().required("Обов'язкове поле"),
+    date: yup.date().required("Обов'язкове"),
+    time: yup.string().required("Обов'язкове"),
     username: yup.string().required("Обов'язкове поле"),
     phone: yup
       .string()
@@ -50,7 +48,8 @@ const SessionModal = ({ toggleModal }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      datetime: new Date(),
+      date: null,
+      time: null,
       username: '',
       phone: '',
       message: '',
@@ -82,6 +81,8 @@ const SessionModal = ({ toggleModal }) => {
     toggleModal();
   };
 
+  console.log(errors);
+
   return (
     <div className='backdrop'>
       <div className={styles.modal}>
@@ -91,33 +92,40 @@ const SessionModal = ({ toggleModal }) => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div>
-            <p className={styles.errorBox}>{errors.datetime?.message}</p>
-            <div className='mb-[4.5rem] space-x-4'>
-              <Controller
-                name='datetime'
-                rules={{ required: true }}
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <>
+            <div className='mb-[4.5rem] flex space-x-4'>
+              <div className='relative'>
+                <p className={styles.errorBox}>{errors.date?.message}</p>
+
+                <Controller
+                  name='date'
+                  rules={{ required: true }}
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
                     <DatePicker
                       date={value}
                       onDateChange={onChange}
                       fromDate={Date.now()}
                     />
-                    <Select
-                      onValueChange={(time) =>
-                        onChange(
-                          set(value, {
-                            hours: Number.parseInt(time.split(':')[0]),
-                            minutes: Number.parseInt(time.split(':')[1]),
-                          })
-                        )
-                      }
-                    >
+                  )}
+                />
+              </div>
+
+              <div className='relative'>
+                <p className={styles.errorBox}>{errors.time?.message}</p>
+
+                <Controller
+                  name='time'
+                  rules={{ required: true }}
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <Select value={value} onValueChange={onChange}>
                       <SelectTrigger>
                         <Clock />
                       </SelectTrigger>
-                      <SelectContent className='h-[376px] w-[134px]'>
+                      <SelectContent
+                        align='center'
+                        className='h-[376px] w-[134px]'
+                      >
                         <Clock />
                         <SelectItem value='9:00'>9.00 AM</SelectItem>
                         <SelectItem value='10:30'>10.30 AM</SelectItem>
@@ -128,9 +136,9 @@ const SessionModal = ({ toggleModal }) => {
                         <SelectItem value='19:30'>7.30 PM</SelectItem>
                       </SelectContent>
                     </Select>
-                  </>
-                )}
-              />
+                  )}
+                />
+              </div>
             </div>
           </div>
           <div className={styles.inputWrap}>
