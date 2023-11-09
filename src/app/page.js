@@ -6,6 +6,7 @@ import Gallery from '@/modules/Gallery';
 import Hero from '@/modules/Hero';
 import Price from '@/modules/Price';
 import Reviews from '@/modules/Reviews';
+import TodoForm from '@/modules/Reviews/Test';
 
 export default function Home({ searchParams: { filter } }) {
   return (
@@ -15,6 +16,7 @@ export default function Home({ searchParams: { filter } }) {
       <Gallery filter={filter} />
       <Price />
       <Reviews />
+      <TodoForm />
       <Contacts />
 
       <ToastContainer
