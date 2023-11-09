@@ -1,20 +1,19 @@
 'use client';
-import { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import { ChevronDoubleRightIcon } from '@heroicons/react/24/outline';
-
-import ReviewItem from './components/Item';
-import ReviewModal from './components/Modal';
 import useScreenSize from '@/hooks/useScreenSize';
-
-import styles from './styles/reviews.module.css';
+import { ChevronDoubleRightIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
+import ReviewItem from './components/Item';
+import ReviewModal from './components/ReviewModal';
 import { reviews } from './mock/reviews';
+import styles from './styles/reviews.module.css';
 
 const Reviews = () => {
   const [total, setTotal] = useState(reviews.length);
   const [limit, setLimit] = useState(1);
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
+
   const screen = useScreenSize();
 
   useEffect(() => {
@@ -26,8 +25,12 @@ const Reviews = () => {
     }
   }, [screen]);
 
-  const handleOpenModal = () => {
-    setIsOpen(!isOpen);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   const handleNext = () => {
@@ -82,7 +85,7 @@ const Reviews = () => {
             <button
               type='button'
               className={clsx(styles.btn, styles.btnAddReview)}
-              onClick={handleOpenModal}
+              onClick={() => setIsOpen(true)}
             >
               Додати відгук
             </button>
@@ -90,7 +93,7 @@ const Reviews = () => {
         </div>
       </div>
 
-      {isOpen && <ReviewModal showModal={handleOpenModal} />}
+      {isOpen && <ReviewModal closeModal={closeModal} />}
     </>
   );
 };
