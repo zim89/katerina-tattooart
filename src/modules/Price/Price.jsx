@@ -1,11 +1,13 @@
 'use client';
-import { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import styles from './styles/price.module.css';
-import Image from 'next/image';
+import SessionModal from '@/components/SessionModal/SessionModal';
 import useScreenSize from '@/hooks/useScreenSize';
+import clsx from 'clsx';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styles from './styles/price.module.css';
 
 const Price = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState('/images/price/price-bg-mob@2x.png');
   const screen = useScreenSize();
 
@@ -31,12 +33,12 @@ const Price = () => {
             <div
               className={clsx(styles.bgGradientBox, styles.bgGradientToRight)}
             ></div>
-            <Image
+            {/* <Image
               src={imageSrc}
               alt='Background image'
               fill
               className={styles.bgImage}
-            />
+            /> */}
           </div>
 
           <table className={styles.table}>
@@ -69,11 +71,17 @@ const Price = () => {
             <li className={styles.item}>Місце розташування татуювання</li>
           </ul>
 
-          <button className={clsx('btn', styles.btn)}>
+          <button
+            className={clsx('btn', styles.btn)}
+            onClick={() => setIsOpen(true)}
+          >
             Записатись на сеанс
           </button>
         </div>
       </div>
+      {isOpen && (
+        <SessionModal toggleModal={() => setIsOpen((prev) => !prev)} />
+      )}
     </div>
   );
 };

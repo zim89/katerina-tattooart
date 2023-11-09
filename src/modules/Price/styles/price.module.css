@@ -1,5 +1,5 @@
 .wrap {
-  @apply md:mb-15 mb-10 xl:mb-[87px];
+  @apply mb-10 md:mb-15 xl:mb-[87px];
 }
 
 .title {
@@ -12,11 +12,7 @@
 
 /* BG IMAGE */
 .thumb {
-  @apply absolute -right-4 top-0 -z-[1] h-[316px] w-full md:-right-10 md:h-[393px] xl:h-full;
-}
-
-.bgImage {
-  @apply -z-[3];
+  @apply bg-price-sm md:bg-price-md xl:bg-price-lg absolute -right-4 top-0 -z-[1] h-[316px] w-full bg-[length:313px] bg-right-top bg-no-repeat bg-blend-screen md:-right-10 md:h-[393px] md:bg-[length:634px] xl:h-full xl:bg-[length:1188px];
 }
 
 .bgGradientBox {
@@ -49,7 +45,7 @@
 }
 
 .price {
-  @apply text-light-gray pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal md:pb-2 md:pt-2 md:align-baseline md:text-lg xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
+  @apply pb-4 pl-2 pt-4 align-top font-inter text-base font-bold leading-normal text-light-gray md:pb-2 md:pt-2 md:align-baseline md:text-lg xl:pb-4 xl:pl-10 xl:pt-4 xl:text-2xl;
 }
 
 .firstItem {
@@ -62,7 +58,7 @@
 
 /* SUBTITLE */
 .subtitle {
-  @apply text-light-gray mb-6 text-xl font-medium leading-normal md:mb-4 md:text-2xl xl:mb-10 xl:text-[38px];
+  @apply mb-6 text-xl font-medium leading-normal text-light-gray md:mb-4 md:text-2xl xl:mb-10 xl:text-[38px];
 }
 
 /* LIST */

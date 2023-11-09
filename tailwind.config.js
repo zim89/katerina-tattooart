@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -20,9 +20,12 @@ module.exports = {
       colors: {
         primary: '#d6d6d6',
         secondary: '#0a0f13',
+        time: '#393e41',
         gray: '#e0e0e0',
         'light-gray': '#ececec',
         'dark-slate': '#2c3134',
+        'brand-red': '#ff3b30',
+        'brand-blue': '#4355fa',
       },
       borderWidth: {
         0.5: '.25px',
@@ -58,9 +61,26 @@ module.exports = {
         'hero-sm': 'url(/images/hero/bg-mobile.png)',
         'hero-md': 'url(/images/hero/bg-tablet.png)',
         'hero-lg': 'url(/images/hero/bg-desktop.png)',
-        'gallery-sm': `url(/images/gallery/bg-mobile.svg)`,
-        'gallery-md': `url(/images/gallery/bg-tablet.svg)`,
-        'gallery-lg': `url(/images/gallery/bg-desktop.svg)`,
+        'gallery-sm': 'url(/images/gallery/bg-mobile.svg)',
+        'gallery-md': 'url(/images/gallery/bg-tablet.svg)',
+        'gallery-lg': 'url(/images/gallery/bg-desktop.svg)',
+        'price-sm': 'url(/images/price/bg-mobile.png)',
+        'price-md': 'url(/images/price/bg-tablet.png)',
+        'price-lg': 'url(/images/price/bg-desktop.png)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
     screens: {
@@ -77,5 +97,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
