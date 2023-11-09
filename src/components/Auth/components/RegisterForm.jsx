@@ -1,14 +1,14 @@
 'use client';
-import { useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import clsx from 'clsx';
 import { Eye, EyeOff } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import clsx from 'clsx';
+import * as yup from 'yup';
 import styles from '../styles/LoginForm.module.css';
 
 const schema = yup
@@ -46,7 +46,7 @@ const RegisterForm = ({ toggleModal }) => {
   });
 
   const onSubmit = async ({ email, password }) => {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -54,18 +54,14 @@ const RegisterForm = ({ toggleModal }) => {
       },
     });
 
-    if (data) {
-      toast.error(`Користувач ${email} уже зареєстрований!`);
+    if (error) {
+      error.message === 'User already registered'
+        ? toast.error(`Користувач ${email} вже зареєстрований!`)
+        : toast.error('Невдала спроба реєстрації');
       return;
     }
 
-    if (error) {
-      toast.error('Невдала спроба реєстрації');
-      return;
-    }
-    toast.success(
-      'На Вашу електронну адресу направлено лист для підтвердження реєстрації'
-    );
+    toast.success('Дякуємо за реєстрацію. Ваш обліковий запис створено.');
     router.refresh();
     toggleModal();
   };
