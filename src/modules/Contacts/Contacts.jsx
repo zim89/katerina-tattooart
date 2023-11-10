@@ -5,10 +5,8 @@ import clsx from 'clsx';
 import { Controller, useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
-import * as yup from 'yup';
-
 import 'react-toastify/dist/ReactToastify.min.css';
-
+import * as yup from 'yup';
 import styles from './styles/contacts.module.css';
 
 const schema = yup

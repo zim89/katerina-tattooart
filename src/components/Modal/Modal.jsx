@@ -1,40 +1,49 @@
-import { useState, Fragment } from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { X } from 'lucide-react';
 
-const Modal = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
+const Modal = ({ children, closeModal }) => {
   return (
-    <Transition
-      show={isOpen}
-      enter='transition duration-100 ease-out'
-      enterFrom='transform scale-95 opacity-0'
-      enterTo='transform scale-100 opacity-100'
-      leave='transition duration-75 ease-out'
-      leaveFrom='transform scale-100 opacity-100'
-      leaveTo='transform scale-95 opacity-0'
-      as={Fragment}
-    >
-      <Dialog onClose={() => setIsOpen(false)} className='relative z-50'>
-        <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
+    <Transition appear show as={Fragment}>
+      <Dialog as='div' className='relative z-50' onClose={closeModal}>
+        <Transition.Child
+          as={Fragment}
+          enter='ease-out duration-300'
+          enterFrom='opacity-0'
+          enterTo='opacity-100'
+          leave='ease-in duration-200'
+          leaveFrom='opacity-100'
+          leaveTo='opacity-0'
+        >
+          <div className='fixed inset-0 bg-black/70' aria-hidden='true' />
+        </Transition.Child>
+
         <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
-          <Dialog.Panel className='mx-auto max-w-sm rounded bg-white'>
-            <Dialog.Title>Deactivate account</Dialog.Title>
-            <Dialog.Description>
-              This will permanently deactivate your account
-            </Dialog.Description>
-
-            <p>
-              Are you sure you want to deactivate your account? All of your data
-              will be permanently removed. This action cannot be undone.
-            </p>
-
-            <button onClick={() => setIsOpen(false)}>Deactivate</button>
-            <button onClick={() => setIsOpen(false)}>Cancel</button>
-          </Dialog.Panel>
+          <Transition.Child
+            as={Fragment}
+            enter='ease-out duration-300'
+            enterFrom='opacity-0 scale-95'
+            enterTo='opacity-100 scale-100'
+            leave='ease-in duration-200'
+            leaveFrom='opacity-100 scale-100'
+            leaveTo='opacity-0 scale-95'
+          >
+            {/* <Dialog.Panel className='relative mx-4 w-full transform rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-[82px] transition-all md:mx-auto  md:border-[1.5px] md:py-8 md:pl-6 md:pr-12  xl:px-6 xl:py-10'> */}
+            <Dialog.Panel className='relative mx-4 transform rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-[82px] transition-all md:mx-auto  md:border-[1.5px] md:py-8 md:pl-6 md:pr-12 xl:px-6 xl:py-10'>
+              <button
+                type='button'
+                className='absolute right-2.5 top-2.5 h-8 w-8 md:right-4 md:top-4 md:h-6 md:w-6'
+                onClick={closeModal}
+              >
+                <X />
+              </button>
+              {children}
+            </Dialog.Panel>
+          </Transition.Child>
         </div>
       </Dialog>
     </Transition>
   );
 };
+
 export default Modal;
