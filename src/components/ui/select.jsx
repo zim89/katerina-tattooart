@@ -3,7 +3,6 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -18,7 +17,7 @@ const SelectTrigger = React.forwardRef(
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
-        'inline-flex h-11 w-16 items-center justify-center rounded-2xl bg-time text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex items-center justify-center rounded-2xl bg-time px-5 py-2.5 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:px-6 md:py-4',
         className
       )}
       {...props}
@@ -35,7 +34,7 @@ const SelectContent = React.forwardRef(
       <SelectPrimitive.Content
         ref={ref}
         className={cn(
-          'relative z-50 min-w-[8rem] overflow-hidden rounded-2xl bg-time font-inter shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+          'relative z-50 min-w-[8rem] overflow-hidden rounded-2xl bg-time font-inter shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 md:min-w-[22.0625rem] md:border md:border-primary md:text-lg/tight',
           position === 'popper' &&
             'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
           className
@@ -45,7 +44,7 @@ const SelectContent = React.forwardRef(
       >
         <SelectPrimitive.Viewport
           className={cn(
-            'p-4 pt-2.5',
+            'p-4 pt-2.5 md:p-6 md:pt-4',
             position === 'popper' &&
               'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]'
           )}
@@ -77,7 +76,7 @@ const SelectItem = React.forwardRef(
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        'data-[state="checked"]:bg-brand-blue relative flex h-9.5 w-full cursor-default select-none items-center justify-center rounded-lg bg-dark-slate outline-none focus:bg-dark-slate/90 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'relative flex h-9.5 w-full cursor-default select-none items-center justify-center rounded-lg bg-dark-slate outline-none focus:bg-dark-slate/90 data-[disabled]:pointer-events-none data-[state="checked"]:bg-brand-blue data-[disabled]:opacity-50',
         className
       )}
       {...props}
