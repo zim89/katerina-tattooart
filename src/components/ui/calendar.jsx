@@ -21,10 +21,10 @@ function Calendar({
         formatWeekdayName: (date, options) => format(date, 'EEEEE', options),
       }}
       showOutsideDays={showOutsideDays}
-      className={cn('p-1.75 font-inter', className)}
+      className={cn('p-1.75 font-inter md:p-2', className)}
       classNames={{
         caption: 'flex justify-center py-1 relative items-center',
-        caption_label: 'capitalize leading-[1.7775]',
+        caption_label: 'capitalize leading-[1.7775] md:text-lg',
 
         nav: 'space-x-1 flex items-center',
         nav_button:
@@ -36,11 +36,11 @@ function Calendar({
 
         head_row: 'flex',
         head_cell:
-          'font-semibold py-2.5 px-3.75 uppercase [&:nth-child(n+6)]:text-brand-red',
+          'font-semibold py-2.5 px-3.75 uppercase [&:nth-child(n+6)]:text-brand-red md:py-3 md:px-4',
 
         row: 'flex justify-stretch',
         cell: cn(
-          'relative h-[43px] flex items-center justify-center flex-1 leading-[1.33333] text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:nth-child(n+6)]:text-brand-red',
+          'relative h-[43px] h-[48px] flex items-center justify-center flex-1 leading-[1.33333] text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:nth-child(n+6)]:text-brand-red',
           props.mode === 'range'
             ? '[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md'
             : '[&:has([aria-selected])]:rounded-md'

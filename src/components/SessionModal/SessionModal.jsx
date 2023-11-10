@@ -5,6 +5,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
+  SelectValue,
 } from '@/components/ui/select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -22,6 +23,16 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from './SessionModal.module.css';
+
+const times = {
+  '9:00': '9.00 AM',
+  '10:30': '10.30 AM',
+  '12:00': '12.00 AM',
+  '14:00': '2.00 PM',
+  '16:30': '4.30 PM',
+  '18:00': '6.00 PM',
+  '19:30': '7.30 PM',
+};
 
 const schema = yup
   .object({
@@ -121,12 +132,22 @@ const SessionModal = ({ toggleModal }) => {
                     <Select value={value} onValueChange={onChange}>
                       <SelectTrigger>
                         <Clock />
+                        <span className='ml-4 hidden font-inter text-lg/tight md:inline'>
+                          <SelectValue aria-level={value}>
+                            {times[value] ?? 'Час'}
+                          </SelectValue>
+                        </span>
                       </SelectTrigger>
                       <SelectContent
                         align='center'
                         className='h-[376px] w-[134px]'
                       >
-                        <Clock />
+                        <div>
+                          <Clock className='left-6 top-4 md:absolute' />
+                          <span className='hidden md:inline'>
+                            {times[value] ?? 'Час'}
+                          </span>
+                        </div>
                         <SelectItem value='9:00'>9.00 AM</SelectItem>
                         <SelectItem value='10:30'>10.30 AM</SelectItem>
                         <SelectItem value='12:00'>12.00 AM</SelectItem>
