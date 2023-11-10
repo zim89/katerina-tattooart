@@ -85,7 +85,7 @@ const Reviews = () => {
             <button
               type='button'
               className={clsx(styles.btn, styles.btnAddReview)}
-              onClick={() => setIsOpen(true)}
+              onClick={openModal}
             >
               Додати відгук
             </button>

@@ -7,7 +7,6 @@ import ReviewForm from './ReviewForm';
 
 const ReviewModal = ({ closeModal }) => {
   const supabase = createClientComponentClient();
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {

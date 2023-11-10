@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/ReviewForm.module.css';
+import { useEffect } from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const schema = yup
   .object({
@@ -22,7 +24,8 @@ const schema = yup
   .required();
 
 const ReviewForm = ({ closeModal, user }) => {
-  console.log(user.user_metadata);
+  const supabase = createClientComponentClient();
+
   const {
     register,
     handleSubmit,
@@ -30,13 +33,44 @@ const ReviewForm = ({ closeModal, user }) => {
   } = useForm({
     defaultValues: {
       name: '',
-      message: '',
+      review: '',
     },
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
+    const { data: review, error: err } = await supabase
+      .from('reviews')
+      .select()
+      .match({ user_id: user.id });
+
+    if (review.length > 0) {
+      const { data, error } = await supabase
+        .from('reviews')
+        .update(formData)
+        .eq('id', review[0].id)
+        .select();
+
+      if (error) {
+        toast.error('Виникла помилка. Спробуйте пізніше');
+        return;
+      }
+
+      toast.success('Ваш відгук успішно змінено!');
+      closeModal();
+      return;
+    }
+
+    const { error } = await supabase
+      .from('reviews')
+      .insert({ ...formData, user_id: user.id })
+      .select();
+
+    if (error) {
+      toast.error('Виникла помилка. Спробуйте пізніше');
+      return;
+    }
+
     toast.success('Ваш відгук успішно додано!');
     closeModal();
   };
