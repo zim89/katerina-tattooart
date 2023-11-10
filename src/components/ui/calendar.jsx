@@ -1,5 +1,4 @@
 'use client';
-import { buttonVariants } from '@/components/ui/button';
 
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
@@ -67,6 +66,6 @@ function Calendar({
   );
 }
 
-Calendar.displayName = 'Calendar';
+Calendar.displayName = "Calendar";
 
 export { Calendar };
