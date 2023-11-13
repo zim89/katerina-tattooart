@@ -8,7 +8,7 @@ const Avatar = ({ styles }) => {
   const classes = styles ? styles : 'h-6 w-6 stroke-1 xl:h-11 xl:w-11';
 
   const toggleModal = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -21,7 +21,7 @@ const Avatar = ({ styles }) => {
         <UserCircle2 className={classes} />
       </button>
 
-      {isOpen && <AuthModal toggleModal={toggleModal} />}
+      {isOpen && <AuthModal closeModal={toggleModal} />}
     </>
   );
 };

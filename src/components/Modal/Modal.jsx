@@ -28,8 +28,7 @@ const Modal = ({ children, closeModal }) => {
             leaveFrom='opacity-100 scale-100'
             leaveTo='opacity-0 scale-95'
           >
-            {/* <Dialog.Panel className='relative mx-4 w-full transform rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-[82px] transition-all md:mx-auto  md:border-[1.5px] md:py-8 md:pl-6 md:pr-12  xl:px-6 xl:py-10'> */}
-            <Dialog.Panel className='relative mx-4 transform rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-[82px] transition-all md:mx-auto  md:border-[1.5px] md:py-8 md:pl-6 md:pr-12 xl:px-6 xl:py-10'>
+            <Dialog.Panel className='relative mx-4 transform rounded-xl border border-primary bg-dark-slate px-4 pb-5 pt-15 transition-all md:mx-auto  md:border-[1.5px] md:px-6 md:pb-10 xl:px-6'>
               <button
                 type='button'
                 className='absolute right-2.5 top-2.5 h-8 w-8 md:right-4 md:top-4 md:h-6 md:w-6'

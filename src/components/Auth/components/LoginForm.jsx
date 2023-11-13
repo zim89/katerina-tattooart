@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
-import styles from '../styles/LoginForm.module.css';
+import styles from '../styles/AuthForm.module.css';
 
 const schema = yup
   .object({
@@ -24,13 +24,13 @@ const schema = yup
   })
   .required();
 
-const LoginForm = ({ toggleModal }) => {
+const LoginForm = ({ closeModal }) => {
   const [isShown, setIsSHown] = useState(false);
   const router = useRouter();
   const supabase = createClientComponentClient();
 
   const togglePassword = () => {
-    setIsSHown((isShown) => !isShown);
+    setIsSHown((prev) => !prev);
   };
 
   const {
@@ -58,7 +58,7 @@ const LoginForm = ({ toggleModal }) => {
 
     toast.success('Ви успішно увійшли!');
     router.refresh();
-    toggleModal();
+    closeModal();
   };
 
   return (

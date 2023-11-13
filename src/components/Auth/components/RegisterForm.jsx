@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
-import styles from '../styles/LoginForm.module.css';
+import styles from '../styles/AuthForm.module.css';
 
 const schema = yup
   .object({
@@ -24,13 +24,13 @@ const schema = yup
   })
   .required();
 
-const RegisterForm = ({ toggleModal }) => {
-  const [isShown, setIsSHown] = useState(false);
+const RegisterForm = ({ closeModal }) => {
+  const [isShown, setIsShown] = useState(false);
   const router = useRouter();
   const supabase = createClientComponentClient();
 
   const togglePassword = () => {
-    setIsSHown((isShown) => !isShown);
+    setIsShown((prev) => !prev);
   };
 
   const {
@@ -63,7 +63,7 @@ const RegisterForm = ({ toggleModal }) => {
 
     toast.success('Дякуємо за реєстрацію. Ваш обліковий запис створено.');
     router.refresh();
-    toggleModal();
+    closeModal();
   };
 
   return (
