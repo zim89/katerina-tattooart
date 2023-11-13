@@ -1,4 +1,5 @@
 .form {
+  @apply w-[260px] md:w-[300px];
 }
 
 .input {

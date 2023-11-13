@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='flex gap-2.5 xl:gap-16.5'>
+      <nav className='flex items-center gap-2.5 xl:gap-16.5'>
         <ul className='nav-list'>
           <li>
             <Link
@@ -107,7 +107,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      {isOpen && <ConsultationModal toggleModal={toggleModal} />}
+      {isOpen && <ConsultationModal closeModal={toggleModal} />}
     </>
   );
 };
