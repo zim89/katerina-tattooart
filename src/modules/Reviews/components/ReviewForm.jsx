@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/ReviewForm.module.css';
-import { useEffect } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const schema = yup
@@ -45,9 +44,9 @@ const ReviewForm = ({ closeModal, user }) => {
       .match({ user_id: user.id });
 
     if (review.length > 0) {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('reviews')
-        .update(formData)
+        .update({ ...formData, updated_at: new Date() })
         .eq('id', review[0].id)
         .select();
 
