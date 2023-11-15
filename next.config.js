@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/storage/v1/object/public/gallery-images/*',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn-api.jetadmin.app',
+        port: '',
+        pathname: '/media/static_files/projects/tattooart/*',
+      },
     ],
   },
 };
