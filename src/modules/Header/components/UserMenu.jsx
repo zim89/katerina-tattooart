@@ -6,7 +6,8 @@ import Avatar from './Avatar';
 export const dynamic = 'force-dynamic';
 
 const UserMenu = async () => {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
   const {
     data: { user },
