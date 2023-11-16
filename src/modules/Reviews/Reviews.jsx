@@ -7,6 +7,7 @@ import ReviewItem from './components/ReviewItem';
 import ReviewModal from './components/ReviewModal';
 import styles from './styles/reviews.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import reviewsController from '@/supabase/api/review';
 
 const Reviews = () => {
   const [total, setTotal] = useState(0);
@@ -20,20 +21,11 @@ const Reviews = () => {
 
   useLayoutEffect(() => {
     (async () => {
-      const { data, error } = await supabase
-        .from('reviews')
-        .select()
-        .order('updated_at', { ascending: false });
-
-      if (error) {
-        console.log(error);
-        return;
-      }
-
+      const data = await reviewsController.findAll();
       setReviews(data);
       setTotal(data.length);
     })();
-  }, [supabase]);
+  }, []);
 
   useEffect(() => {
     if (screen.width >= 768) {
