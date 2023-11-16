@@ -15,9 +15,10 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock';
 import clsx from 'clsx';
+import { format } from 'date-fns';
 import { Clock, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -49,6 +50,9 @@ const schema = yup
   .required();
 
 const SessionModal = ({ toggleModal }) => {
+  const [availableTimes, setAvailableTimes] = useState(() =>
+    Object.entries(times)
+  );
   const targetElement = useRef(document.querySelector('.backdrop'));
   const supabase = createClientComponentClient();
 
@@ -68,13 +72,34 @@ const SessionModal = ({ toggleModal }) => {
     resolver: yupResolver(schema),
   });
 
+  const selectedDate = useWatch({ control, name: 'date' });
+
+  useEffect(() => {
+    (async () => {
+      if (!selectedDate) return;
+
+      const { data, error } = await supabase
+        .from('sessions')
+        .select('time')
+        .eq('date', format(selectedDate, 'yyyy-MM-dd'));
+
+      if (error) return;
+
+      setAvailableTimes(
+        Object.entries(times).filter(([value]) => {
+          return !data.map(({ time }) => time).includes(value);
+        })
+      );
+    })();
+  }, [supabase, selectedDate]);
+
   useEffect(() => {
     disableBodyScroll(targetElement);
 
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, []);
+  });
 
   const onClose = () => {
     enableBodyScroll(targetElement);
@@ -91,8 +116,6 @@ const SessionModal = ({ toggleModal }) => {
     toast.success('Дякуємо! Ми скоро зв’яжемось з Вами!');
     toggleModal();
   };
-
-  console.log(errors);
 
   return (
     <div className='backdrop'>
@@ -148,13 +171,11 @@ const SessionModal = ({ toggleModal }) => {
                             {times[value] ?? 'Час'}
                           </span>
                         </div>
-                        <SelectItem value='9:00'>9.00 AM</SelectItem>
-                        <SelectItem value='10:30'>10.30 AM</SelectItem>
-                        <SelectItem value='12:00'>12.00 AM</SelectItem>
-                        <SelectItem value='14:00'>2.00 PM</SelectItem>
-                        <SelectItem value='16:30'>4.30 PM</SelectItem>
-                        <SelectItem value='18:00'>6.00 PM</SelectItem>
-                        <SelectItem value='19:30'>7.30 PM</SelectItem>
+                        {availableTimes.map(([key, value]) => (
+                          <SelectItem key={key} value={key}>
+                            {value}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   )}
