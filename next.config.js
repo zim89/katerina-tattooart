@@ -14,6 +14,12 @@ const nextConfig = {
         port: '',
         pathname: '/media/static_files/projects/tattooart/*',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.gravatar.com',
+        port: '',
+        pathname: '/avatar/*',
+      },
     ],
   },
 };

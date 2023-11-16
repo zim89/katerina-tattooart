@@ -53,7 +53,7 @@ const RegisterForm = ({ closeModal }) => {
       options: {
         data: {
           username: email.split('@')[0],
-          avatar_url: 'http:' + gravatar.url(email),
+          avatar_url: 'https:' + gravatar.url(email),
         },
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
