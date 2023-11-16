@@ -2,11 +2,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/ReviewForm.module.css';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import reviewsController from '@/supabase/api/review';
+import userController from '@/supabase/api/user';
 
 const schema = yup
   .object({
@@ -22,9 +22,7 @@ const schema = yup
   })
   .required();
 
-const ReviewForm = ({ closeModal, user }) => {
-  const supabase = createClientComponentClient();
-
+const ReviewForm = ({ closeModal }) => {
   const {
     register,
     handleSubmit,
@@ -38,39 +36,16 @@ const ReviewForm = ({ closeModal, user }) => {
   });
 
   const onSubmit = async (formData) => {
-    const { data: review, error: err } = await supabase
-      .from('reviews')
-      .select()
-      .match({ user_id: user.id });
+    const user = await userController.getFromSession();
+    const review = await reviewsController.findOne(user.id);
 
-    if (review.length > 0) {
-      const { error } = await supabase
-        .from('reviews')
-        .update({ ...formData, updated_at: new Date() })
-        .eq('id', review[0].id)
-        .select();
-
-      if (error) {
-        toast.error('Виникла помилка. Спробуйте пізніше');
-        return;
-      }
-
-      toast.success('Ваш відгук успішно змінено!');
+    if (review) {
+      await reviewsController.update(review.id, formData);
       closeModal();
       return;
     }
 
-    const { error } = await supabase
-      .from('reviews')
-      .insert({ ...formData, user_id: user.id })
-      .select();
-
-    if (error) {
-      toast.error('Виникла помилка. Спробуйте пізніше');
-      return;
-    }
-
-    toast.success('Ваш відгук успішно додано!');
+    await reviewsController.create(user, formData);
     closeModal();
   };
 

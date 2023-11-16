@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -7,11 +8,16 @@ import { formatDate, getRandomColor } from '@/helpers';
 
 const ReviewItem = ({ style, review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState(review.user_avatar);
 
   useEffect(() => {
     setIsTruncateText(true);
   }, [review]);
+
+  // useEffect(() => {
+  //   setAvatarUrl(review.user_avatar);
+  //   console.log(avatarUrl);
+  // }, [review]);
 
   const showTruncateText = () => {
     setIsTruncateText(!isTruncateText);
