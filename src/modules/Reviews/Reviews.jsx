@@ -6,7 +6,6 @@ import { useEffect, useState, useLayoutEffect } from 'react';
 import ReviewItem from './components/ReviewItem';
 import ReviewModal from './components/ReviewModal';
 import styles from './styles/reviews.module.css';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import reviewsController from '@/supabase/api/review';
 
 const Reviews = () => {
@@ -17,7 +16,6 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   const screen = useScreenSize();
-  const supabase = createClientComponentClient();
 
   useLayoutEffect(() => {
     (async () => {
