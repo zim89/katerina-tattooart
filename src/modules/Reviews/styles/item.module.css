@@ -3,7 +3,11 @@
 }
 
 .avaThumb {
-  @apply xl:h-15 xl:w-15 relative h-10 w-10 flex-none rounded-full;
+  @apply relative h-10 w-10 flex-none overflow-hidden rounded-full xl:h-15 xl:w-15;
+}
+
+.image {
+  @apply rounded-full;
 }
 
 .content {

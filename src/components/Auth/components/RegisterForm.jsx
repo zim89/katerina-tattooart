@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/AuthForm.module.css';
-import gravatar from 'gravatar';
+// import gravatar from 'gravatar';
 
 const schema = yup
   .object({
@@ -53,7 +53,7 @@ const RegisterForm = ({ closeModal }) => {
       options: {
         data: {
           username: email.split('@')[0],
-          avatar_url: 'https:' + gravatar.url(email),
+          // avatar_url: 'https:' + gravatar.url(email),
         },
         emailRedirectTo: `${location.origin}/auth/callback`,
       },

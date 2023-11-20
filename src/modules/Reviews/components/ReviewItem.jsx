@@ -4,20 +4,23 @@ import Image from 'next/image';
 
 import clsx from 'clsx';
 import styles from '../styles/item.module.css';
-import { formatDate, getRandomColor } from '@/helpers';
+import { formatDate } from '@/helpers';
+
+const colors = [
+  'bg-red-400',
+  'bg-teal-500',
+  'bg-indigo-400',
+  'bg-pink-400',
+  'bg-sky-400',
+];
 
 const ReviewItem = ({ style, review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [avatarUrl, setAvatarUrl] = useState(review.user_avatar);
+  const [avatarUrl, setAvatarUrl] = useState(review.user_avatar ?? null);
 
   useEffect(() => {
     setIsTruncateText(true);
   }, [review]);
-
-  // useEffect(() => {
-  //   setAvatarUrl(review.user_avatar);
-  //   console.log(avatarUrl);
-  // }, [review]);
 
   const showTruncateText = () => {
     setIsTruncateText(!isTruncateText);
@@ -25,13 +28,7 @@ const ReviewItem = ({ style, review }) => {
 
   return (
     <div className={clsx(style, styles.wrap)}>
-      <div
-        className={clsx(
-          styles.avaThumb,
-          'flex items-center justify-center',
-          !avatarUrl && ` bg-${getRandomColor()}`
-        )}
-      >
+      <div className={styles.avaThumb}>
         {avatarUrl ? (
           <Image
             src={avatarUrl}
@@ -40,7 +37,13 @@ const ReviewItem = ({ style, review }) => {
             sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
           />
         ) : (
-          <span className='text-lg font-medium xl:text-xl'>
+          <span
+            className={clsx(
+              `flex h-full w-full items-center justify-center rounded-full ${
+                colors[Math.floor(Math.random() * colors.length)]
+              } text-lg font-medium xl:text-xl`
+            )}
+          >
             {review.name[0]}
           </span>
         )}
@@ -52,7 +55,7 @@ const ReviewItem = ({ style, review }) => {
             {formatDate(review.updated_at)}
           </span>
         </div>
-        <button type='button' onClick={showTruncateText}>
+        <button type='button' onClick={showTruncateText} className='w-full'>
           <div className={clsx(styles.textWrap, !isTruncateText && '!h-auto')}>
             <p
               className={clsx(
