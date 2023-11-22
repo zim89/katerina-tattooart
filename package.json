@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier . --write",
-    "test": "jest",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "jest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -57,20 +55,5 @@
   "volta": {
     "node": "18.18.0",
     "yarn": "1.22.19"
-  },
-  "loki": {
-    "configurations": {
-      "chrome.laptop": {
-        "target": "chrome.app",
-        "width": 1920,
-        "height": 1080,
-        "deviceScaleFactor": 1,
-        "mobile": false
-      },
-      "chrome.iphone7": {
-        "target": "chrome.app",
-        "preset": "iPhone 7"
-      }
-    }
   }
 }
