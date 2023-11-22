@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import styles from './styles/hero.module.css';
 
 const Hero = () => {

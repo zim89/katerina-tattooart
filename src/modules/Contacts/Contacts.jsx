@@ -5,8 +5,10 @@ import clsx from 'clsx';
 import { Controller, useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import styles from './styles/contacts.module.css';
 
 const schema = yup
@@ -61,16 +63,16 @@ const Contacts = () => {
     <div className={styles.wrap} id='contacts'>
       <div className='container'>
         <h2 className={styles.title}>Зв&apos;язатись з нами</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.metaWrap}>
             {/* User Name INPUT */}
             <div className={styles.inputWrap}>
               <p className={styles.errorBox}>{errors.username?.message}</p>
               <input
                 {...register('username', { required: true })}
+                autoComplete='off'
                 className={clsx(styles.input, errors.username && styles.error)}
                 placeholder='Ім’я:'
-                autoComplete='off'
                 type='text'
               />
             </div>
@@ -79,20 +81,20 @@ const Contacts = () => {
             <div className={styles.inputWrap}>
               <p className={styles.errorBox}>{errors.phone?.message}</p>
               <Controller
-                name='phone'
-                rules={{ required: true }}
-                control={control}
                 render={({ field: { ref, ...field } }) => (
                   <InputMask
                     {...field}
+                    autoComplete='off'
                     className={clsx(styles.input, errors.phone && styles.error)}
+                    error={errors.phone}
+                    inputRef={ref}
                     mask='+38\099 999-99-99'
                     placeholder='Телефон:'
-                    autoComplete='off'
-                    inputRef={ref}
-                    error={errors.phone}
                   />
                 )}
+                control={control}
+                name='phone'
+                rules={{ required: true }}
               />
             </div>
           </div>
@@ -102,13 +104,13 @@ const Contacts = () => {
             <p className={styles.errorBox}>{errors.message?.message}</p>
             <textarea
               {...register('message', { required: true })}
-              rows={2}
               className={clsx(styles.input, errors.message && styles.error)}
               placeholder='Повідомлення:'
+              rows={2}
             />
           </div>
 
-          <button type='submit' className={clsx('btnSubmit', styles.submit)}>
+          <button className={clsx('btnSubmit', styles.submit)} type='submit'>
             Відправити
           </button>
         </form>

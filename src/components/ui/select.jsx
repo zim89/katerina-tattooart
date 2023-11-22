@@ -1,10 +1,11 @@
 'use client';
 
-import { ScrollArea } from '@/components/ui/scroll-area';
 import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
 
 import { cn } from '@/lib/utils';
+import * as SelectPrimitive from '@radix-ui/react-select';
+
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const Select = SelectPrimitive.Root;
 
@@ -15,11 +16,11 @@ const SelectValue = SelectPrimitive.Value;
 const SelectTrigger = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Trigger
-      ref={ref}
       className={cn(
         'inline-flex items-center justify-center rounded-2xl bg-time px-5 py-2.5 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:px-6 md:py-4',
         className
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -32,7 +33,6 @@ const SelectContent = React.forwardRef(
   ({ className, children, position = 'popper', ...props }, ref) => (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
-        ref={ref}
         className={cn(
           'relative z-50 min-w-[8rem] overflow-hidden rounded-2xl bg-time font-inter shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 md:min-w-[22.0625rem] md:border md:border-primary md:text-lg/tight',
           position === 'popper' &&
@@ -40,6 +40,7 @@ const SelectContent = React.forwardRef(
           className
         )}
         position={position}
+        ref={ref}
         {...props}
       >
         <SelectPrimitive.Viewport
@@ -64,8 +65,8 @@ SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
-    ref={ref}
     className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -74,11 +75,11 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 const SelectItem = React.forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Item
-      ref={ref}
       className={cn(
         'relative flex h-9.5 w-full cursor-default select-none items-center justify-center rounded-lg bg-dark-slate outline-none focus:bg-dark-slate/90 data-[disabled]:pointer-events-none data-[state="checked"]:bg-brand-blue data-[disabled]:opacity-50',
         className
       )}
+      ref={ref}
       {...props}
     >
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -89,8 +90,8 @@ SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 const SelectSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
-    ref={ref}
     className={cn('-mx-1 my-1 h-px bg-dark-slate dark:bg-slate-800', className)}
+    ref={ref}
     {...props}
   />
 ));

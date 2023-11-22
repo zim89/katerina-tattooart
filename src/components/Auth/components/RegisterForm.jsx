@@ -1,14 +1,17 @@
 'use client';
+import { useState } from 'react';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
 import { Eye, EyeOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import styles from '../styles/AuthForm.module.css';
 // import gravatar from 'gravatar';
 
@@ -72,14 +75,14 @@ const RegisterForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.inputField}>
         <p className={styles.errorBox}>{errors.email?.message}</p>
         <input
           {...register('email', { required: true })}
+          autoComplete='off'
           className={clsx('input', styles.input, errors.email && styles.error)}
           placeholder='Eлектронна пошта'
-          autoComplete='off'
           type='email'
           autoFocus
         />
@@ -88,9 +91,9 @@ const RegisterForm = ({ closeModal }) => {
       <div className={styles.inputField}>
         <p className={styles.errorBox}>{errors.password?.message}</p>
         <span
-          type='button'
           className={styles.showPassBtn}
           onClick={togglePassword}
+          type='button'
         >
           {isShown ? (
             <EyeOff className={styles.showPassIcon} />
@@ -100,14 +103,14 @@ const RegisterForm = ({ closeModal }) => {
         </span>
         <input
           {...register('password', { required: true })}
+          autoComplete='off'
           className={clsx('input', errors.password && styles.error)}
           placeholder='Пароль...'
-          autoComplete='off'
           type={isShown ? 'text' : 'password'}
         />
       </div>
 
-      <button type='submit' className={clsx('btn', styles.submit)}>
+      <button className={clsx('btn', styles.submit)} type='submit'>
         Зареєструватись
       </button>
     </form>

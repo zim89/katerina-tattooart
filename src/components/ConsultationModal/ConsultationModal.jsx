@@ -1,11 +1,10 @@
 'use client';
-import { useForm, Controller } from 'react-hook-form';
-import InputMask from 'react-input-mask';
-import { toast } from 'react-toastify';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
+import { useForm, Controller } from 'react-hook-form';
+import InputMask from 'react-input-mask';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
 import Modal from '../Modal/Modal';

@@ -1,10 +1,11 @@
 'use client';
 
+import * as React from 'react';
+
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { uk } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import * as React from 'react';
 import { DayPicker } from 'react-day-picker';
 
 function Calendar({
@@ -15,12 +16,6 @@ function Calendar({
 }) {
   return (
     <DayPicker
-      locale={uk}
-      formatters={{
-        formatWeekdayName: (date, options) => format(date, 'EEEEE', options),
-      }}
-      showOutsideDays={showOutsideDays}
-      className={cn('p-1.75 font-inter md:p-2', className)}
       classNames={{
         caption: 'flex justify-center py-1 relative items-center',
         caption_label: 'capitalize leading-[1.7775] md:text-lg',
@@ -61,6 +56,12 @@ function Calendar({
         IconLeft: ({ ...props }) => <ChevronLeft className='h-4 w-4' />,
         IconRight: ({ ...props }) => <ChevronRight className='h-4 w-4' />,
       }}
+      formatters={{
+        formatWeekdayName: (date, options) => format(date, 'EEEEE', options),
+      }}
+      className={cn('p-1.75 font-inter md:p-2', className)}
+      locale={uk}
+      showOutsideDays={showOutsideDays}
       {...props}
     />
   );

@@ -1,7 +1,7 @@
+import Burger from './components/Burger';
 import Logo from './components/Logo';
 import Navbar from './components/Navbar';
 import UserMenu from './components/UserMenu';
-import Burger from './components/Burger';
 
 const Header = () => {
   return (

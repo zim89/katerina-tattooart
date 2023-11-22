@@ -1,6 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { LogOut } from 'lucide-react';
+import { cookies } from 'next/headers';
+
 import Avatar from './Avatar';
 
 export const dynamic = 'force-dynamic';
@@ -26,11 +27,11 @@ const UserMenu = async () => {
       ) : (
         <form
           action='/auth/logout'
-          method='post'
           className='flex items-center justify-center'
+          method='post'
         >
           <button className='transition-colors duration-200 hover:text-red-400'>
-            <LogOut strokeWidth={1.5} className='h-5 w-5 xl:h-8 xl:w-8' />
+            <LogOut className='h-5 w-5 xl:h-8 xl:w-8' strokeWidth={1.5} />
           </button>
         </form>
       )}

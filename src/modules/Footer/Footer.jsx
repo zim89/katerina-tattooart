@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import styles from './styles/footer.module.css';
 
 import logo from '/public/icons/logo.svg';
@@ -13,38 +14,38 @@ const Footer = () => {
           <ul className={styles.list}>
             <li className={styles.item}>
               <a
-                href='https://www.instagram.com/'
                 className={styles.link}
-                target='_blank'
+                href='https://www.instagram.com/'
                 rel='noopener noreferrer'
+                target='_blank'
               >
                 <div className={styles.thumb}>
-                  <Image src='/icons/instagram.svg' alt='Instagram' fill />
+                  <Image alt='Instagram' src='/icons/instagram.svg' fill />
                 </div>
               </a>
               <span className={styles.socialLabel}>Instagram</span>
             </li>
             <li className={styles.item}>
               <a
-                href='https://www.facebook.com/'
                 className={styles.link}
-                target='_blank'
+                href='https://www.facebook.com/'
                 rel='noopener noreferrer'
+                target='_blank'
               >
                 <div className={styles.thumb}>
-                  <Image src='/icons/facebook.svg' alt='facebook' fill />
+                  <Image alt='facebook' src='/icons/facebook.svg' fill />
                 </div>
               </a>
               <span className={styles.socialLabel}>Facebook</span>
             </li>
             <li className={styles.item}>
-              <a href='tel:577807595' className={styles.link}>
+              <a className={styles.link} href='tel:577807595'>
                 <div className={styles.thumb}>
                   <Image
-                    src='/icons/phone-call.svg'
                     alt='Phone'
-                    fill
+                    src='/icons/phone-call.svg'
                     style={styles.icon}
+                    fill
                   />
                 </div>
               </a>
@@ -54,15 +55,15 @@ const Footer = () => {
           <p className={styles.year}>2023</p>
 
           <Image
-            src={logo}
             alt='Катерина Татту Лого'
             className={styles.leftLogoThumb}
+            src={logo}
           />
 
           <Image
-            src={logoRev}
             alt='Катерина Татту Лого'
             className={styles.rightLogoThumb}
+            src={logoRev}
           />
         </div>
       </div>

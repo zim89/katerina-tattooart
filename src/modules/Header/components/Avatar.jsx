@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
+
 import { UserCircle2 } from 'lucide-react';
+
 import { AuthModal } from '@/components/Auth';
 
 const Avatar = ({ styles }) => {
@@ -15,8 +17,8 @@ const Avatar = ({ styles }) => {
     <>
       <button
         className='transition-colors duration-200 hover:text-white'
-        type='button'
         onClick={toggleModal}
+        type='button'
       >
         <UserCircle2 className={classes} />
       </button>

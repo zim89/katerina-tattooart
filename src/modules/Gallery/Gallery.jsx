@@ -28,7 +28,7 @@ const Gallery = async ({ filter }) => {
             Галерея робіт
           </h2>
           <div className='mb-2 flex justify-end xl:mb-4'>
-            <PicturesSelect options={types} defaultId={filter} />
+            <PicturesSelect defaultId={filter} options={types} />
           </div>
         </div>
         <PicturesSwiper images={images} />

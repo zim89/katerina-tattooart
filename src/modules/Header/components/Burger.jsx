@@ -1,5 +1,6 @@
 'use client';
-import { AuthModal } from '@/components/Auth';
+import { Fragment, useEffect, useRef, useState } from 'react';
+
 import { Transition } from '@headlessui/react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
@@ -8,9 +9,11 @@ import {
   enableBodyScroll,
 } from 'body-scroll-lock';
 import { LogOut, UserCircle2 } from 'lucide-react';
-import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { toast } from 'react-toastify';
+
+import { AuthModal } from '@/components/Auth';
+
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Burger = () => {
@@ -95,88 +98,88 @@ const Burger = () => {
       {/* Burger menu */}
       <Transition
         as={Fragment}
-        show={isOpen}
         enter='transition ease-out duration-200'
         enterFrom='opacity-0 translate-y-1'
         enterTo='opacity-100 translate-y-0'
         leave='transition ease-in duration-150'
         leaveFrom='opacity-100 translate-y-0'
         leaveTo='opacity-0 translate-y-1'
+        show={isOpen}
       >
         <div
-          onClick={handleOverlayClick}
           className='fixed inset-0 top-16 flex justify-center bg-black/70'
+          onClick={handleOverlayClick}
         >
           <nav className='w-[243px] bg-[#393E41] px-[5.375rem] py-[1.5625rem]'>
             <ul className='flex flex-col items-center gap-4.5'>
               <li>
                 <Link
-                  to='hero'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='hero'
                 >
                   Про нас
                 </Link>
               </li>
               <li>
                 <Link
-                  to='galery'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='galery'
                 >
                   Галерея
                 </Link>
               </li>
               <li>
                 <Link
-                  to='features'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='features'
                 >
                   Догляд
                 </Link>
               </li>
               <li>
                 <Link
-                  to='price'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='price'
                 >
                   Ціна
                 </Link>
               </li>
               <li>
                 <Link
-                  to='reviews'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='reviews'
                 >
                   Відгуки
                 </Link>
               </li>
               <li>
                 <Link
-                  to='contacts'
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
                   duration={400}
+                  offset={-80}
                   onClick={toggleBurger}
+                  smooth={true}
+                  spy={true}
+                  to='contacts'
                 >
                   Контакти
                 </Link>
@@ -188,16 +191,16 @@ const Burger = () => {
                 {!user ? (
                   <button
                     className='transition-colors duration-200 hover:text-white'
-                    type='button'
                     onClick={toggleAuthModal}
+                    type='button'
                   >
                     <UserCircle2 className='h-10 w-10 stroke-1' />
                   </button>
                 ) : (
                   <LogOut
-                    strokeWidth={1.5}
                     className='h-10 w-10 stroke-1'
                     onClick={onLogout}
+                    strokeWidth={1.5}
                   />
                 )}
               </li>

@@ -1,6 +1,6 @@
-import { UserContextProvider } from '@/context/userContext';
 import { Raleway, The_Nautigal, Inter } from 'next/font/google';
 
+import { UserContextProvider } from '@/context/userContext';
 import Footer from '@/modules/Footer';
 import Header from '@/modules/Header';
 

@@ -1,10 +1,14 @@
 'use client';
-import Modal from '@/components/Modal/Modal';
 import { useState } from 'react';
-import 'react-toastify/dist/ReactToastify.min.css';
-import styles from '../styles/AuthModal.module.css';
+
+import Modal from '@/components/Modal/Modal';
+
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
+import styles from '../styles/AuthModal.module.css';
 
 const AuthModal = ({ closeModal }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -27,9 +31,9 @@ const AuthModal = ({ closeModal }) => {
         <div className={styles.authText}>
           Немає акаунту?{' '}
           <button
-            type='button'
-            onClick={toggleAuth}
             className={styles.authTextBtn}
+            onClick={toggleAuth}
+            type='button'
           >
             Зареєструватися
           </button>
@@ -38,9 +42,9 @@ const AuthModal = ({ closeModal }) => {
         <div className={styles.authText}>
           Вже є акаунт?{' '}
           <span
-            type='button'
-            onClick={toggleAuth}
             className={styles.authTextBtn}
+            onClick={toggleAuth}
+            type='button'
           >
             Увійти
           </span>

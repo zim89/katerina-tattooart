@@ -1,18 +1,18 @@
 'use client';
 
-import clsx from 'clsx';
 import { useState } from 'react';
 
-import { Thumbs, FreeMode, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/outline';
-
-import styles from './styles/features.module.css';
+import clsx from 'clsx';
+import { Thumbs, FreeMode, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+
+import styles from './styles/features.module.css';
 
 const Features = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -36,16 +36,16 @@ const Features = () => {
   return (
     <div className={styles.features} id='features'>
       <Swiper
-        modules={[Thumbs, Pagination]}
-        slidesPerView={1.5}
-        centeredSlides={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        pagination={pagination}
         breakpoints={{
           768: {
             slidesPerView: 1,
           },
         }}
+        centeredSlides={true}
+        modules={[Thumbs, Pagination]}
+        pagination={pagination}
+        slidesPerView={1.5}
+        thumbs={{ swiper: thumbsSwiper }}
       >
         <SwiperSlide>
           <h2 className={styles.title}>Професійність</h2>
@@ -60,12 +60,12 @@ const Features = () => {
 
       <div className='container'>
         <Swiper
-          modules={[FreeMode, Thumbs]}
           allowTouchMove={false}
-          onSwiper={setThumbsSwiper}
-          freeMode={true}
-          watchSlidesProgress={true}
           className='innerSwiper'
+          freeMode={true}
+          modules={[FreeMode, Thumbs]}
+          onSwiper={setThumbsSwiper}
+          watchSlidesProgress={true}
         >
           <SwiperSlide>
             <div className={clsx('wrap', styles.wrap)}>

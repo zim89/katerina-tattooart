@@ -1,12 +1,6 @@
 'use client';
-import { DatePicker } from '@/components/DatePicker';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { useEffect, useRef, useState } from 'react';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
@@ -17,12 +11,22 @@ import {
 import clsx from 'clsx';
 import { format } from 'date-fns';
 import { Clock, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
+
+import { DatePicker } from '@/components/DatePicker';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import styles from './SessionModal.module.css';
 
 const times = {
@@ -120,27 +124,27 @@ const SessionModal = ({ toggleModal }) => {
   return (
     <div className='backdrop'>
       <div className={styles.modal}>
-        <button type='button' className={styles.closeBtn} onClick={onClose}>
+        <button className={styles.closeBtn} onClick={onClose} type='button'>
           <X className={styles.closeBtnIcon} />
         </button>
 
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div className='mb-[4.5rem] flex space-x-4'>
               <div className='relative'>
                 <p className={styles.errorBox}>{errors.date?.message}</p>
 
                 <Controller
-                  name='date'
-                  rules={{ required: true }}
-                  control={control}
                   render={({ field: { value, onChange } }) => (
                     <DatePicker
                       date={value}
-                      onDateChange={onChange}
                       fromDate={Date.now()}
+                      onDateChange={onChange}
                     />
                   )}
+                  control={control}
+                  name='date'
+                  rules={{ required: true }}
                 />
               </div>
 
@@ -148,11 +152,8 @@ const SessionModal = ({ toggleModal }) => {
                 <p className={styles.errorBox}>{errors.time?.message}</p>
 
                 <Controller
-                  name='time'
-                  rules={{ required: true }}
-                  control={control}
                   render={({ field: { value, onChange } }) => (
-                    <Select value={value} onValueChange={onChange}>
+                    <Select onValueChange={onChange} value={value}>
                       <SelectTrigger>
                         <Clock />
                         <span className='ml-4 hidden font-inter text-lg/tight md:inline'>
@@ -179,6 +180,9 @@ const SessionModal = ({ toggleModal }) => {
                       </SelectContent>
                     </Select>
                   )}
+                  control={control}
+                  name='time'
+                  rules={{ required: true }}
                 />
               </div>
             </div>
@@ -188,9 +192,9 @@ const SessionModal = ({ toggleModal }) => {
               <p className={styles.errorBox}>{errors.username?.message}</p>
               <input
                 {...register('username', { required: true })}
+                autoComplete='off'
                 className={clsx('input', errors.username && styles.error)}
                 placeholder='Ім’я:'
-                autoComplete='off'
                 type='text'
                 autoFocus
               />
@@ -199,21 +203,21 @@ const SessionModal = ({ toggleModal }) => {
             <label className={styles.label}>
               <p className={styles.errorBox}>{errors.phone?.message}</p>
               <Controller
-                name='phone'
-                rules={{ required: true }}
-                control={control}
                 render={({ field: { ref, ...field } }) => (
                   <InputMask
                     {...field}
+                    autoComplete='off'
                     className={clsx('input', errors.phone && styles.error)}
+                    error={errors.phone}
+                    inputRef={ref}
                     mask='+38\099 9999999'
                     maskChar={null}
                     placeholder='Телефон:'
-                    autoComplete='off'
-                    inputRef={ref}
-                    error={errors.phone}
                   />
                 )}
+                control={control}
+                name='phone'
+                rules={{ required: true }}
               />
             </label>
           </div>
@@ -222,17 +226,17 @@ const SessionModal = ({ toggleModal }) => {
             <p className={styles.errorBox}>{errors.message?.message}</p>
             <textarea
               {...register('message', { required: true })}
-              rows={3}
               className={clsx(
                 'input',
                 styles.input,
                 errors.message && styles.error
               )}
               placeholder='Повідомлення:'
+              rows={3}
             />
           </label>
 
-          <button type='submit' className={styles.submit}>
+          <button className={styles.submit} type='submit'>
             Записатись
           </button>
         </form>

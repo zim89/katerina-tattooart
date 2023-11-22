@@ -1,9 +1,12 @@
 'use client';
-import SessionModal from '@/components/SessionModal/SessionModal';
+import { useEffect, useState } from 'react';
+
 import useScreenSize from '@/hooks/useScreenSize';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+
+import SessionModal from '@/components/SessionModal/SessionModal';
+
 import styles from './styles/price.module.css';
 
 const Price = () => {

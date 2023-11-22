@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+
+import useScreenSize from '@/hooks/useScreenSize';
 import { Link } from 'react-scroll';
 
 import ConsultationModal from '@/components/ConsultationModal/ConsultationModal';
-import useScreenSize from '@/hooks/useScreenSize';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
