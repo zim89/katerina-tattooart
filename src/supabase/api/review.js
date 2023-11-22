@@ -1,6 +1,5 @@
-import { toast } from 'react-toastify';
-
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 

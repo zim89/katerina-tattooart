@@ -12,7 +12,7 @@ export default function NotFound() {
           <p className='md:mb-15 md:text-2.5xl/[38px] -mt-[1.375rem] mb-10 text-2xl/7 font-bold md:-mt-[1.75rem] xl:-mt-[3.3125rem] xl:mb-20 xl:text-[54px]/[63px]'>
             Сторінку не знайдено
           </p>
-          <Link href='/' className='md:text-2xl'>
+          <Link className='md:text-2xl' href='/'>
             Назад
           </Link>
         </div>
