@@ -28,11 +28,11 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='hero'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='hero'
             >
               Про нас
             </Link>
@@ -40,11 +40,11 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='galery'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='galery'
             >
               Галерея
             </Link>
@@ -52,18 +52,18 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='features'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='features'
             >
               Догляд
             </Link>
           </li>
         </ul>
 
-        <button type='button' className='btn' onClick={toggleModal}>
+        <button className='btn' onClick={toggleModal} type='button'>
           Безкоштовна консультація
         </button>
 
@@ -71,11 +71,11 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='price'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='price'
             >
               Ціна
             </Link>
@@ -83,11 +83,11 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='reviews'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='reviews'
             >
               Відгуки
             </Link>
@@ -95,11 +95,11 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='contacts'
-              spy={true}
-              smooth={true}
-              offset={offset}
               duration={400}
+              offset={offset}
+              smooth={true}
+              spy={true}
+              to='contacts'
             >
               Контакти
             </Link>

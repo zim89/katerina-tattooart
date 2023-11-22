@@ -12,12 +12,13 @@ const getFromSession = async () => {
   } = await supabase.auth.getSession();
 
   if (error) {
-    console.log('Error in getFromSession');
-    console.log(error);
+    console.log('Error in getFromSession: ', error);
+    return;
   }
-  return serializeUser(session.user);
+
+  return serializeUser(session?.user);
 };
 
-const userController = { getFromSession };
+const userAPI = { getFromSession };
 
-export default userController;
+export default userAPI;

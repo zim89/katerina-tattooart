@@ -2,11 +2,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
 import { useForm } from 'react-hook-form';
-import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
+
+import { useUserContext } from '@/context/userContext';
+import reviewsAPI from '@/supabase/api/review';
+
 import styles from '../styles/ReviewForm.module.css';
-import reviewsController from '@/supabase/api/review';
-import userController from '@/supabase/api/user';
 
 const schema = yup
   .object({
@@ -23,10 +24,12 @@ const schema = yup
   .required();
 
 const ReviewForm = ({ closeModal }) => {
+  const { currentUser } = useUserContext();
+
   const {
-    register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
+    register,
   } = useForm({
     defaultValues: {
       name: '',
@@ -36,43 +39,45 @@ const ReviewForm = ({ closeModal }) => {
   });
 
   const onSubmit = async (formData) => {
-    const user = await userController.getFromSession();
-    const review = await reviewsController.findOne(user.id);
+    const review = await reviewsAPI.findOne(currentUser.id);
 
     if (review) {
-      await reviewsController.update(review.id, formData);
+      await reviewsAPI.update(review.id, formData);
       closeModal();
       return;
     }
 
-    await reviewsController.create(user, formData);
+    await reviewsAPI.create(currentUser, formData);
     closeModal();
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className='w-full md:w-[651px] xl:w-[710px]'
-    >
-      {errors.name && <p className={styles.errorBox}>Обов&apos;язкове поле</p>}
-      <input
-        {...register('name', { required: true })}
-        className={clsx('input', styles.input, errors.name && styles.error)}
-        placeholder='Ім’я:'
-        autoComplete='off'
-      />
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.inputWrap}>
+        {errors.name && (
+          <p className={styles.errorBox}>{errors.name.message}</p>
+        )}
+        <input
+          {...register('name', { required: true })}
+          autoComplete='off'
+          className={clsx('input', styles.input, errors.name && styles.error)}
+          placeholder='Ім’я:'
+        />
+      </div>
 
-      {errors.review && (
-        <p className={styles.errorBox}>Обов&apos;язкове поле</p>
-      )}
-      <textarea
-        {...register('review', { required: true })}
-        className={clsx('input', errors.review && styles.error)}
-        placeholder='Повідомлення:'
-        rows={5}
-      />
+      <div className={styles.inputWrap}>
+        {errors.review && (
+          <p className={styles.errorBox}>{errors.review.message}</p>
+        )}
+        <textarea
+          {...register('review', { required: true })}
+          className={clsx('input', errors.review && styles.error)}
+          placeholder='Повідомлення:'
+          rows={5}
+        />
+      </div>
 
-      <button type='submit' className={styles.submit}>
+      <button className={styles.submit} type='submit'>
         Додати відгук
       </button>
     </form>

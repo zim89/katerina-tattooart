@@ -1,6 +1,8 @@
-// import supabase from '..';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'react-toastify';
+
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const supabase = createClientComponentClient();
 
@@ -26,8 +28,7 @@ const findOne = async (user_id) => {
     .single();
 
   if (error) {
-    console.log('Error in findOne');
-    console.log(error);
+    console.log('Error in findOne: ', error);
     return;
   }
 
@@ -67,6 +68,6 @@ const create = async (user, formData) => {
   return data;
 };
 
-const reviewsController = { findAll, findOne, update, create };
+const reviewsAPI = { findAll, findOne, update, create };
 
-export default reviewsController;
+export default reviewsAPI;

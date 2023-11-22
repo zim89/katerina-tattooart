@@ -1,7 +1,8 @@
+import { UserContextProvider } from '@/context/userContext';
 import { Raleway, The_Nautigal, Inter } from 'next/font/google';
 
-import Header from '@/modules/Header';
 import Footer from '@/modules/Footer';
+import Header from '@/modules/Header';
 
 import './globals.css';
 
@@ -32,15 +33,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang='en'
       className={`${raleway.variable} ${nautigal.variable} ${inter.variable}`}
+      lang='en'
     >
       <body>
-        <Header />
-        <main className='mt-[3.9375rem] md:mt-[4.4375rem] xl:mt-[6.25rem]'>
-          {children}
-        </main>
-        <Footer />
+        <UserContextProvider>
+          <Header />
+          <main className='mt-[3.9375rem] md:mt-[4.4375rem] xl:mt-[6.25rem]'>
+            {children}
+          </main>
+          <Footer />
+        </UserContextProvider>
       </body>
     </html>
   );

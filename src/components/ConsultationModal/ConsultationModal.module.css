@@ -1,18 +1,3 @@
-.modal {
-  @apply relative w-[343px] rounded-2xl border-0.5 border-primary bg-dark-slate px-4 pb-9 pt-16 md:w-[651px] md:rounded-3xl md:border-1.5 md:px-10 md:pb-8 md:pt-20 xl:w-[646px];
-}
-
-.closeBtn {
-  @apply absolute right-2 top-2 text-primary transition-colors duration-200 hover:text-white md:right-4 md:top-4;
-}
-
-.closeBtnIcon {
-  @apply h-8 w-8 md:h-7 md:w-7;
-}
-
-.form {
-}
-
 .inputWrap {
   @apply mb-6 flex gap-4 md:gap-6 xl:gap-6;
 }

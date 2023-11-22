@@ -31,5 +31,5 @@
 }
 
 .text {
-  @apply line-clamp-3 text-left text-base leading-[21.824px] text-primary md:line-clamp-4 md:text-lg md:leading-[24.552px] xl:line-clamp-3;
+  @apply line-clamp-3 text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px];
 }

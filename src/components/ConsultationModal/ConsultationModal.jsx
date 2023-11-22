@@ -1,14 +1,18 @@
 'use client';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useForm, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import clsx from 'clsx';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
-import styles from './ConsultationModal.module.css';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import clsx from 'clsx';
+import * as yup from 'yup';
+
 import Modal from '../Modal/Modal';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
+import styles from './ConsultationModal.module.css';
 
 const schema = yup
   .object({
@@ -52,15 +56,15 @@ const ConsultationModal = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputWrap}>
           <label className={styles.label}>
             <p className={styles.errorBox}>{errors.username?.message}</p>
             <input
               {...register('username', { required: true })}
+              autoComplete='off'
               className={clsx('input', errors.username && styles.error)}
               placeholder='Ім’я:'
-              autoComplete='off'
               type='text'
               autoFocus
             />
@@ -69,21 +73,21 @@ const ConsultationModal = ({ closeModal }) => {
           <label className={styles.label}>
             <p className={styles.errorBox}>{errors.phone?.message}</p>
             <Controller
-              name='phone'
-              rules={{ required: true }}
-              control={control}
               render={({ field: { ref, ...field } }) => (
                 <InputMask
                   {...field}
+                  autoComplete='off'
                   className={clsx('input', errors.phone && styles.error)}
+                  error={errors.phone}
+                  inputRef={ref}
                   mask='+38\099 999-99-99'
                   maskChar={null}
                   placeholder='Телефон:'
-                  autoComplete='off'
-                  inputRef={ref}
-                  error={errors.phone}
                 />
               )}
+              control={control}
+              name='phone'
+              rules={{ required: true }}
             />
           </label>
         </div>
@@ -92,17 +96,17 @@ const ConsultationModal = ({ closeModal }) => {
           <p className={styles.errorBox}>{errors.message?.message}</p>
           <textarea
             {...register('message', { required: true })}
-            rows={3}
             className={clsx(
               'input',
               styles.input,
               errors.message && styles.error
             )}
             placeholder='Повідомлення:'
+            rows={3}
           />
         </label>
 
-        <button type='submit' className={clsx('btn', styles.submit)}>
+        <button className={clsx('btn', styles.submit)} type='submit'>
           Замовити консультацію
         </button>
       </form>

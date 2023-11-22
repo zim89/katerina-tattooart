@@ -18,16 +18,16 @@ export default function Home({ searchParams: { filter } }) {
       <Contacts />
 
       <ToastContainer
-        position='top-right'
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
-        closeOnClick
+        position='top-right'
         rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
         theme='dark'
+        closeOnClick
+        draggable
+        pauseOnFocusLoss
+        pauseOnHover
       />
     </>
   );
