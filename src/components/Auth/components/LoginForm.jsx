@@ -1,6 +1,5 @@
 'use client';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
 import { Eye, EyeOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -10,6 +9,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/AuthForm.module.css';
+import userAPI from '@/supabase/api/user';
+import { useUserContext } from '@/context/userContext';
 
 const schema = yup
   .object({
@@ -25,12 +26,12 @@ const schema = yup
   .required();
 
 const LoginForm = ({ closeModal }) => {
-  const [isShown, setIsSHown] = useState(false);
+  const [isShown, setIsShown] = useState(false);
+  const { logIn } = useUserContext();
   const router = useRouter();
-  const supabase = createClientComponentClient();
 
   const togglePassword = () => {
-    setIsSHown((prev) => !prev);
+    setIsShown((prev) => !prev);
   };
 
   const {
@@ -45,17 +46,15 @@ const LoginForm = ({ closeModal }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async ({ email, password }) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  const onSubmit = async (data) => {
+    const { error } = await userAPI.login(data);
 
     if (error) {
       toast.error('Невірний email або пароль');
       return;
     }
 
+    logIn();
     toast.success('Ви успішно увійшли!');
     router.refresh();
     closeModal();
@@ -77,11 +76,7 @@ const LoginForm = ({ closeModal }) => {
 
       <div className={styles.inputField}>
         <p className={styles.errorBox}>{errors.password?.message}</p>
-        <span
-          type='button'
-          className={styles.showPassBtn}
-          onClick={togglePassword}
-        >
+        <span className={styles.showPassBtn} onClick={togglePassword}>
           {isShown ? (
             <EyeOff className={styles.showPassIcon} />
           ) : (

@@ -1,7 +1,6 @@
 'use client';
 import { AuthModal } from '@/components/Auth';
 import { Transition } from '@headlessui/react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import {
   clearAllBodyScrollLocks,
   disableBodyScroll,
@@ -12,13 +11,13 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { useUserContext } from '@/context/userContext';
+import userAPI from '@/supabase/api/user';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [user, setUser] = useState(null);
-
-  const supabase = createClientComponentClient();
+  const { currentUser, logOut } = useUserContext();
   const burgerBtn = useRef(null);
 
   useEffect(() => {
@@ -44,36 +43,21 @@ const Burger = () => {
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession();
-
-      if (error) {
-        console.log(error);
-        return;
-      }
-
-      const currentUser = session?.user;
-      if (currentUser) setUser(currentUser);
-    })();
-  }, [supabase, isAuthOpen]);
-
   const toggleAuthModal = () => {
     if (isOpen) toggleBurger();
     setIsAuthOpen((prev) => !prev);
   };
 
   const onLogout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await userAPI.logout();
+
     if (error) {
-      console.log(error);
+      toast.error('Виникла помилка. Спробуйте пізніше!');
       return;
     }
+
+    logOut();
     toggleBurger();
-    setUser(null);
     toast.success('Ви успішно вийшли!');
   };
 
@@ -185,7 +169,7 @@ const Burger = () => {
                 <span className='cursor-pointer text-white'>UA</span>
               </li>
               <li>
-                {!user ? (
+                {!currentUser ? (
                   <button
                     className='transition-colors duration-200 hover:text-white'
                     type='button'

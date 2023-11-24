@@ -1,39 +1,41 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+'use client';
+import { useUserContext } from '@/context/userContext';
 import { LogOut } from 'lucide-react';
-import Avatar from './Avatar';
+import Avatar from '@/modules/Header/components/Avatar';
+import userAPI from '@/supabase/api/user';
+import { toast } from 'react-toastify';
 
-export const dynamic = 'force-dynamic';
+const UserMenu = () => {
+  const { currentUser, logOut } = useUserContext();
 
-const UserMenu = async () => {
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+  const onLogout = async () => {
+    const { error } = await userAPI.logout();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    if (error) {
+      toast.error('Виникла помилка. Спробуйте пізніше!');
+      return;
+    }
+
+    logOut();
+    toast.success('Ви успішно вийшли!');
+  };
 
   return (
     <div className='hidden md:flex md:items-center md:gap-2 xl:gap-10'>
-      <span
-        className='nav-link cursor-pointer xl:text-lg/5.1 xl:text-primary'
-        href='#'
-      >
+      <span className='nav-link cursor-pointer xl:text-lg/5.1 xl:text-primary'>
         UA
       </span>
-      {!user ? (
-        <Avatar />
-      ) : (
-        <form
-          action='/auth/logout'
-          method='post'
-          className='flex items-center justify-center'
+
+      {currentUser && (
+        <button
+          className='transition-colors duration-200 hover:text-red-400'
+          onClick={onLogout}
         >
-          <button className='transition-colors duration-200 hover:text-red-400'>
-            <LogOut strokeWidth={1.5} className='h-5 w-5 xl:h-8 xl:w-8' />
-          </button>
-        </form>
+          <LogOut strokeWidth={1.5} className='h-5 w-5 xl:h-8 xl:w-8' />
+        </button>
       )}
+
+      {!currentUser && <Avatar />}
     </div>
   );
 };
