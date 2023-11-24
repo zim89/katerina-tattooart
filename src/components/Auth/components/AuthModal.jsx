@@ -37,13 +37,13 @@ const AuthModal = ({ closeModal }) => {
       ) : (
         <div className={styles.authText}>
           Вже є акаунт?{' '}
-          <span
+          <button
             type='button'
             onClick={toggleAuth}
             className={styles.authTextBtn}
           >
             Увійти
-          </span>
+          </button>
         </div>
       )}
     </Modal>

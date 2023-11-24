@@ -1,6 +1,5 @@
 'use client';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
 import { Eye, EyeOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -10,7 +9,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from '../styles/AuthForm.module.css';
-// import gravatar from 'gravatar';
+import userAPI from '@/supabase/api/user';
+import { useUserContext } from '@/context/userContext';
 
 const schema = yup
   .object({
@@ -28,7 +28,7 @@ const schema = yup
 const RegisterForm = ({ closeModal }) => {
   const [isShown, setIsShown] = useState(false);
   const router = useRouter();
-  const supabase = createClientComponentClient();
+  const { logIn } = useUserContext();
 
   const togglePassword = () => {
     setIsShown((prev) => !prev);
@@ -46,18 +46,9 @@ const RegisterForm = ({ closeModal }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async ({ email, password }) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          username: email.split('@')[0],
-          // avatar_url: 'https:' + gravatar.url(email),
-        },
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    });
+  const onSubmit = async (data) => {
+    const { email } = data;
+    const { error } = await userAPI.register(data);
 
     if (error) {
       error.message === 'User already registered'
@@ -66,6 +57,7 @@ const RegisterForm = ({ closeModal }) => {
       return;
     }
 
+    logIn();
     toast.success('Дякуємо за реєстрацію. Ваш обліковий запис створено.');
     router.refresh();
     closeModal();
@@ -87,11 +79,7 @@ const RegisterForm = ({ closeModal }) => {
 
       <div className={styles.inputField}>
         <p className={styles.errorBox}>{errors.password?.message}</p>
-        <span
-          type='button'
-          className={styles.showPassBtn}
-          onClick={togglePassword}
-        >
+        <span className={styles.showPassBtn} onClick={togglePassword}>
           {isShown ? (
             <EyeOff className={styles.showPassIcon} />
           ) : (

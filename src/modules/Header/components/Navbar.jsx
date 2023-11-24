@@ -1,8 +1,6 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
-
 import ConsultationModal from '@/components/ConsultationModal/ConsultationModal';
 import useScreenSize from '@/hooks/useScreenSize';
 

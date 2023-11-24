@@ -1,9 +1,8 @@
 'use client';
-import { createContext, useContext, useEffect, useState, useMemo } from 'react';
-
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import userAPI from '@/supabase/api/user';
 
-const UserContext = createContext();
+const UserContext = createContext(null);
 
 export const useUserContext = () => useContext(UserContext);
 
