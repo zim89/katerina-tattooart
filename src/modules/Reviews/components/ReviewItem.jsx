@@ -1,22 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 import clsx from 'clsx';
-import styles from '../styles/item.module.css';
+import Image from 'next/image';
+
 import { formatDate } from '@/helpers';
 
-const colors = [
-  'bg-red-400',
-  'bg-teal-500',
-  'bg-indigo-400',
-  'bg-pink-400',
-  'bg-sky-400',
-];
+import styles from '../styles/ReviewItem.module.css';
 
-const ReviewItem = ({ style, review }) => {
+const ReviewItem = ({ style, review, bgColor }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [avatarUrl, setAvatarUrl] = useState(review.user_avatar ?? null);
+  const [avatarUrl] = useState(review.user_avatar ?? null);
 
   useEffect(() => {
     setIsTruncateText(true);
@@ -31,20 +25,18 @@ const ReviewItem = ({ style, review }) => {
       <div className={styles.avaThumb}>
         {avatarUrl ? (
           <Image
-            src={avatarUrl}
-            fill
             alt='User avatar'
             sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
+            src={avatarUrl}
+            fill
           />
         ) : (
           <span
             className={clsx(
-              `flex h-full w-full items-center justify-center rounded-full ${
-                colors[Math.floor(Math.random() * colors.length)]
-              } text-lg font-medium xl:text-xl`
+              `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
             )}
           >
-            {review.name[0]}
+            {review.name[0].toUpperCase()}
           </span>
         )}
       </div>
@@ -55,7 +47,7 @@ const ReviewItem = ({ style, review }) => {
             {formatDate(review.updated_at)}
           </span>
         </div>
-        <button type='button' onClick={showTruncateText} className='w-full'>
+        <button className='w-full' onClick={showTruncateText} type='button'>
           <div className={clsx(styles.textWrap, !isTruncateText && '!h-auto')}>
             <p
               className={clsx(

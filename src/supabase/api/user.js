@@ -15,7 +15,7 @@ const getFromSession = async () => {
     console.log('Error in getFromSession');
     console.log(error);
   }
-  return serializeUser(session.user);
+  return serializeUser(session?.user);
 };
 
 const userController = { getFromSession };
