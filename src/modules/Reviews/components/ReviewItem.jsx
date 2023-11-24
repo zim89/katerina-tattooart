@@ -8,15 +8,7 @@ import { formatDate } from '@/helpers';
 
 import styles from '../styles/ReviewItem.module.css';
 
-const colors = [
-  'bg-red-400',
-  'bg-teal-500',
-  'bg-indigo-400',
-  'bg-pink-400',
-  'bg-sky-400',
-];
-
-const ReviewItem = ({ style, review }) => {
+const ReviewItem = ({ style, review, bgColor }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
   const [avatarUrl] = useState(review.user_avatar ?? null);
 
@@ -41,9 +33,7 @@ const ReviewItem = ({ style, review }) => {
         ) : (
           <span
             className={clsx(
-              `flex h-full w-full items-center justify-center rounded-full ${
-                colors[Math.floor(Math.random() * colors.length)]
-              } text-lg font-medium xl:text-xl`
+              `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
             )}
           >
             {review.name[0].toUpperCase()}
