@@ -12,7 +12,7 @@ const PicturesSwiper = ({ images = [] }) => {
   return (
     <Swiper
       direction='vertical'
-      className='lg:bg-gallery-lg h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:flex md:bg-gallery-md xl:h-[814px]'
+      className='lg:bg-gallery-lg h-[438px] items-center rounded-xl bg-[#c3c3c3] bg-gallery-sm bg-cover bg-no-repeat md:flex md:bg-gallery-md xl:h-[814px] xl:rounded-[20px]'
     >
       {splitImages.map((images, i) => (
         <SwiperSlide key={i} className='!flex flex-col justify-center'>
@@ -25,12 +25,12 @@ const PicturesSwiper = ({ images = [] }) => {
             effect='creative'
             creativeEffect={{
               prev: {
-                scale: 0.5,
-                translate: [-200, 0, 0],
+                scale: 0.4,
+                translate: [-190, 0, 0],
               },
               next: {
-                scale: 0.5,
-                translate: [200, 0, 0],
+                scale: 0.4,
+                translate: [190, 0, 0],
               },
             }}
             modules={[EffectCreative]}
