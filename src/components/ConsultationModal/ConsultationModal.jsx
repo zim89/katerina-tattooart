@@ -7,7 +7,6 @@ import * as yup from 'yup';
 import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import styles from './ConsultationModal.module.css';
 import Modal from '../Modal/Modal';
 
 const schema = yup
@@ -52,60 +51,77 @@ const ConsultationModal = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.inputWrap}>
-          <label className={styles.label}>
-            <p className={styles.errorBox}>{errors.username?.message}</p>
-            <input
-              {...register('username', { required: true })}
-              className={clsx('input', errors.username && styles.error)}
-              placeholder='Ім’я:'
-              autoComplete='off'
-              type='text'
-              autoFocus
+      <div className='rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-16.5 md:border-1.5 md:px-10 md:pb-8 md:pt-20'>
+        <form onSubmit={handleSubmit(onSubmit)} className=''>
+          <div className='mb-6 flex gap-4 md:gap-6 xl:gap-6'>
+            <label className='relative block grow'>
+              <p className='absolute -top-4 left-0 text-xs text-[#A30E0E] md:-top-5 md:text-sm'>
+                {errors.username?.message}
+              </p>
+              <input
+                {...register('username', { required: true })}
+                className={clsx(
+                  'input',
+                  errors.username && '!border-[#A30E0E]'
+                )}
+                placeholder='Ім’я:'
+                autoComplete='off'
+                type='text'
+                autoFocus
+              />
+            </label>
+
+            <label className='relative block grow'>
+              <p className='absolute -top-4 left-0 text-xs text-[#A30E0E] md:-top-5 md:text-sm'>
+                {errors.phone?.message}
+              </p>
+              <Controller
+                name='phone'
+                rules={{ required: true }}
+                control={control}
+                render={({ field: { ref, ...field } }) => (
+                  <InputMask
+                    {...field}
+                    className={clsx(
+                      'input',
+                      errors.phone && '!border-[#A30E0E]'
+                    )}
+                    mask='+38\099 999-99-99'
+                    maskChar={null}
+                    placeholder='Телефон:'
+                    autoComplete='off'
+                    inputRef={ref}
+                    error={errors.phone}
+                  />
+                )}
+              />
+            </label>
+          </div>
+
+          <label className='relative block grow'>
+            <p className='absolute -top-4 left-0 text-xs text-[#A30E0E] md:-top-5 md:text-sm'>
+              {errors.message?.message}
+            </p>
+            <textarea
+              {...register('message', { required: true })}
+              rows={3}
+              className={clsx('input', errors.message && '!border-[#A30E0E]')}
+              placeholder='Повідомлення:'
             />
           </label>
 
-          <label className={styles.label}>
-            <p className={styles.errorBox}>{errors.phone?.message}</p>
-            <Controller
-              name='phone'
-              rules={{ required: true }}
-              control={control}
-              render={({ field: { ref, ...field } }) => (
-                <InputMask
-                  {...field}
-                  className={clsx('input', errors.phone && styles.error)}
-                  mask='+38\099 999-99-99'
-                  maskChar={null}
-                  placeholder='Телефон:'
-                  autoComplete='off'
-                  inputRef={ref}
-                  error={errors.phone}
-                />
-              )}
-            />
-          </label>
-        </div>
-
-        <label className={styles.label}>
-          <p className={styles.errorBox}>{errors.message?.message}</p>
-          <textarea
-            {...register('message', { required: true })}
-            rows={3}
+          <button
+            type='submit'
             className={clsx(
-              'input',
-              styles.input,
-              errors.message && styles.error
+              'btn',
+              'btnSubmitStyled',
+              'mx-auto mt-9 block rounded-xl md:mt-8 md:p-4 md:!text-lg'
             )}
-            placeholder='Повідомлення:'
-          />
-        </label>
-
-        <button type='submit' className={clsx('btn', styles.submit)}>
-          Замовити консультацію
-        </button>
-      </form>
+          >
+            Замовити консультацію
+          </button>
+        </form>
+      </div>
     </Modal>
   );
 };

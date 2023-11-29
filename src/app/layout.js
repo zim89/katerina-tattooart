@@ -1,4 +1,4 @@
-import { Raleway, The_Nautigal, Inter } from 'next/font/google';
+import { Inter, Raleway, The_Nautigal } from 'next/font/google';
 
 import Header from '@/modules/Header';
 import Footer from '@/modules/Footer';
@@ -39,9 +39,7 @@ export default function RootLayout({ children }) {
       <body>
         <UserContextProvider>
           <Header />
-          <main className='mt-[3.9375rem] md:mt-[4.4375rem] xl:mt-[6.25rem]'>
-            {children}
-          </main>
+          <main className='mt-[68px] xl:mt-24'>{children}</main>
           <Footer />
         </UserContextProvider>
       </body>

@@ -2,15 +2,20 @@ import Logo from './components/Logo';
 import Navbar from './components/Navbar';
 import UserMenu from './components/UserMenu';
 import Burger from './components/Burger';
+import LangSelect from '@/modules/Header/components/LangSelect';
 
 const Header = () => {
   return (
-    <header className='fixed left-0 right-0 top-0 z-10 flex h-16 items-center border-b-1 border-b-white/60 bg-secondary xl:h-24'>
-      <div className='container'>
-        <div className='flex items-center justify-between'>
+    <header className='fixed top-0 z-10 w-full  bg-secondary '>
+      <div className='container border-b-1 border-b-[#E0E0E0] xl:border-none'>
+        <div className='flex h-[68px] w-full items-center justify-between xl:h-24 xl:border-b-1 xl:border-b-[#E0E0E0]'>
           <Logo />
           <Navbar />
-          <UserMenu />
+          <div className='hidden md:flex md:items-center md:gap-2 xl:gap-10'>
+            <LangSelect />
+            <UserMenu />
+          </div>
+
           <Burger />
         </div>
       </div>
