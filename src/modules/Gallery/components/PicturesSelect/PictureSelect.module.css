@@ -6,8 +6,8 @@
   @apply scale-y-100;
 }
 
-.dropdown > [type='checkbox']:checked + label {
-  @apply rounded-b-none;
+.dropdown > input[type='checkbox']:checked ~ ul :global(.nav-link) {
+  @apply opacity-100;
 }
 
 .dropdown > [type='checkbox']:checked + label svg {
