@@ -36,10 +36,10 @@ export default function RootLayout({ children }) {
       lang='en'
       className={`${raleway.variable} ${nautigal.variable} ${inter.variable}`}
     >
-      <body>
+      <body className='pt-[62px] md:pt-[68px] xl:pt-[95px]'>
         <UserContextProvider>
           <Header />
-          <main className='mt-[68px] xl:mt-24'>{children}</main>
+          <main className=''>{children}</main>
           <Footer />
         </UserContextProvider>
       </body>

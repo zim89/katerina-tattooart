@@ -1,15 +1,16 @@
 'use client';
 import React, { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
+import clsx from 'clsx';
 
 const lang = [{ name: 'UA' }, { name: 'PL' }, { name: 'EN' }];
 
-const LangSelect = () => {
+const LangSelect = ({ row }) => {
   const [selected, setSelected] = useState(lang[0]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
-      <div className='relative'>
+      <div className='relative flex items-center'>
         <Listbox.Button className='relative w-[22px] cursor-pointer text-[14px] transition-colors hover:text-white xl:text-[18px]'>
           {selected.name}
         </Listbox.Button>
@@ -19,7 +20,13 @@ const LangSelect = () => {
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <Listbox.Options className='absolute flex w-full flex-col gap-1  pl-[1px] text-[14px] xl:mt-[3px] xl:gap-2 xl:text-[18px]'>
+          <Listbox.Options
+            className={
+              row
+                ? 'absolute -right-[51px] top-0 flex flex-row gap-2 text-[14px]'
+                : 'absolute flex w-full flex-col gap-1  pl-[1px] text-[14px] xl:mt-[3px] xl:gap-2 xl:text-[18px]'
+            }
+          >
             {lang
               .filter(({ name }) => name !== selected.name)
               .map((lang, idx) => (

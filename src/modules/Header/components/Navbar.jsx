@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
+import ConsultationModal from '@/components/ConsultationModal';
 import { Link } from 'react-scroll';
-import ConsultationModal from '@/components/ConsultationModal/ConsultationModal';
 import useScreenSize from '@/hooks/useScreenSize';
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='galery'
+              to='gallery'
               spy={true}
               smooth={true}
               offset={offset}

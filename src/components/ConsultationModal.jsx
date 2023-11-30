@@ -1,13 +1,15 @@
 'use client';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import InputMask from 'react-input-mask';
 import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import Modal from '../Modal/Modal';
+import Modal from './Modal';
+import LoadingOverlay from './LoadingOverlay';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 const schema = yup
   .object({
@@ -21,6 +23,7 @@ const schema = yup
   .required();
 
 const ConsultationModal = ({ closeModal }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const supabase = createClientComponentClient();
 
   const {
@@ -38,7 +41,9 @@ const ConsultationModal = ({ closeModal }) => {
   });
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { error } = await supabase.from('consultation').insert(data);
+    setIsLoading(false);
     if (error) {
       toast.error('Виникла помилка. Спробуйте пізніше');
       return;
@@ -51,7 +56,7 @@ const ConsultationModal = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal}>
-      <div className='rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-16.5 md:border-1.5 md:px-10 md:pb-8 md:pt-20'>
+      <div className='relative overflow-hidden rounded-xl border border-primary bg-dark-slate px-4 pb-9 pt-16.5 md:border-1.5 md:px-10 md:pb-8 md:pt-20'>
         <form onSubmit={handleSubmit(onSubmit)} className=''>
           <div className='mb-6 flex gap-4 md:gap-6 xl:gap-6'>
             <label className='relative block grow'>
@@ -121,6 +126,8 @@ const ConsultationModal = ({ closeModal }) => {
             Замовити консультацію
           </button>
         </form>
+
+        {isLoading && <LoadingOverlay />}
       </div>
     </Modal>
   );

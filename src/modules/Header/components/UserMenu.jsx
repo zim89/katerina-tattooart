@@ -2,7 +2,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
-
 import Avatar from '@/modules/Header/components/Avatar';
 import { useUserContext } from '@/context/userContext';
 import userAPI from '@/supabase/api/user';

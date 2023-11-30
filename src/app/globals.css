@@ -35,7 +35,7 @@
   }
 
   .btn {
-    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white/14 p-2.5 text-center text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:border-1 xl:p-4 xl:text-lg/5.1;
+    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white/14 p-2.5 text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:border-1 xl:p-4 xl:text-lg/5.1;
   }
 
   .btnSubmitStyled {

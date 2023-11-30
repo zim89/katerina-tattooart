@@ -24,7 +24,7 @@ const schema = yup
   })
   .required();
 
-const RegisterForm = ({ closeModal, toggleAuth }) => {
+const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
   const [isShown, setIsShown] = useState(false);
   const router = useRouter();
   const { logIn } = useUserContext();
@@ -46,8 +46,10 @@ const RegisterForm = ({ closeModal, toggleAuth }) => {
   });
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { email } = data;
     const { error } = await userAPI.register(data);
+    setIsLoading(false);
 
     if (error) {
       error.message === 'User already registered'
@@ -71,7 +73,8 @@ const RegisterForm = ({ closeModal, toggleAuth }) => {
         <input
           {...register('email', { required: true })}
           className={clsx('input', errors.email && '!border-[#A30E0E]')}
-          placeholder='Eлектронна пошта'
+          placeholder='Електрона пошта'
+          autoComplete='off'
           type='text'
           autoFocus
         />
