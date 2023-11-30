@@ -1,7 +1,6 @@
 'use client';
 import React, { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import clsx from 'clsx';
 
 const lang = [{ name: 'UA' }, { name: 'PL' }, { name: 'EN' }];
 

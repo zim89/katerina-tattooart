@@ -6,7 +6,6 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock';
-import { LogOut, UserCircle2 } from 'lucide-react';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { toast } from 'react-toastify';
