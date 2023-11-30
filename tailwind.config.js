@@ -26,6 +26,7 @@ module.exports = {
         'dark-slate': '#2c3134',
         'brand-red': '#ff3b30',
         'brand-blue': '#4355fa',
+        'brand-error': '#A30E0E',
       },
       borderWidth: {
         0.5: '.25px',

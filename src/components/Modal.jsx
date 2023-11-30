@@ -18,7 +18,7 @@ const Modal = ({ children, closeModal }) => {
           <div className='fixed inset-0 bg-black/70' aria-hidden='true' />
         </Transition.Child>
 
-        <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+        <div className='fixed inset-0 flex items-center justify-center'>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -28,10 +28,10 @@ const Modal = ({ children, closeModal }) => {
             leaveFrom='opacity-100 scale-100'
             leaveTo='opacity-0 scale-95'
           >
-            <Dialog.Panel className='relative mx-4 transform rounded-xl border border-primary bg-dark-slate px-4 pb-5 pt-15 transition-all md:mx-auto  md:border-[1.5px] md:px-6 md:pb-10 xl:px-6'>
+            <Dialog.Panel className='relative mx-4 w-full transform md:mx-auto md:w-[651px] xl:w-[646px]'>
               <button
                 type='button'
-                className='absolute right-2.5 top-2.5 h-8 w-8 md:right-4 md:top-4 md:h-6 md:w-6'
+                className='absolute right-2.5 top-2.5 z-50 h-8 w-8 text-primary transition-all hover:text-white md:right-4 md:top-4 md:h-6 md:w-6'
                 onClick={closeModal}
               >
                 <X />

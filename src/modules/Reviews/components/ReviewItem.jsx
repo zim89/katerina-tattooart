@@ -32,9 +32,10 @@ const ReviewItem = ({ style, review, bgColor }) => {
           />
         ) : (
           <span
-            className={clsx(
-              `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
-            )}
+            // className={clsx(
+            //   `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
+            // )}
+            className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-lg font-medium xl:text-xl'
           >
             {review.name[0].toUpperCase()}
           </span>

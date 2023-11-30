@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
-import styles from '../styles/AuthForm.module.css';
 import userAPI from '@/supabase/api/user';
 import { useUserContext } from '@/context/userContext';
 
@@ -25,7 +24,7 @@ const schema = yup
   })
   .required();
 
-const LoginForm = ({ closeModal }) => {
+const LoginForm = ({ closeModal, toggleAuth, setIsLoading }) => {
   const [isShown, setIsShown] = useState(false);
   const { logIn } = useUserContext();
   const router = useRouter();
@@ -47,7 +46,9 @@ const LoginForm = ({ closeModal }) => {
   });
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { error } = await userAPI.login(data);
+    setIsLoading(false);
 
     if (error) {
       toast.error('Невірний email або пароль');
@@ -61,38 +62,55 @@ const LoginForm = ({ closeModal }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <div className={styles.inputField}>
-        <p className={styles.errorBox}>{errors.email?.message}</p>
+    <form onSubmit={handleSubmit(onSubmit)} className='text-center'>
+      <div className='relative mb-4'>
+        <p className='absolute -top-4 left-0 text-xs text-[#A30E0E]'>
+          {errors.email?.message}
+        </p>
         <input
           {...register('email', { required: true })}
-          className={clsx('input', styles.input, errors.email && styles.error)}
-          placeholder='Eлектронна пошта'
+          className={clsx('input', errors.email && '!border-[#A30E0E]')}
+          placeholder='Електрона пошта'
           autoComplete='off'
-          type='email'
+          type='text'
           autoFocus
         />
       </div>
 
-      <div className={styles.inputField}>
-        <p className={styles.errorBox}>{errors.password?.message}</p>
-        <span className={styles.showPassBtn} onClick={togglePassword}>
+      <div className='relative mb-4'>
+        <p className='absolute -top-4 left-0 text-xs text-[#A30E0E]'>
+          {errors.password?.message}
+        </p>
+        <span
+          className='absolute right-3 top-1/2 flex -translate-y-1/2  items-center justify-center'
+          onClick={togglePassword}
+        >
           {isShown ? (
-            <EyeOff className={styles.showPassIcon} />
+            <EyeOff className='h-6 w-6 stroke-1' />
           ) : (
-            <Eye className={styles.showPassIcon} />
+            <Eye className='h-6 w-6 stroke-1' />
           )}
         </span>
         <input
           {...register('password', { required: true })}
-          className={clsx('input', errors.password && styles.error)}
+          className={clsx('input', errors.password && '!border-[#A30E0E]')}
           placeholder='Пароль...'
           autoComplete='off'
           type={isShown ? 'text' : 'password'}
         />
       </div>
 
-      <button type='submit' className={clsx('btn', styles.submit)}>
+      <div className='mb-6 flex justify-between text-[13px] md:text-base'>
+        <span>Немає акаунту?</span>
+        <span
+          className='text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
+          onClick={toggleAuth}
+        >
+          Зареєструватися
+        </span>
+      </div>
+
+      <button type='submit' className='btnSubmit'>
         Увійти
       </button>
     </form>

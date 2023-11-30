@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --toastify-color-success: #16a34a !important;
+    --toastify-color-success: #52ffea !important;
+    --toastify-color-error: #a30e0e !important;
   }
 
   body {
@@ -18,7 +19,7 @@
   }
 
   .nav-link {
-    @apply relative cursor-pointer whitespace-nowrap font-normal leading-[1.1875] text-primary transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-2xl/7;
+    @apply relative cursor-pointer whitespace-nowrap text-base text-primary transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 xl:text-2xl;
   }
 
   .nav-link-active {
@@ -34,11 +35,15 @@
   }
 
   .btn {
-    @apply whitespace-nowrap rounded-lg border-0.5 border-white bg-white/14 p-2.5 text-center text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:border-1 xl:p-4 xl:text-lg/5.1;
+    @apply whitespace-nowrap rounded-lg border-[0.25px] border-white bg-white/14 p-2.5 text-sm/4 text-primary transition-colors duration-200 ease-linear hover:border-primary hover:bg-primary hover:text-secondary md:p-2 md:text-white md:hover:border-white md:hover:bg-white xl:rounded-2xl xl:border-1 xl:p-4 xl:text-lg/5.1;
+  }
+
+  .btnSubmitStyled {
+    @apply border-[0.375px] p-3 text-[13.5px] md:p-4 md:text-[18px];
   }
 
   .btnSubmit {
-    @apply mx-auto block rounded-lg border-0.5 border-transparent bg-transparent p-2.5 text-white transition-colors hover:border-primary hover:bg-primary hover:text-secondary focus:border-primary focus:bg-primary focus:text-secondary md:text-xl xl:text-2xl;
+    @apply relative cursor-pointer whitespace-nowrap text-base text-primary transition-colors after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100 md:text-xl xl:text-2xl;
   }
 
   .input {

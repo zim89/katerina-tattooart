@@ -1,4 +1,3 @@
-// import supabase from '..';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'react-toastify';
 
@@ -67,6 +66,6 @@ const create = async (user, formData) => {
   return data;
 };
 
-const reviewsController = { findAll, findOne, update, create };
+const reviewsAPI = { findAll, findOne, update, create };
 
-export default reviewsController;
+export default reviewsAPI;
