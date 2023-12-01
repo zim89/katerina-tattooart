@@ -26,10 +26,11 @@
   @apply font-inter text-base font-normal leading-normal text-gray xl:text-lg;
 }
 
-.textWrap {
-  @apply h-[74px] border-b border-b-primary pb-2 md:h-[107px] xl:h-[90px] xl:pb-4;
-}
 
 .text {
-  @apply line-clamp-3 text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px];
+  @apply text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px];
+}
+
+.truncate {
+  @apply line-clamp-3;
 }
