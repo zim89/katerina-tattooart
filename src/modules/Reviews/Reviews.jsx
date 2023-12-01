@@ -1,17 +1,23 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
+import useScreenSize from '@/hooks/useScreenSize';
+import { ChevronDoubleRightIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-
+import { toast } from 'react-toastify';
+import { useUserContext } from '@/context/userContext';
+import reviewsAPI from '@/supabase/api/review';
 import ReviewItem from './components/ReviewItem';
 import ReviewModal from './components/ReviewModal';
-import SwiperReviews from './components/SwiperReviews';
-
-import reviewsAPI from '@/supabase/api/review';
-import { useUserContext } from '@/context/userContext';
-import useScreenSize from '@/hooks/useScreenSize';
+import 'react-toastify/dist/ReactToastify.min.css';
 import styles from './styles/Reviews.module.css';
+
+const colors = [
+  'bg-red-400',
+  'bg-teal-500',
+  'bg-indigo-400',
+  'bg-pink-400',
+  'bg-sky-400',
+];
 
 const Reviews = () => {
   const [total, setTotal] = useState(0);
@@ -19,9 +25,19 @@ const Reviews = () => {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const colorIndex = useRef(0);
 
   const screen = useScreenSize();
   const { currentUser } = useUserContext();
+
+  const setColor = () => {
+    const bgColor = colors[colorIndex.current];
+
+    colorIndex.current === colors.length - 1
+      ? (colorIndex.current = 0)
+      : colorIndex.current++;
+    return bgColor;
+  };
 
   useLayoutEffect(() => {
     (async () => {
@@ -52,7 +68,16 @@ const Reviews = () => {
     setIsOpen(false);
   };
 
+  const handleNext = () => {
+    if (page === total) {
+      setPage(1);
+      return;
+    }
+    setPage(page + 1);
+  };
+
   const handleLoadMore = () => {
+    colorIndex.current = 0;
     setPage(page + 1);
   };
 
@@ -64,35 +89,34 @@ const Reviews = () => {
           <div className={styles.wrap}>
             <h2 className={clsx('caption', styles.title)}>Відгуки</h2>
 
-            <div className='mb-2 md:hidden'>
-              <SwiperReviews reviews={reviews} />
-            </div>
-
-            {/* {reviews.length > 0 && (
+            {reviews.length > 0 && (
               <ReviewItem
                 review={reviews[page - 1]}
                 style={styles.reviewItem}
                 bgColor={colors[Math.floor(Math.random() * colors.length)]}
               />
-            )} */}
-            <div className='hidden md:block'>
-              {reviews.length > 0 && (
-                <div className={styles.list}>
-                  {reviews.slice(0, limit * page).map((item) => (
-                    <ReviewItem key={item.id} review={item} />
-                  ))}
-                </div>
-              )}
-            </div>
+            )}
+
+            {reviews.length > 0 && (
+              <div className={styles.list}>
+                {reviews.slice(0, limit * page).map((item) => (
+                  <ReviewItem
+                    key={item.id}
+                    review={item}
+                    bgColor={setColor()}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Next BUTTON */}
-            {/* <button
-              className='ml-auto block md:hidden'
+            <button
+              className={styles.nextBtn}
               onClick={handleNext}
               type='button'
             >
-              <ChevronDoubleRightIcon className='h-8 w-10 text-white opacity-[0.14] transition-opacity duration-200 ease-linear hover:opacity-100' />
-            </button> */}
+              <ChevronDoubleRightIcon className={styles.nextBtnIcon} />
+            </button>
 
             {/* Load More BUTTON */}
             {page * limit < total && (
@@ -107,7 +131,7 @@ const Reviews = () => {
 
             {/* Create review BUTTON */}
             <button
-              className={clsx(styles.btn, 'mx-auto md:ml-0 md:mr-auto')}
+              className={clsx(styles.btn, styles.btnAddReview)}
               onClick={openModal}
               type='button'
             >
