@@ -28,13 +28,13 @@
   @apply mb-2 hidden md:mb-4 md:grid md:grid-cols-2 md:gap-x-[21px] md:gap-y-10 xl:mb-6 xl:grid-cols-3 xl:gap-x-10 xl:gap-y-16;
 }
 
-/* .nextBtn {
+.nextBtn {
   @apply ml-auto block md:hidden;
-} */
+}
 
-/* .nextBtnIcon {
+.nextBtnIcon {
   @apply h-8 w-10 text-white opacity-[0.14] transition-opacity duration-200 ease-linear hover:opacity-100;
-} */
+}
 
 .btn {
   @apply relative block font-raleway text-lg font-normal leading-normal text-primary transition-colors duration-200 ease-linear after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:scale-0 after:bg-white after:transition-transform after:duration-200 after:ease-linear hover:text-white hover:after:scale-100;
@@ -44,10 +44,6 @@
   @apply hidden md:ml-auto md:mr-0 md:block;
 }
 
-/* .btnAddReview {
+.btnAddReview {
   @apply mx-auto md:ml-0 md:mr-auto;
-} */
-
-.swiperNextBtn {
-  @apply absolute left-0 text-red-500;
 }
