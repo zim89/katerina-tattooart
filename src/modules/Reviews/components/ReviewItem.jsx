@@ -1,24 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import clsx from 'clsx';
 
 import { formatDate } from '@/helpers';
-import styles from '../styles/ReviewItem.module.css';
 
 const ReviewItem = ({ review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [height, setHeight] = useState(68);
-
-  // useEffect(() => {
-  // setIsTruncateText(true);
-  // setHeight(68);
-  // }, [review]);
+  const [height, setHeight] = useState(74);
 
   const showTruncateText = () => {
     if (review.review.length < 90) return;
 
-    setHeight(height === 'auto' ? 68 : 'auto');
+    setHeight(height === 'auto' ? 74 : 'auto');
     setIsTruncateText((prev) => !prev);
   };
 
@@ -42,18 +36,15 @@ const ReviewItem = ({ review }) => {
 
         <button
           className='w-full border-b border-b-primary pb-2'
-          aria-expanded={height !== 68}
-          aria-controls='review-text'
           onClick={showTruncateText}
           type='button'
         >
           <AnimateHeight
-            id='review-text'
             duration={500}
             height={height}
             className={clsx(
-              isTruncateText ? styles.truncate : null,
-              styles.text
+              isTruncateText ? 'line-clamp-3' : null,
+              'text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px]'
             )}
           >
             {review.review}

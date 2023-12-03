@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import clsx from 'clsx';
@@ -11,7 +11,6 @@ import SwiperReviews from './components/SwiperReviews';
 import reviewsAPI from '@/supabase/api/review';
 import { useUserContext } from '@/context/userContext';
 import useScreenSize from '@/hooks/useScreenSize';
-import styles from './styles/Reviews.module.css';
 
 const Reviews = () => {
   const [total, setTotal] = useState(0);
@@ -58,62 +57,51 @@ const Reviews = () => {
 
   return (
     <>
-      <div className={styles.reviews} id='reviews'>
-        <div className={styles.divider}></div>
+      <div
+        className='relative mb-10 pb-10 md:mb-[52px] md:pb-7.5 xl:mb-20 xl:pb-20'
+        id='reviews'
+      >
+        <div className='absolute bottom-0 left-0 h-[0.5px] w-full bg-gradient-to-r from-[#E7654E]/0 via-primary to-[#E7654E]/0'></div>
         <div className='container'>
-          <div className={styles.wrap}>
-            <h2 className={clsx('caption', styles.title)}>Відгуки</h2>
+          <h2
+            className={clsx('caption', 'mb-[71px] text-left md:mb-8 xl:mb-20')}
+          >
+            Відгуки
+          </h2>
 
-            <div className='mb-2 md:hidden'>
-              <SwiperReviews reviews={reviews} />
-            </div>
+          <div className='md:hidden'>
+            <SwiperReviews reviews={reviews} />
+          </div>
 
-            {/* {reviews.length > 0 && (
-              <ReviewItem
-                review={reviews[page - 1]}
-                style={styles.reviewItem}
-                bgColor={colors[Math.floor(Math.random() * colors.length)]}
-              />
-            )} */}
-            <div className='hidden md:block'>
-              {reviews.length > 0 && (
-                <div className={styles.list}>
-                  {reviews.slice(0, limit * page).map((item) => (
-                    <ReviewItem key={item.id} review={item} />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Next BUTTON */}
-            {/* <button
-              className='ml-auto block md:hidden'
-              onClick={handleNext}
-              type='button'
-            >
-              <ChevronDoubleRightIcon className='h-8 w-10 text-white opacity-[0.14] transition-opacity duration-200 ease-linear hover:opacity-100' />
-            </button> */}
+          <div className='hidden md:block'>
+            {reviews.length > 0 && (
+              <div className='mb-4 grid grid-cols-2 gap-x-[21px] gap-y-10 xl:mb-6 xl:grid-cols-3 xl:gap-x-10 xl:gap-y-16'>
+                {reviews.slice(0, limit * page).map((item) => (
+                  <ReviewItem key={item.id} review={item} />
+                ))}
+              </div>
+            )}
 
             {/* Load More BUTTON */}
             {page * limit < total && (
               <button
-                className={clsx(styles.btn, styles.btnLoadMore)}
+                className='relative ml-auto block text-lg transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-full'
                 onClick={handleLoadMore}
                 type='button'
               >
                 Показати ще
               </button>
             )}
-
-            {/* Create review BUTTON */}
-            <button
-              className={clsx(styles.btn, 'mx-auto md:ml-0 md:mr-auto')}
-              onClick={openModal}
-              type='button'
-            >
-              Додати відгук
-            </button>
           </div>
+
+          {/* Create review BUTTON */}
+          <button
+            className='relative mx-auto block text-base transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-full md:ml-14 md:mr-auto md:text-[20px] xl:ml-16 xl:text-2xl'
+            onClick={openModal}
+            type='button'
+          >
+            Додати відгук
+          </button>
         </div>
       </div>
 

@@ -25,8 +25,6 @@ const findOne = async (user_id) => {
     .single();
 
   if (error) {
-    console.log('Error in findOne');
-    console.log(error);
     return;
   }
 
@@ -66,6 +64,20 @@ const create = async (user, formData) => {
   return data;
 };
 
-const reviewsAPI = { findAll, findOne, update, create };
+const remove = async (id, user_id) => {
+  const { error } = await supabase
+    .from('reviews')
+    .delete()
+    .match({ id, user_id });
+
+  if (error) {
+    toast.error('Виникла помилка. Спробуйте пізніше');
+    return;
+  }
+
+  toast.success('Ваш відгук успішно видалено!');
+};
+
+const reviewsAPI = { findAll, findOne, update, create, remove };
 
 export default reviewsAPI;
