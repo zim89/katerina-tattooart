@@ -78,6 +78,12 @@ const remove = async (id, user_id) => {
   toast.success('Ваш відгук успішно видалено!');
 };
 
-const reviewsAPI = { findAll, findOne, update, create, remove };
+const reviewsAPI = {
+  findAll,
+  findOne,
+  update,
+  create,
+  remove,
+};
 
 export default reviewsAPI;
