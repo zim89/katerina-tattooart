@@ -1,23 +1,20 @@
 'use client';
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
+import AnimateHeight from 'react-animate-height';
 import clsx from 'clsx';
 import Image from 'next/image';
 
 import { formatDate } from '@/helpers';
 
-import styles from '../styles/ReviewItem.module.css';
-
 const ReviewItem = ({ style, review, bgColor }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [avatarUrl] = useState(review.user_avatar ?? null);
-
-  useEffect(() => {
-    setIsTruncateText(true);
-  }, [review]);
+  const [height, setHeight] = useState(74);
 
   const showTruncateText = () => {
-    setIsTruncateText(!isTruncateText);
+    if (review.review.length < 90) return;
+
+    setHeight(height === 'auto' ? 74 : 'auto');
+    setIsTruncateText((prev) => !prev);
   };
 
   return (
@@ -48,17 +45,22 @@ const ReviewItem = ({ style, review, bgColor }) => {
             {formatDate(review.updated_at)}
           </span>
         </div>
-        <button className='w-full' onClick={showTruncateText} type='button'>
-          <div className={clsx(styles.textWrap, !isTruncateText && '!h-auto')}>
-            <p
-              className={clsx(
-                styles.text,
-                !isTruncateText && '!line-clamp-none'
-              )}
-            >
-              {review.review}
-            </p>
-          </div>
+
+        <button
+          className='w-full border-b border-b-primary pb-2'
+          onClick={showTruncateText}
+          type='button'
+        >
+          <AnimateHeight
+            duration={500}
+            height={height}
+            className={clsx(
+              isTruncateText ? 'line-clamp-3' : null,
+              'text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px]'
+            )}
+          >
+            {review.review}
+          </AnimateHeight>
         </button>
       </div>
     </div>

@@ -106,7 +106,7 @@ const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
       <div className='mb-6 flex justify-between text-[13px] md:text-base'>
         <span>Вже є акаунт?</span>
         <span
-          className='text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
+          className='cursor-pointer text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
           onClick={toggleAuth}
         >
           Увійти
