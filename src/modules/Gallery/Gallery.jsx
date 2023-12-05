@@ -15,8 +15,12 @@ const Gallery = async ({ filter }) => {
 
   // TODO: Do something on error...
   const { data: images } = await query;
-  const { data: types } = await supabase.from('gallery-types').select();
 
+  const { data: types } = await supabase
+    .from('gallery_types')
+    .select('gallery-types (id, value, label)');
+
+  types.forEach((entry, idx) => (types[idx] = entry['gallery-types']));
   types.unshift(DEFAULT_OPTION);
 
   return (
