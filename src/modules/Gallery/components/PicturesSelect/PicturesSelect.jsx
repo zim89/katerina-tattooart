@@ -8,6 +8,7 @@ import styles from './PictureSelect.module.css';
 
 const PicturesSelect = ({ className, options = [], defaultId = 0 }) => {
   const dropdownId = useId();
+  const selected = options.findIndex(({ id }) => id == defaultId);
 
   return (
     <div className={clsx(className, styles.dropdown)}>
@@ -23,7 +24,7 @@ const PicturesSelect = ({ className, options = [], defaultId = 0 }) => {
         htmlFor={dropdownId}
         data-toggle='dropdown'
       >
-        {options[defaultId].label || 'Виберіть...'}
+        {options[selected].label || 'Виберіть...'}
         <ChevronDownIcon className='absolute right-2.5 top-2 h-6 w-6 transition-transform md:right-2.1 md:top-2.1 md:h-[1.0625rem] md:w-[1.0625rem] xl:right-4.5 xl:top-3.75 xl:h-[2.125rem] xl:w-[2.125rem]' />
       </label>
       <ul className='absolute top-[calc(100%-16px)] z-[2] w-full origin-top scale-y-0 space-y-4 rounded-b-lg bg-[#303538] px-2.5 pb-4 pt-5.5 leading-[1.1875rem] transition-transform duration-300 md:space-y-3 md:px-2.1 md:pb-2.1 md:pt-[23px] md:text-lg/5.1 xl:space-y-4.5 xl:rounded-2xl xl:rounded-t-none xl:px-4.5 xl:pb-3 xl:pt-[19px] xl:text-2xl/7'>
