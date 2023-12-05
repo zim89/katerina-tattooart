@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
 
@@ -31,7 +31,7 @@ const Modal = ({ children, closeModal }) => {
             <Dialog.Panel className='relative mx-4 w-full transform md:mx-auto md:w-[651px] xl:w-[646px]'>
               <button
                 type='button'
-                className='absolute right-2.5 top-2.5 h-8 w-8 text-primary transition-all hover:text-white md:right-4 md:top-4 md:h-6 md:w-6'
+                className='absolute right-2.5 top-2.5 z-50 h-8 w-8 text-primary transition-all hover:text-white md:right-4 md:top-4 md:h-6 md:w-6'
                 onClick={closeModal}
               >
                 <X />

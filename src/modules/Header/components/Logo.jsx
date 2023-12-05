@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import logo from '/public/icons/logo.svg';
+import logoSrc from '/public/icons/logo.svg';
 
 const Logo = () => {
   return (
     <Image
-      src={logo}
+      src={logoSrc}
       alt='Катерина Татту Лого'
-      className='xl:h-[67px] xl:w-[57px]'
+      className='h-[34px] w-[29px] xl:relative xl:left-[-13px] xl:h-[57px] xl:w-[67px]'
     />
   );
 };

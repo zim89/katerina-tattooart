@@ -24,7 +24,7 @@ const schema = yup
   })
   .required();
 
-const RegisterForm = ({ closeModal, toggleAuth }) => {
+const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
   const [isShown, setIsShown] = useState(false);
   const router = useRouter();
   const { logIn } = useUserContext();
@@ -46,8 +46,10 @@ const RegisterForm = ({ closeModal, toggleAuth }) => {
   });
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { email } = data;
     const { error } = await userAPI.register(data);
+    setIsLoading(false);
 
     if (error) {
       error.message === 'User already registered'
@@ -71,7 +73,8 @@ const RegisterForm = ({ closeModal, toggleAuth }) => {
         <input
           {...register('email', { required: true })}
           className={clsx('input', errors.email && '!border-[#A30E0E]')}
-          placeholder='Eлектронна пошта'
+          placeholder='Електрона пошта'
+          autoComplete='off'
           type='text'
           autoFocus
         />
@@ -103,7 +106,7 @@ const RegisterForm = ({ closeModal, toggleAuth }) => {
       <div className='mb-6 flex justify-between text-[13px] md:text-base'>
         <span>Вже є акаунт?</span>
         <span
-          className='text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
+          className='cursor-pointer text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
           onClick={toggleAuth}
         >
           Увійти

@@ -24,7 +24,7 @@ const schema = yup
   })
   .required();
 
-const LoginForm = ({ closeModal, toggleAuth }) => {
+const LoginForm = ({ closeModal, toggleAuth, setIsLoading }) => {
   const [isShown, setIsShown] = useState(false);
   const { logIn } = useUserContext();
   const router = useRouter();
@@ -46,7 +46,9 @@ const LoginForm = ({ closeModal, toggleAuth }) => {
   });
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { error } = await userAPI.login(data);
+    setIsLoading(false);
 
     if (error) {
       toast.error('Невірний email або пароль');
@@ -68,7 +70,8 @@ const LoginForm = ({ closeModal, toggleAuth }) => {
         <input
           {...register('email', { required: true })}
           className={clsx('input', errors.email && '!border-[#A30E0E]')}
-          placeholder='Eлектронна пошта'
+          placeholder='Електрона пошта'
+          autoComplete='off'
           type='text'
           autoFocus
         />
@@ -100,7 +103,7 @@ const LoginForm = ({ closeModal, toggleAuth }) => {
       <div className='mb-6 flex justify-between text-[13px] md:text-base'>
         <span>Немає акаунту?</span>
         <span
-          className='text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
+          className='cursor-pointer text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
           onClick={toggleAuth}
         >
           Зареєструватися

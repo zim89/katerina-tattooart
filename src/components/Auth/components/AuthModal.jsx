@@ -1,12 +1,14 @@
 'use client';
 import { useState } from 'react';
 
-import Modal from '@/components/Modal/Modal';
+import Modal from '@/components/Modal';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import LoadingOverlay from '@/components/LoadingOverlay';
 
 const AuthModal = ({ closeModal }) => {
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleAuth = () => {
     setIsLogin(!isLogin);
@@ -14,7 +16,8 @@ const AuthModal = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal}>
-      <div className='rounded-xl border border-primary bg-dark-slate px-15 pb-7.5 pt-10 md:border-1.5 md:px-8 md:pb-10 md:pt-15 xl:px-10 xl:pt-20'>
+      <div className='relative overflow-hidden rounded-xl border border-primary bg-dark-slate px-15 pb-7.5 pt-10 md:border-1.5 md:px-8 md:pb-10 md:pt-15 xl:px-10 xl:pt-20'>
+        {isLoading && <LoadingOverlay />}
         <div className='grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-8'>
           <div className='flex flex-col gap-6 md:order-last md:mr-auto'>
             <h2 className='text-center text-base md:text-2xl'>
@@ -49,9 +52,17 @@ const AuthModal = ({ closeModal }) => {
           {/*Auth forms*/}
           <div className=''>
             {isLogin ? (
-              <LoginForm closeModal={closeModal} toggleAuth={toggleAuth} />
+              <LoginForm
+                closeModal={closeModal}
+                toggleAuth={toggleAuth}
+                setIsLoading={setIsLoading}
+              />
             ) : (
-              <RegisterForm closeModal={closeModal} toggleAuth={toggleAuth} />
+              <RegisterForm
+                closeModal={closeModal}
+                toggleAuth={toggleAuth}
+                setIsLoading={setIsLoading}
+              />
             )}
           </div>
         </div>

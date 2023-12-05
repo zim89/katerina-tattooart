@@ -1,64 +1,54 @@
 'use client';
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
+import AnimateHeight from 'react-animate-height';
 import clsx from 'clsx';
-import Image from 'next/image';
 
 import { formatDate } from '@/helpers';
 
-import styles from '../styles/ReviewItem.module.css';
-
-const ReviewItem = ({ style, review, bgColor }) => {
+const ReviewItem = ({ review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
-  const [avatarUrl] = useState(review.user_avatar ?? null);
-
-  useEffect(() => {
-    setIsTruncateText(true);
-  }, [review]);
+  const [height, setHeight] = useState(74);
 
   const showTruncateText = () => {
-    setIsTruncateText(!isTruncateText);
+    if (review.review.length < 90) return;
+
+    setHeight(height === 'auto' ? 74 : 'auto');
+    setIsTruncateText((prev) => !prev);
   };
 
   return (
-    <div className={clsx(style, styles.wrap)}>
-      <div className={styles.avaThumb}>
-        {avatarUrl ? (
-          <Image
-            alt='User avatar'
-            sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
-            src={avatarUrl}
-            fill
-          />
-        ) : (
-          <span
-            // className={clsx(
-            //   `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
-            // )}
-            className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-lg font-medium xl:text-xl'
-          >
-            {review.name[0].toUpperCase()}
-          </span>
-        )}
+    <div className='flex flex-nowrap gap-4 xl:gap-2'>
+      <div className='h-10 w-10 flex-none xl:h-15 xl:w-15'>
+        <span className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-xl font-medium md:text-2xl xl:text-4xl'>
+          {review.name[0].toUpperCase()}
+        </span>
       </div>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <span className={styles.username}>{review.name}</span>
-          <span className={styles.createdAt}>
+
+      <div className='grow pr-2.5 md:pr-0'>
+        <div className='mb-[6px] flex items-end justify-between md:mb-1.75 xl:mb-2'>
+          <span className='text-lg font-medium leading-normal text-gray md:text-xl xl:text-2xl'>
+            {review.name}
+          </span>
+          <span className='font-inter text-base font-normal leading-normal text-gray xl:text-lg'>
             {formatDate(review.updated_at)}
           </span>
         </div>
-        <button className='w-full' onClick={showTruncateText} type='button'>
-          <div className={clsx(styles.textWrap, !isTruncateText && '!h-auto')}>
-            <p
-              className={clsx(
-                styles.text,
-                !isTruncateText && '!line-clamp-none'
-              )}
-            >
-              {review.review}
-            </p>
-          </div>
+
+        <button
+          className='w-full border-b border-b-primary pb-2'
+          onClick={showTruncateText}
+          type='button'
+        >
+          <AnimateHeight
+            duration={500}
+            height={height}
+            className={clsx(
+              isTruncateText ? 'line-clamp-3' : null,
+              'text-left text-base leading-[21.824px] text-primary md:text-lg md:leading-[24.552px]'
+            )}
+          >
+            {review.review}
+          </AnimateHeight>
         </button>
       </div>
     </div>

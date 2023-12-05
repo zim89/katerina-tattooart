@@ -6,13 +6,13 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock';
-import { LogOut, UserCircle2 } from 'lucide-react';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useUserContext } from '@/context/userContext';
 import userAPI from '@/supabase/api/user';
+import LangSelect from './LangSelect';
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,7 +89,7 @@ const Burger = () => {
       >
         <div
           onClick={handleOverlayClick}
-          className='fixed inset-0 top-[68px] flex justify-center bg-black/70'
+          className='fixed inset-0 top-[62px] flex justify-center bg-black/70'
         >
           <nav className='w-[243px] bg-[#393E41] px-[5.375rem] py-[1.5625rem]'>
             <ul className='flex flex-col items-center gap-4.5'>
@@ -166,7 +166,7 @@ const Burger = () => {
                 </Link>
               </li>
               <li>
-                <span className='cursor-pointer text-white'>UA</span>
+                <LangSelect row />
               </li>
               <li>
                 {!currentUser ? (
