@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useUserContext } from '@/context/userContext';
-import reviewsAPI from '@/supabase/api/review';
+import 'react-toastify/dist/ReactToastify.min.css';
+import clsx from 'clsx';
+
 import ReviewItem from './components/ReviewItem';
 import ReviewModal from './components/ReviewModal';
 import SwiperReviews from './components/SwiperReviews';
@@ -17,19 +18,9 @@ const Reviews = () => {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const colorIndex = useRef(0);
 
   const screen = useScreenSize();
   const { currentUser } = useUserContext();
-
-  const setColor = () => {
-    const bgColor = colors[colorIndex.current];
-
-    colorIndex.current === colors.length - 1
-      ? (colorIndex.current = 0)
-      : colorIndex.current++;
-    return bgColor;
-  };
 
   useLayoutEffect(() => {
     (async () => {
@@ -60,16 +51,7 @@ const Reviews = () => {
     setIsOpen(false);
   };
 
-  const handleNext = () => {
-    if (page === total) {
-      setPage(1);
-      return;
-    }
-    setPage(page + 1);
-  };
-
   const handleLoadMore = () => {
-    colorIndex.current = 0;
     setPage(page + 1);
   };
 
