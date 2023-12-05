@@ -2,11 +2,10 @@
 import { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import clsx from 'clsx';
-import Image from 'next/image';
 
 import { formatDate } from '@/helpers';
 
-const ReviewItem = ({ style, review, bgColor }) => {
+const ReviewItem = ({ review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
   const [height, setHeight] = useState(74);
 
@@ -18,30 +17,19 @@ const ReviewItem = ({ style, review, bgColor }) => {
   };
 
   return (
-    <div className={clsx(style, styles.wrap)}>
-      <div className={styles.avaThumb}>
-        {avatarUrl ? (
-          <Image
-            alt='User avatar'
-            sizes='(max-width: 767px) 100vw, (max-width: 1279px 50vw, 33vw'
-            src={avatarUrl}
-            fill
-          />
-        ) : (
-          <span
-            // className={clsx(
-            //   `flex h-full w-full items-center justify-center rounded-full ${bgColor} text-lg font-medium xl:text-xl`
-            // )}
-            className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-lg font-medium xl:text-xl'
-          >
-            {review.name[0].toUpperCase()}
-          </span>
-        )}
+    <div className='flex flex-nowrap gap-4 xl:gap-2'>
+      <div className='h-10 w-10 flex-none xl:h-15 xl:w-15'>
+        <span className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-xl font-medium md:text-2xl xl:text-4xl'>
+          {review.name[0].toUpperCase()}
+        </span>
       </div>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <span className={styles.username}>{review.name}</span>
-          <span className={styles.createdAt}>
+
+      <div className='grow pr-2.5 md:pr-0'>
+        <div className='mb-[6px] flex items-end justify-between md:mb-1.75 xl:mb-2'>
+          <span className='text-lg font-medium leading-normal text-gray md:text-xl xl:text-2xl'>
+            {review.name}
+          </span>
+          <span className='font-inter text-base font-normal leading-normal text-gray xl:text-lg'>
             {formatDate(review.updated_at)}
           </span>
         </div>
