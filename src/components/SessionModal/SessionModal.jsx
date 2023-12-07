@@ -24,6 +24,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from './SessionModal.module.css';
+import useScreenSize from '@/hooks/useScreenSize';
 
 const times = {
   '9:00': '9.00 AM',
@@ -55,6 +56,8 @@ const SessionModal = ({ toggleModal }) => {
   );
   const targetElement = useRef(document.querySelector('.backdrop'));
   const supabase = createClientComponentClient();
+
+  const { width } = useScreenSize();
 
   const {
     register,
@@ -163,7 +166,8 @@ const SessionModal = ({ toggleModal }) => {
                         </span>
                       </SelectTrigger>
                       <SelectContent
-                        align='center'
+                        align='start'
+                        sideOffset={-64 + (width >= 768 ? 0 : 16)}
                         className='h-[376px] w-[134px]'
                       >
                         <div className='relative text-center md:w-full'>
