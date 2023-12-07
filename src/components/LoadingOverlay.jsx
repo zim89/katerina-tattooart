@@ -8,7 +8,7 @@ const LoadingOverlay = () => {
       <Image
         src={spinnerSrc}
         alt='Spinner'
-        className=' h-12 w-12 animate-spin md:h-14 md:w-14 xl:h-16 xl:w-16'
+        className='h-12 w-12 animate-spin md:h-14 md:w-14 xl:h-16 xl:w-16'
       />
     </div>
   );
