@@ -152,7 +152,7 @@ const SessionModal = ({ toggleModal }) => {
                   rules={{ required: true }}
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <Select value={value} onValueChange={onChange} open>
+                    <Select value={value} onValueChange={onChange}>
                       <SelectTrigger>
                         <Clock />
                         <span className='ml-4 hidden font-inter text-lg/tight md:inline'>
@@ -176,6 +176,11 @@ const SessionModal = ({ toggleModal }) => {
                             {value}
                           </SelectItem>
                         ))}
+                        {availableTimes.length === 0 && (
+                          <div className='text-center'>
+                            На цю дату немає вільного часу
+                          </div>
+                        )}
                       </SelectContent>
                     </Select>
                   )}
