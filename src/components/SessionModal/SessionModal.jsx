@@ -24,6 +24,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from './SessionModal.module.css';
+import useScreenSize from '@/hooks/useScreenSize';
 
 const times = {
   '9:00': '9.00 AM',
@@ -55,6 +56,8 @@ const SessionModal = ({ toggleModal }) => {
   );
   const targetElement = useRef(document.querySelector('.backdrop'));
   const supabase = createClientComponentClient();
+
+  const { width } = useScreenSize();
 
   const {
     register,
@@ -117,6 +120,7 @@ const SessionModal = ({ toggleModal }) => {
     toggleModal();
   };
 
+  // FIXME: We cannot make this component to use "Modal" because of html element that overlays modal and closes it instead of select
   return (
     <div className='backdrop'>
       <div className={styles.modal}>
@@ -162,11 +166,12 @@ const SessionModal = ({ toggleModal }) => {
                         </span>
                       </SelectTrigger>
                       <SelectContent
-                        align='center'
+                        align='start'
+                        sideOffset={-64 + (width >= 768 ? 0 : 16)}
                         className='h-[376px] w-[134px]'
                       >
-                        <div>
-                          <Clock className='left-6 top-4 md:absolute' />
+                        <div className='relative text-center md:w-full'>
+                          <Clock className='left-0 top-0 md:absolute' />
                           <span className='hidden md:inline'>
                             {times[value] ?? 'Час'}
                           </span>
@@ -176,6 +181,11 @@ const SessionModal = ({ toggleModal }) => {
                             {value}
                           </SelectItem>
                         ))}
+                        {availableTimes.length === 0 && (
+                          <div className='text-center'>
+                            На цю дату немає вільного часу
+                          </div>
+                        )}
                       </SelectContent>
                     </Select>
                   )}
