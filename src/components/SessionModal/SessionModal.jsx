@@ -117,6 +117,7 @@ const SessionModal = ({ toggleModal }) => {
     toggleModal();
   };
 
+  // FIXME: We cannot make this component to use "Modal" because of html element that overlays modal and closes it instead of select
   return (
     <div className='backdrop'>
       <div className={styles.modal}>
