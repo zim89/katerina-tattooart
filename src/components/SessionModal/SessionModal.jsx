@@ -152,7 +152,7 @@ const SessionModal = ({ toggleModal }) => {
                   rules={{ required: true }}
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <Select value={value} onValueChange={onChange}>
+                    <Select value={value} onValueChange={onChange} open>
                       <SelectTrigger>
                         <Clock />
                         <span className='ml-4 hidden font-inter text-lg/tight md:inline'>
@@ -165,8 +165,8 @@ const SessionModal = ({ toggleModal }) => {
                         align='center'
                         className='h-[376px] w-[134px]'
                       >
-                        <div>
-                          <Clock className='left-6 top-4 md:absolute' />
+                        <div className='relative text-center md:w-full'>
+                          <Clock className='left-0 top-0 md:absolute' />
                           <span className='hidden md:inline'>
                             {times[value] ?? 'Час'}
                           </span>
