@@ -25,6 +25,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import * as yup from 'yup';
 import styles from './SessionModal.module.css';
 import useScreenSize from '@/hooks/useScreenSize';
+import { useCallback } from 'react';
 
 const times = {
   '9:00': '9.00 AM',
@@ -77,6 +78,22 @@ const SessionModal = ({ toggleModal }) => {
 
   const selectedDate = useWatch({ control, name: 'date' });
 
+  const onClose = useCallback(() => {
+    enableBodyScroll(targetElement);
+    toggleModal();
+  }, [toggleModal]);
+
+  useEffect(() => {
+    const closeOnEsc = (evt) => {
+      if (evt.code !== 'Escape') return;
+      onClose();
+    };
+
+    window.addEventListener('keyup', closeOnEsc);
+
+    return () => window.removeEventListener('keyup', closeOnEsc);
+  }, [onClose]);
+
   useEffect(() => {
     (async () => {
       if (!selectedDate) return;
@@ -104,11 +121,6 @@ const SessionModal = ({ toggleModal }) => {
     };
   });
 
-  const onClose = () => {
-    enableBodyScroll(targetElement);
-    toggleModal();
-  };
-
   const onSubmit = async (data) => {
     console.log(data);
     const { error } = await supabase.from('sessions').insert(data);
@@ -122,8 +134,8 @@ const SessionModal = ({ toggleModal }) => {
 
   // FIXME: We cannot make this component to use "Modal" because of html element that overlays modal and closes it instead of select
   return (
-    <div className='backdrop'>
-      <div className={styles.modal}>
+    <div className='backdrop' onClick={onClose}>
+      <div className={styles.modal} onClick={(evt) => evt.stopPropagation()}>
         <button type='button' className={styles.closeBtn} onClick={onClose}>
           <X className={styles.closeBtnIcon} />
         </button>
