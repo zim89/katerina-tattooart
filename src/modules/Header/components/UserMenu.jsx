@@ -28,7 +28,7 @@ const UserMenu = () => {
       ) : (
         <Menu as='div' className='relative'>
           <Menu.Button className='flex h-[22px] w-[22px] items-center justify-center rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]'>
-            {currentUser.username[0].toUpperCase()}
+            {currentUser?.username[0].toUpperCase()}
           </Menu.Button>
 
           <Transition
