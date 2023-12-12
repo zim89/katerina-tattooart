@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header
-      className='group fixed top-0 z-10 h-full max-h-[3.875rem] w-full overflow-hidden border-b border-white/60 bg-secondary/80 transition-[max-height] duration-500 data-[state=open]:max-h-[calc(3.875rem+24rem)] md:max-h-[67px]  xl:max-h-[94px]'
+      className='group fixed top-0 z-10 h-full max-h-[3.875rem] w-full overflow-hidden border-b border-white/60 bg-secondary/80 transition-[max-height] duration-500 data-[state=open]:max-h-[calc(3.875rem+24rem)] md:max-h-[68px]  md:overflow-visible xl:max-h-[95px]'
       data-state={isMenuOpen ? 'open' : 'closed'}
     >
       <div className='relative flex h-[3.875rem] items-center justify-between bg-secondary md:h-[67px] xl:h-[94px]'>

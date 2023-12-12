@@ -47,8 +47,11 @@ const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    const { email } = data;
-    const { error } = await userAPI.register(data);
+    const { email, password } = data;
+    const { error } = await userAPI.register({
+      email: email.trim(),
+      password: password.trim(),
+    });
     setIsLoading(false);
 
     if (error) {

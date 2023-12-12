@@ -45,9 +45,12 @@ const LoginForm = ({ closeModal, toggleAuth, setIsLoading }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ email, password }) => {
     setIsLoading(true);
-    const { error } = await userAPI.login(data);
+    const { error } = await userAPI.login({
+      email: email.trim(),
+      password: password.trim(),
+    });
     setIsLoading(false);
 
     if (error) {
