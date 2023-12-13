@@ -5,7 +5,7 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -17,6 +17,7 @@ import BurgerButton from './BurgerButton';
 const Burger = ({ isOpen, setIsOpen }) => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const { currentUser, logOut } = useUserContext();
+  const ref = useRef(null);
 
   useEffect(() => {
     let targetElement = document.body;
@@ -30,14 +31,21 @@ const Burger = ({ isOpen, setIsOpen }) => {
     };
   }, [isOpen]);
 
-  const toggleBurger = () => {
-    setIsOpen((prev) => !prev);
+  const handleOverlayClick = (e) => {
+    if (ref.current && !ref.current.contains(e.target) && isOpen) {
+      setIsOpen(false);
+    }
   };
 
-  const handleOverlayClick = (e) => {
-    if (isOpen && e.target === e.currentTarget) {
-      toggleBurger();
-    }
+  useEffect(() => {
+    document.addEventListener('click', handleOverlayClick);
+    return () => {
+      document.removeEventListener('click', handleOverlayClick);
+    };
+  });
+
+  const toggleBurger = () => {
+    setIsOpen((prev) => !prev);
   };
 
   const toggleAuthModal = () => {
@@ -60,11 +68,11 @@ const Burger = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      {/* Burger */}
       <BurgerButton onClick={toggleBurger} />
 
       {/* Burger menu */}
       <div
+        ref={ref}
         className="absolute bottom-0 left-1/2 h-screen max-h-[calc(100dvh-3.875rem)] w-[15.1875rem] -translate-x-1/2 translate-y-full overflow-auto bg-[#393E41] py-[1.56rem] text-center transition-opacity duration-500 group-[[data-state='closed']]:opacity-0"
         onClick={(e) => e.stopPropagation()}
       >

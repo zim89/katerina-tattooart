@@ -4,7 +4,7 @@ import spinnerSrc from '/public/icons/spinner.svg';
 
 const LoadingOverlay = () => {
   return (
-    <div className='absolute inset-0 flex items-center justify-center backdrop-blur-[2px]'>
+    <div className='absolute inset-0 z-50 flex items-center justify-center backdrop-blur-[2px]'>
       <Image
         src={spinnerSrc}
         alt='Spinner'
