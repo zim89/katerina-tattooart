@@ -23,7 +23,7 @@ const LangSelect = ({ row }) => {
             className={
               row
                 ? 'absolute -right-[51px] top-0 flex flex-row gap-2 text-[14px]'
-                : 'absolute flex w-full flex-col gap-1  pl-[1px] text-[14px] xl:mt-[3px] xl:gap-2 xl:text-[18px]'
+                : 'absolute left-0 top-[22px] flex w-full flex-col gap-1 pl-[1px]  text-[14px] xl:top-[27px] xl:mt-[3px] xl:gap-2 xl:text-[18px]'
             }
           >
             {lang
