@@ -73,7 +73,7 @@ const Burger = ({ isOpen, setIsOpen }) => {
       {/* Burger menu */}
       <div
         ref={ref}
-        className="absolute bottom-0 left-1/2 h-screen max-h-[calc(100dvh-3.875rem)] w-[15.1875rem] -translate-x-1/2 translate-y-full overflow-auto bg-[#393E41] py-[1.56rem] text-center transition-opacity duration-500 group-[[data-state='closed']]:opacity-0"
+        className="absolute bottom-0 left-1/2 h-screen max-h-[calc(100dvh-3.875rem)] w-[15.1875rem] -translate-x-1/2 translate-y-full overflow-auto bg-[#393E41] py-[1.56rem] text-center transition-opacity duration-500 group-[[data-state='closed']]:pointer-events-none group-[[data-state='closed']]:opacity-0"
         onClick={(e) => e.stopPropagation()}
       >
         <div className='flex flex-col items-center space-y-[1.125rem]'>
