@@ -1,21 +1,23 @@
 'use client';
 import clsx from 'clsx';
 import { useState } from 'react';
+import FeaturesMobile from '@/modules/Features/components/FeaturesMobile';
+import FeaturesSlider from '@/modules/Features/components/FeaturesSlider';
 
 const Features = () => {
   const [index, setIndex] = useState('tab1');
 
   return (
-    <div className='mb-10 md:mb-15 xl:mb-20' id='features'>
+    <section className='mb-10 md:mb-15 xl:mb-20' id='features'>
       {/*Features Navigation*/}
-      <div className='md:mb-15 md:flex md:items-baseline md:justify-center md:gap-8 xl:mb-20 xl:gap-10'>
+      <div className='hidden md:mb-15 md:flex md:items-baseline md:justify-center md:gap-8 xl:mb-20 xl:gap-10'>
         <button
           className={clsx(
-            'relative whitespace-nowrap text-primary transition-all duration-500 hover:text-white md:text-xl xl:text-2xl',
+            'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
             index !== 'tab1' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
             index === 'tab1' &&
-              'font-medium text-white md:text-[32px] xl:text-[40px]'
+              'text-[32px] font-medium text-white xl:text-[40px]'
           )}
           onClick={() => setIndex('tab1')}
         >
@@ -23,11 +25,11 @@ const Features = () => {
         </button>
         <button
           className={clsx(
-            'relative whitespace-nowrap text-primary transition-all duration-500 hover:text-white md:text-xl xl:text-2xl',
+            'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
             index !== 'tab2' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
             index === 'tab2' &&
-              'font-medium text-white md:text-[32px] xl:text-[40px]'
+              'text-[32px] font-medium text-white xl:text-[40px]'
           )}
           onClick={() => setIndex('tab2')}
         >
@@ -35,11 +37,11 @@ const Features = () => {
         </button>
         <button
           className={clsx(
-            'relative whitespace-nowrap text-primary transition-all duration-500 hover:text-white md:text-xl xl:text-2xl',
+            'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
             index !== 'tab3' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
             index === 'tab3' &&
-              'font-medium text-white md:text-[32px] xl:text-[40px]'
+              'text-[32px] font-medium text-white xl:text-[40px]'
           )}
           onClick={() => setIndex('tab3')}
         >
@@ -47,28 +49,32 @@ const Features = () => {
         </button>
       </div>
 
+      <div className='mb-6 md:hidden'>
+        <FeaturesMobile setIndex={setIndex} />
+      </div>
+
       <div className='container'>
         {/*Features Content*/}
         <div
-          className='group relative flex h-auto justify-center bg-cyan-900 transition-all duration-500 md:data-[active=tab1]:h-[49px] md:data-[active=tab2]:h-[74px] md:data-[active=tab3]:h-[329px] xl:data-[active=tab1]:h-[64px] xl:data-[active=tab2]:h-[96px] xl:data-[active=tab3]:h-[455px]'
+          className='group relative flex h-auto justify-center transition-all duration-500 data-[active=tab1]:h-[77px] data-[active=tab2]:h-[129px] data-[active=tab3]:h-[394px] md:data-[active=tab1]:h-[49px] md:data-[active=tab2]:h-[74px] md:data-[active=tab3]:h-[329px] xl:data-[active=tab1]:h-[64px] xl:data-[active=tab2]:h-[96px] xl:data-[active=tab3]:h-[455px]'
           data-active={index}
         >
           {/*Tab1*/}
-          <p className='absolute left-0 top-0 w-full bg-red-500/30 text-center leading-[1.364] opacity-0 transition-all duration-500 group-data-[active=tab1]:opacity-100 md:px-0 md:text-[18px] xl:px-36 xl:text-2xl'>
+          <p className='absolute left-0 top-0 w-full px-4 text-center text-base leading-[1.604] opacity-0 transition-all duration-500 group-data-[active=tab1]:opacity-100 md:px-0 md:text-[18px] md:leading-[1.364] xl:px-36 xl:text-2xl'>
             Тільки в нас ви можете замовити унікальний дизайн розроблений по
             ваших побажаннях.
           </p>
 
           {/*Tab2*/}
-          <p className='absolute left-0 top-0 bg-red-500/30 text-center leading-[1.364] opacity-0 transition-all duration-500 group-data-[active=tab2]:opacity-100 md:px-0 md:text-[18px] xl:px-36 xl:text-2xl'>
+          <p className='absolute left-0 top-0 w-full text-center text-base leading-[1.604] opacity-0 transition-all duration-500 group-data-[active=tab2]:opacity-100 md:px-0 md:text-[18px] md:leading-[1.364] xl:px-36 xl:text-2xl'>
             Завдяки нашому досвіду, таланту та професіоналізму, ми створимо
             татуювання, яке буде відображати вашу особистість, допоможе виразити
             емоції або просто прикрасить ваше тіло.
           </p>
 
           {/*Tab3*/}
-          <div className='absolute left-0 top-0 w-full bg-red-500/30 opacity-0 transition-all duration-500 group-data-[active=tab3]:opacity-100'>
-            <div className='md:flex md:flex-row md:justify-center md:gap-8 xl:gap-[12.5rem]'>
+          <div className='absolute left-0 top-0 w-full opacity-0 transition-all duration-500 group-data-[active=tab3]:opacity-100'>
+            <div className='hidden md:flex md:flex-row md:justify-center md:gap-8 xl:gap-[12.5rem]'>
               <div className='md:block xl:w-[456px]'>
                 <h3 className='mb-8 text-center text-2xl font-medium text-gray md:mb-6 md:text-2xl/[32.736px] xl:mb-10 xl:text-4.5xl/[54.56px]'>
                   Що потрібно
@@ -120,10 +126,13 @@ const Features = () => {
                 </ul>
               </div>
             </div>
+            <div className='md:hidden'>
+              <FeaturesSlider />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

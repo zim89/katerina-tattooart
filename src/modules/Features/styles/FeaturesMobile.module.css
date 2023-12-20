@@ -1,0 +1,15 @@
+.feature {
+  @apply text-base font-medium text-[#E0E0E0] transition-all duration-500;
+}
+
+.feature.active {
+  @apply px-4 text-2xl text-white;
+}
+
+.feature.prev {
+  @apply absolute -bottom-[3px] left-0 -translate-x-full;
+}
+
+.feature.next {
+  @apply absolute -bottom-[3px] right-0 translate-x-full;
+}
