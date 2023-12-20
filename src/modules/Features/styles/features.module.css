@@ -1,5 +1,5 @@
 .features {
-  @apply md:mb-15 mb-10 xl:mb-20;
+  @apply mb-10 md:mb-15 xl:mb-20;
 }
 
 .wrap {
@@ -23,11 +23,11 @@
 }
 
 .subtitle {
-  @apply xl:text-4.5xl/[54.56px] mb-8 text-center text-2xl font-medium text-gray md:mb-6 md:text-2xl/[32.736px] xl:mb-10;
+  @apply mb-8 text-center text-2xl font-medium text-gray md:mb-6 md:text-2xl/[32.736px] xl:mb-10 xl:text-4.5xl/[54.56px];
 }
 
 .list {
-  @apply md:mb-6.5 mx-auto w-[18.4375rem] list-outside list-disc md:w-auto;
+  @apply mx-auto w-[18.4375rem] list-outside list-disc md:mb-6.5 md:w-auto;
 }
 
 .listMargin {
