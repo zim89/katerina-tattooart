@@ -4,6 +4,7 @@ import Header from '@/modules/Header';
 import Footer from '@/modules/Footer';
 import { UserContextProvider } from '@/context/userContext';
 
+import 'react-toastify/dist/ReactToastify.min.css';
 import './globals.css';
 
 const raleway = Raleway({
@@ -25,7 +26,12 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000';
+
 export const metadata = {
+  metadataBase: new URL(defaultUrl),
   title: 'Katerina TattooArt',
   description: 'Katerina TattooArt',
 };

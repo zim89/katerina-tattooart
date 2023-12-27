@@ -1,16 +1,15 @@
 'use client';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import clsx from 'clsx';
 
 import ReviewItem from './components/ReviewItem';
 import ReviewModal from './components/ReviewModal';
 import SwiperReviews from './components/SwiperReviews';
 
-import reviewsAPI from '@/supabase/api/review';
 import { useUserContext } from '@/context/userContext';
 import useScreenSize from '@/hooks/useScreenSize';
+import reviewsApi from '@/utils/supabase/api/reviewApi';
 
 const Reviews = () => {
   const [total, setTotal] = useState(0);
@@ -24,7 +23,7 @@ const Reviews = () => {
 
   useLayoutEffect(() => {
     (async () => {
-      const data = await reviewsAPI.findAll();
+      const data = await reviewsApi.findAll();
       setReviews(data);
       setTotal(data.length);
     })();

@@ -1,30 +1,17 @@
 'use client';
 import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import InputMask from 'react-input-mask';
 import clsx from 'clsx';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Modal from './Modal';
 import LoadingOverlay from './LoadingOverlay';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-
-const schema = yup
-  .object({
-    username: yup.string().required("Обов'язкове поле"),
-    phone: yup
-      .string()
-      .required("Обов'язкове поле")
-      .matches(/\+38\d{3} \d{3}-\d{2}-\d{2}/, 'Не валідний телефон'),
-    message: yup.string().required("Обов'язкове поле"),
-  })
-  .required();
+import { schemas } from '@/helpers';
+import consultationApi from '@/utils/supabase/api/consultationApi';
 
 const ConsultationModal = ({ closeModal }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const supabase = createClientComponentClient();
 
   const {
     register,
@@ -37,20 +24,13 @@ const ConsultationModal = ({ closeModal }) => {
       phone: '',
       message: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemas.consultation),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     setIsLoading(true);
-    const { error } = await supabase.from('consultation').insert(data);
+    await consultationApi.create(formData);
     setIsLoading(false);
-    if (error) {
-      toast.error('Виникла помилка. Спробуйте пізніше');
-      return;
-    }
-    toast.success(
-      "Ваше повідомлення відправлене. Наш менеджер зв'яжеться з Вами найближчим часом"
-    );
     closeModal();
   };
 

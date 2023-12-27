@@ -4,13 +4,14 @@ import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
 import Avatar from '@/modules/Header/components/Avatar';
 import { useUserContext } from '@/context/userContext';
-import userAPI from '@/supabase/api/user';
+import authAPI from '@/utils/supabase/api/authApi';
+import Image from 'next/image';
 
 const UserMenu = () => {
   const { currentUser, logOut } = useUserContext();
 
   const onLogout = async () => {
-    const { error } = await userAPI.logout();
+    const { error } = await authAPI.logout();
 
     if (error) {
       toast.error('Виникла помилка. Спробуйте пізніше!');
@@ -27,8 +28,12 @@ const UserMenu = () => {
         <Avatar />
       ) : (
         <Menu as='div' className='relative'>
-          <Menu.Button className='flex h-[22px] w-[22px] items-center justify-center rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]'>
-            {currentUser?.username[0].toUpperCase()}
+          <Menu.Button className='relative flex h-[22px] w-[22px] items-center justify-center overflow-hidden rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]'>
+            {currentUser?.avatar_url && (
+              <Image src={currentUser?.avatar_url} alt='User avatar' fill />
+            )}
+
+            {!currentUser?.avatar_url && currentUser?.email[0].toUpperCase()}
           </Menu.Button>
 
           <Transition

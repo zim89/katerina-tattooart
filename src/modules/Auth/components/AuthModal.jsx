@@ -5,6 +5,7 @@ import Modal from '@/components/Modal';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import LoadingOverlay from '@/components/LoadingOverlay';
+import authApi from '@/utils/supabase/api/authApi';
 
 const AuthModal = ({ closeModal }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,6 +13,10 @@ const AuthModal = ({ closeModal }) => {
 
   const toggleAuth = () => {
     setIsLogin(!isLogin);
+  };
+
+  const handleLoginWithGoogle = async () => {
+    await authApi.loginWithGoogle();
   };
 
   return (
@@ -25,7 +30,7 @@ const AuthModal = ({ closeModal }) => {
             </h2>
             {/*Auth providers*/}
             <div className='flex justify-center gap-6'>
-              <button className='group'>
+              <button className='group' onClick={handleLoginWithGoogle}>
                 <svg
                   viewBox='0 0 40 40'
                   xmlns='http://www.w3.org/2000/svg'

@@ -1,5 +1,5 @@
 'use client';
-import { AuthModal } from '@/components/Auth';
+import { AuthModal } from 'src/modules/Auth';
 import {
   clearAllBodyScrollLocks,
   disableBodyScroll,
@@ -7,10 +7,8 @@ import {
 } from 'body-scroll-lock';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-scroll';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useUserContext } from '@/context/userContext';
-import userAPI from '@/supabase/api/user';
 import LangSelect from './LangSelect';
 import BurgerButton from './BurgerButton';
 
@@ -54,16 +52,15 @@ const Burger = ({ isOpen, setIsOpen }) => {
   };
 
   const onLogout = async () => {
-    const { error } = await userAPI.logout();
-
-    if (error) {
-      toast.error('Виникла помилка. Спробуйте пізніше!');
-      return;
-    }
-
-    logOut();
-    toggleBurger();
-    toast.success('Ви успішно вийшли!');
+    // const { error } = await userAPI.logout();
+    // if (error) {
+    //   toast.error('Виникла помилка. Спробуйте пізніше!');
+    //   return;
+    // }
+    //
+    // logOut();
+    // toggleBurger();
+    // toast.success('Ви успішно вийшли!');
   };
 
   return (

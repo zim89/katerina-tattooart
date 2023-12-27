@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { AuthModal } from '@/components/Auth';
+import { AuthModal } from 'src/modules/Auth';
 
 const Avatar = () => {
   const [isOpen, setIsOpen] = useState(false);
