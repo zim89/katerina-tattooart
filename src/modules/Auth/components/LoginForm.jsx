@@ -7,27 +7,14 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import * as yup from 'yup';
-import userAPI from '@/supabase/api/user';
 import { useUserContext } from '@/context/userContext';
+import { schemas } from '@/helpers';
+import authAPI from '@/utils/supabase/api/authApi';
 
-const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email('Введіть валідний email')
-      .required("Обов'язкове поле"),
-    password: yup
-      .string()
-      .required("Обов'язкове поле")
-      .min(6, 'Пароль має містити щонайменше 6 символів'),
-  })
-  .required();
-
-const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
+const LoginForm = ({ closeModal, toggleAuth, setIsLoading }) => {
   const [isShown, setIsShown] = useState(false);
-  const router = useRouter();
   const { logIn } = useUserContext();
+  const router = useRouter();
 
   const togglePassword = () => {
     setIsShown((prev) => !prev);
@@ -42,27 +29,24 @@ const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
       email: '',
       password: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemas.auth),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ email, password }) => {
     setIsLoading(true);
-    const { email, password } = data;
-    const { error } = await userAPI.register({
+    const { user, error } = await authAPI.login({
       email: email.trim(),
       password: password.trim(),
     });
     setIsLoading(false);
 
     if (error) {
-      error.message === 'User already registered'
-        ? toast.error(`Користувач ${email} вже зареєстрований!`)
-        : toast.error('Невдала спроба реєстрації');
+      toast.error('Невірний email або пароль');
       return;
     }
 
-    logIn();
-    toast.success('Дякуємо за реєстрацію. Ваш обліковий запис створено.');
+    logIn(user);
+    toast.success('Ви успішно увійшли!');
     router.refresh();
     closeModal();
   };
@@ -107,19 +91,19 @@ const RegisterForm = ({ closeModal, toggleAuth, setIsLoading }) => {
       </div>
 
       <div className='mb-6 flex justify-between text-[13px] md:text-base'>
-        <span>Вже є акаунт?</span>
+        <span>Немає акаунту?</span>
         <span
           className='cursor-pointer text-[#52FFEA] transition-colors hover:text-[#44ECD7]'
           onClick={toggleAuth}
         >
-          Увійти
+          Зареєструватися
         </span>
       </div>
 
       <button type='submit' className='btnSubmit'>
-        Зареєструватись
+        Увійти
       </button>
     </form>
   );
 };
-export default RegisterForm;
+export default LoginForm;

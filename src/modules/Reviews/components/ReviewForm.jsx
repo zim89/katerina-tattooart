@@ -3,28 +3,14 @@ import { useEffect, useState } from 'react';
 import { Trash2 } from 'lucide-react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import clsx from 'clsx';
 
 import LoadingOverlay from '@/components/LoadingOverlay';
 import { useUserContext } from '@/context/userContext';
-import reviewsAPI from '@/supabase/api/review';
+import { schemas } from '@/helpers';
+import reviewsApi from '@/utils/supabase/api/reviewApi';
 
-const schema = yup
-  .object({
-    name: yup
-      .string()
-      .required("Обов'язкове поле")
-      .min(3, 'Мінімум 3 символи')
-      .max(15, 'Максимум 15 символів'),
-    review: yup
-      .string()
-      .required("Обов'язкове поле")
-      .max(300, 'Максимум 300 символів'),
-  })
-  .required();
-
-const ReviewForm = ({ closeModal }) => {
+const ReviewForm = ({ closeModal, router }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [review, setReview] = useState(null);
   const { currentUser } = useUserContext();
@@ -40,13 +26,13 @@ const ReviewForm = ({ closeModal }) => {
       name: '',
       review: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemas.review),
   });
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const review = await reviewsAPI.findOne(currentUser.id);
+      const review = await reviewsApi.findOne(currentUser.id);
       setIsLoading(false);
 
       if (review) {
@@ -55,7 +41,7 @@ const ReviewForm = ({ closeModal }) => {
         setValue('review', review.review);
       }
     })();
-  }, [currentUser, setValue]);
+  }, [currentUser.id, setValue]);
 
   const onSubmit = async (formData) => {
     if (
@@ -69,21 +55,21 @@ const ReviewForm = ({ closeModal }) => {
 
     if (review) {
       setIsLoading(true);
-      await reviewsAPI.update(review.id, formData);
+      await reviewsApi.update(currentUser, review.id, formData);
       setIsLoading(false);
       closeModal();
       return;
     }
 
     setIsLoading(true);
-    await reviewsAPI.create(currentUser, formData);
+    await reviewsApi.create(currentUser, formData);
     setIsLoading(false);
     closeModal();
   };
 
   const onDelete = async (id) => {
     setIsLoading(true);
-    await reviewsAPI.remove(id, currentUser.id);
+    await reviewsApi.remove(id, currentUser.id);
     setIsLoading(false);
     closeModal();
   };

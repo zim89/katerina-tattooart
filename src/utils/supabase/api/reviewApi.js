@@ -1,8 +1,7 @@
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 
-const supabase = createClientComponentClient();
+const supabase = createClient();
 
 const findAll = async () => {
   const { data, error } = await supabase
@@ -32,10 +31,14 @@ const findOne = async (user_id) => {
   return data;
 };
 
-const update = async (review_id, formData) => {
+const update = async (user, review_id, formData) => {
   const { data, error } = await supabase
     .from('reviews')
-    .update({ ...formData, updated_at: new Date() })
+    .update({
+      ...formData,
+      user_avatar: user.avatar_url ?? null,
+      updated_at: new Date(),
+    })
     .eq('id', review_id)
     .select()
     .single();
@@ -52,7 +55,11 @@ const update = async (review_id, formData) => {
 const create = async (user, formData) => {
   const { data, error } = await supabase
     .from('reviews')
-    .insert({ ...formData, user_id: user.id, user_avatar: user.avatar_url })
+    .insert({
+      ...formData,
+      user_id: user.id,
+      user_avatar: user.avatar_url ?? null,
+    })
     .select()
     .single();
 

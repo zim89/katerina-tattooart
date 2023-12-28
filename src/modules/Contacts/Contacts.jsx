@@ -3,28 +3,9 @@ import { useState } from 'react';
 import InputMask from 'react-input-mask';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import clsx from 'clsx';
-import consultationAPI from '@/supabase/api/consultation';
-
-const schema = yup
-  .object({
-    username: yup
-      .string()
-      .required("Обов'язкове поле")
-      .min(3, 'Мінімум 3 символи')
-      .max(15, 'Максимум 15 символів'),
-    phone: yup
-      .string()
-      .required("Обов'язкове поле")
-      .matches(/\+38\d{3} \d{3}-\d{2}-\d{2}/, 'Не валідний телефон'),
-    message: yup
-      .string()
-      .required("Обов'язкове поле")
-      .min(15, 'Мінімум 15 символів')
-      .max(300, 'Максимум 300 символів'),
-  })
-  .required();
+import { schemas } from '@/helpers';
+import consultationApi from '@/utils/supabase/api/consultationApi';
 
 const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,12 +22,12 @@ const Contacts = () => {
       phone: '',
       message: '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemas.contactUs),
   });
 
   const onSubmit = async (formData) => {
     setIsLoading(true);
-    await consultationAPI.create(formData);
+    await consultationApi.create(formData);
     reset();
     setIsLoading(false);
   };

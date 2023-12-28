@@ -4,6 +4,7 @@ import AnimateHeight from 'react-animate-height';
 import clsx from 'clsx';
 
 import { formatDate } from '@/helpers';
+import Image from 'next/image';
 
 const ReviewItem = ({ review }) => {
   const [isTruncateText, setIsTruncateText] = useState(true);
@@ -19,8 +20,12 @@ const ReviewItem = ({ review }) => {
   return (
     <div className='flex flex-nowrap gap-4 xl:gap-2'>
       <div className='h-10 w-10 flex-none xl:h-15 xl:w-15'>
-        <span className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-xl font-medium md:text-2xl xl:text-4xl'>
-          {review.name[0].toUpperCase()}
+        <span className='relative flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-white bg-transparent text-xl font-medium md:text-2xl xl:text-4xl'>
+          {review.user_avatar ? (
+            <Image src={review.user_avatar} alt='User avatar' fill />
+          ) : (
+            review.name[0].toUpperCase()
+          )}
         </span>
       </div>
 

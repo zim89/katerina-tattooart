@@ -1,6 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import userAPI from '@/supabase/api/user';
+import authAPI from '@/utils/supabase/api/authApi';
+import { serializeUser } from '@/helpers';
 
 const UserContext = createContext(null);
 
@@ -10,15 +11,13 @@ export const UserContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    userAPI.getFromSession().then((data) => {
-      setCurrentUser(data);
+    authAPI.getUserFromSession().then((data) => {
+      setCurrentUser(serializeUser(data));
     });
   }, []);
 
-  const logIn = () => {
-    userAPI.getFromSession().then((data) => {
-      setCurrentUser(data);
-    });
+  const logIn = (data) => {
+    setCurrentUser(serializeUser(data));
   };
 
   const logOut = () => {
