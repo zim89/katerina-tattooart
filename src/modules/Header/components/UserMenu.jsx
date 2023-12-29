@@ -1,5 +1,5 @@
 'use client';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
 import Avatar from '@/modules/Header/components/Avatar';
@@ -10,10 +10,6 @@ import { clsx } from 'clsx';
 
 const UserMenu = () => {
   const { currentUser, logOut } = useUserContext();
-
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
 
   const onLogout = async () => {
     const { error } = await authAPI.logout();
