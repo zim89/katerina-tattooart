@@ -15,8 +15,8 @@ const AuthModal = ({ closeModal }) => {
     setIsLogin(!isLogin);
   };
 
-  const handleLoginWithGoogle = async () => {
-    await authApi.loginWithGoogle();
+  const loginWithProvider = async (provider) => {
+    await authApi.loginWithProvider(provider);
   };
 
   return (
@@ -30,7 +30,10 @@ const AuthModal = ({ closeModal }) => {
             </h2>
             {/*Auth providers*/}
             <div className='flex justify-center gap-6'>
-              <button className='group' onClick={handleLoginWithGoogle}>
+              <button
+                className='group'
+                onClick={() => loginWithProvider('google')}
+              >
                 <svg
                   viewBox='0 0 40 40'
                   xmlns='http://www.w3.org/2000/svg'
@@ -42,7 +45,10 @@ const AuthModal = ({ closeModal }) => {
                   <path d='M19.9999 7.96363C22.9454 7.96363 25.5635 8.98179 27.6544 10.9454L33.3816 5.21825C29.9089 1.98194 25.4 0 19.9999 0C12.1818 0 5.43641 4.4909 2.14551 11.0364L8.79996 16.2C10.3817 11.4727 14.7999 7.96363 19.9999 7.96363Z' />
                 </svg>
               </button>
-              <button className='group'>
+              <button
+                className='group'
+                onClick={() => loginWithProvider('facebook')}
+              >
                 <svg
                   viewBox='0 0 40 40'
                   xmlns='http://www.w3.org/2000/svg'

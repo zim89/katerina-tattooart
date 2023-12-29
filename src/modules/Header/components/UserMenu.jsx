@@ -1,14 +1,19 @@
 'use client';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
 import Avatar from '@/modules/Header/components/Avatar';
 import { useUserContext } from '@/context/userContext';
 import authAPI from '@/utils/supabase/api/authApi';
 import Image from 'next/image';
+import { clsx } from 'clsx';
 
 const UserMenu = () => {
   const { currentUser, logOut } = useUserContext();
+
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
 
   const onLogout = async () => {
     const { error } = await authAPI.logout();
@@ -28,7 +33,12 @@ const UserMenu = () => {
         <Avatar />
       ) : (
         <Menu as='div' className='relative'>
-          <Menu.Button className='relative flex h-[22px] w-[22px] items-center justify-center overflow-hidden rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]'>
+          <Menu.Button
+            className={clsx(
+              'relative flex h-[22px] w-[22px] items-center justify-center overflow-hidden rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]',
+              currentUser?.avatar_url ? 'border-secondary' : 'border-primary'
+            )}
+          >
             {currentUser?.avatar_url && (
               <Image src={currentUser?.avatar_url} alt='User avatar' fill />
             )}
