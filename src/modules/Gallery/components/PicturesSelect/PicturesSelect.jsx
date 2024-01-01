@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -36,6 +38,9 @@ const PicturesSelect = ({ className, options = [], defaultId = 0 }) => {
               <Link
                 className='nav-link opacity-0 transition-opacity'
                 href={`?filter=${type.id}`}
+                onClick={() =>
+                  (document.getElementById(dropdownId).checked = false)
+                }
                 replace
                 scroll={false}
               >
