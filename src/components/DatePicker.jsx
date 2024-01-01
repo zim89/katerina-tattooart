@@ -14,10 +14,11 @@ import { Calendar as CalendarIcon } from 'lucide-react';
 import * as React from 'react';
 
 export function DatePicker({ date, onDateChange, ...props }) {
+  const [calendarOpen, setCalendarOpen] = React.useState(false);
   const { width } = useScreenSize();
 
   return (
-    <Popover>
+    <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
       <PopoverTrigger asChild>
         <Button size='icon' className='md:h-14 md:px-7'>
           <CalendarIcon className='h-6 w-6' />
@@ -40,7 +41,10 @@ export function DatePicker({ date, onDateChange, ...props }) {
         <Calendar
           mode='single'
           selected={date}
-          onSelect={onDateChange}
+          onSelect={(date) => {
+            onDateChange(date);
+            setCalendarOpen(false);
+          }}
           initialFocus
           {...props}
         />
