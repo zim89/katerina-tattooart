@@ -1,9 +1,14 @@
 const serializeUser = (user) => {
   if (user) {
+    const { provider } = user.app_metadata;
+    const { avatar_url, provider_id } = user.user_metadata;
+
     return {
       id: user.id,
       email: user.email,
-      ...user.user_metadata,
+      provider,
+      avatar_url,
+      provider_id,
     };
   }
 };

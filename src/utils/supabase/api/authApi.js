@@ -35,9 +35,9 @@ const login = async (formData) => {
   return { user, error };
 };
 
-const loginWithGoogle = async () => {
+const loginWithProvider = async (provider) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
+    provider,
   });
 
   if (error) {
@@ -84,7 +84,7 @@ const authAPI = {
   getUserFromSession,
   register,
   login,
-  loginWithGoogle,
+  loginWithProvider,
   logout,
 };
 

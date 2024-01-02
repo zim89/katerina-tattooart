@@ -26,6 +26,18 @@ const nextConfig = {
         port: '',
         pathname: '/a/*',
       },
+      {
+        protocol: 'https',
+        hostname: 'platform-lookaside.fbsbx.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'graph.facebook.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
