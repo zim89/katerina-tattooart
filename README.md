@@ -1,4 +1,4 @@
-# Learn Lingo
+# Katerina Tattoo Art
 <img src="./public/images/katerinaTattooArt.png" height="128"/>
 
 
@@ -64,6 +64,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 [GitHub](https://github.com/zim89/katerina-tattooart)
 
-[Live demo](katerina-tattooart.vercel.app)
+[Live demo](https://katerina-tattooart.vercel.app/)
 
 [Figma](https://www.figma.com/file/km20jOEyZ6lbIpzXfNDWhq/Katerina-Tattooart?node-id=175%3A2872&mode=dev)
