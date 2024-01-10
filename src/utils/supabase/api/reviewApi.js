@@ -36,7 +36,7 @@ const update = async (user, review_id, formData) => {
     .from('reviews')
     .update({
       ...formData,
-      user_avatar: user.avatar_url ?? null,
+      user_avatar: user.provider === 'google' ? user.avatar_url : null,
       updated_at: new Date(),
     })
     .eq('id', review_id)
@@ -58,7 +58,7 @@ const create = async (user, formData) => {
     .insert({
       ...formData,
       user_id: user.id,
-      user_avatar: user.avatar_url ?? null,
+      user_avatar: user.provider === 'google' ? user.avatar_url : null,
     })
     .select()
     .single();
