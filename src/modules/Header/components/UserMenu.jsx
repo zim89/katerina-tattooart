@@ -10,6 +10,7 @@ import { clsx } from 'clsx';
 
 const UserMenu = () => {
   const { currentUser, logOut } = useUserContext();
+  const isGoogle = currentUser?.provider === 'google';
 
   const onLogout = async () => {
     const { error } = await authAPI.logout();
@@ -32,14 +33,14 @@ const UserMenu = () => {
           <Menu.Button
             className={clsx(
               'relative flex h-[22px] w-[22px] items-center justify-center overflow-hidden rounded-full border pt-[1px] text-sm font-medium xl:h-11 xl:w-11 xl:text-[28px]',
-              currentUser?.avatar_url ? 'border-secondary' : 'border-primary'
+              isGoogle ? 'border-secondary' : 'border-primary'
             )}
           >
-            {currentUser?.avatar_url && (
+            {isGoogle ? (
               <Image src={currentUser?.avatar_url} alt='User avatar' fill />
+            ) : (
+              currentUser?.email[0].toUpperCase()
             )}
-
-            {!currentUser?.avatar_url && currentUser?.email[0].toUpperCase()}
           </Menu.Button>
 
           <Transition
