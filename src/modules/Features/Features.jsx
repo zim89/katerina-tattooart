@@ -1,11 +1,11 @@
 'use client';
 import clsx from 'clsx';
-import { useState } from 'react';
 import FeaturesMobile from '@/modules/Features/components/FeaturesMobile';
 import FeaturesSlider from '@/modules/Features/components/FeaturesSlider';
+import { useFeaturesContext } from '@/context/featuresContext';
 
 const Features = () => {
-  const [index, setIndex] = useState('tab1');
+  const { currentIndex, setCurrentIndex } = useFeaturesContext();
 
   return (
     <section className='mb-10 md:mb-15 xl:mb-20' id='features'>
@@ -14,50 +14,50 @@ const Features = () => {
         <button
           className={clsx(
             'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
-            index !== 'tab1' &&
+            currentIndex !== 'tab1' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
-            index === 'tab1' &&
+            currentIndex === 'tab1' &&
               'text-[32px] font-medium text-white xl:text-[40px]'
           )}
-          onClick={() => setIndex('tab1')}
+          onClick={() => setCurrentIndex('tab1')}
         >
           Унікальний дизайн
         </button>
         <button
           className={clsx(
             'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
-            index !== 'tab2' &&
+            currentIndex !== 'tab2' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
-            index === 'tab2' &&
+            currentIndex === 'tab2' &&
               'text-[32px] font-medium text-white xl:text-[40px]'
           )}
-          onClick={() => setIndex('tab2')}
+          onClick={() => setCurrentIndex('tab2')}
         >
           Професійність
         </button>
         <button
           className={clsx(
             'relative whitespace-nowrap text-xl text-primary transition-all duration-500 hover:text-white xl:text-2xl',
-            index !== 'tab3' &&
+            currentIndex !== 'tab3' &&
               'after:absolute after:-bottom-0 after:left-0 after:right-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full',
-            index === 'tab3' &&
+            currentIndex === 'tab3' &&
               'text-[32px] font-medium text-white xl:text-[40px]'
           )}
-          onClick={() => setIndex('tab3')}
+          onClick={() => setCurrentIndex('tab3')}
         >
           Безпека та гігієна
         </button>
       </div>
 
       <div className='mb-6 md:hidden'>
-        <FeaturesMobile setIndex={setIndex} />
+        <FeaturesMobile setIndex={setCurrentIndex} />
       </div>
 
       <div className='container'>
         {/*Features Content*/}
         <div
           className='group relative flex h-auto justify-center transition-all duration-500 data-[active=tab1]:h-[77px] data-[active=tab2]:h-[129px] data-[active=tab3]:h-[394px] md:data-[active=tab1]:h-[49px] md:data-[active=tab2]:h-[74px] md:data-[active=tab3]:h-[329px] xl:data-[active=tab1]:h-[64px] xl:data-[active=tab2]:h-[96px] xl:data-[active=tab3]:h-[455px]'
-          data-active={index}
+          data-active={currentIndex}
         >
           {/*Tab1*/}
           <p className='absolute left-0 top-0 w-full px-4 text-center text-base leading-[1.604] opacity-0 transition-all duration-500 group-data-[active=tab1]:opacity-100 md:px-0 md:text-[18px] md:leading-[1.364] xl:px-36 xl:text-2xl'>

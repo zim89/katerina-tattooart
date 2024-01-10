@@ -3,6 +3,7 @@ import { Inter, Raleway, The_Nautigal } from 'next/font/google';
 import Header from '@/modules/Header';
 import Footer from '@/modules/Footer';
 import { UserContextProvider } from '@/context/userContext';
+import { FeaturesContextProvider } from '@/context/featuresContext';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import './globals.css';
@@ -44,9 +45,11 @@ export default function RootLayout({ children }) {
     >
       <body className='pt-[62px] md:pt-[68px] xl:pt-[95px]'>
         <UserContextProvider>
-          <Header />
-          <main className=''>{children}</main>
-          <Footer />
+          <FeaturesContextProvider>
+            <Header />
+            <main className=''>{children}</main>
+            <Footer />
+          </FeaturesContextProvider>
         </UserContextProvider>
       </body>
     </html>
