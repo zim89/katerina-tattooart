@@ -15,11 +15,16 @@
 }
 
 .item {
-  @apply gap-2.1 flex items-center  md:gap-2.5;
+  /*@apply flex items-center gap-2.1 md:gap-2.5;*/
 }
 
 .link {
-  @apply flex h-9 w-9 items-center justify-center rounded-[.5625rem] border border-primary transition-colors duration-200 ease-linear hover:border-white md:h-10 md:w-10;
+  /*@apply flex h-9 w-9 items-center justify-center rounded-[.5625rem] border border-primary transition-colors duration-200 ease-linear hover:border-white md:h-10 md:w-10;*/
+  @apply flex items-center gap-2.1  text-light-gray transition-colors duration-200 ease-linear hover:text-white md:gap-2.5;
+}
+
+.linkIconWrap {
+  @apply flex h-9 w-9 items-center justify-center rounded-[.5625rem] md:h-10 md:w-10;
 }
 
 .thumb {
@@ -27,11 +32,11 @@
 }
 
 .socialLabel {
-  @apply text-light-gray hidden font-raleway text-lg font-medium md:inline xl:text-xl;
+  @apply hidden font-raleway text-lg font-medium  md:inline xl:text-xl;
 }
 
 .telLabel {
-  @apply text-light-gray font-inter text-sm font-normal md:text-base;
+  @apply font-inter text-sm font-normal md:text-base;
 }
 
 .year {

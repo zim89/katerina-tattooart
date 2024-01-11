@@ -33,20 +33,18 @@ const Price = () => {
                     Мінімальна вартість
                   </td>
                   <td className={clsx(styles.price, styles.firstItem)}>
-                    180 zł
+                    180 ₴
                   </td>
                 </tr>
                 <tr className={styles.row}>
                   <td className={styles.text}>Сеанс 5-7 годин Ч.Б</td>
-                  <td className={styles.price}>750 zł</td>
+                  <td className={styles.price}>750 ₴</td>
                 </tr>
                 <tr>
                   <td className={clsx(styles.text, styles.lastItem)}>
                     Сеанс 5-7 годин в кольорі
                   </td>
-                  <td className={clsx(styles.price, styles.lastItem)}>
-                    800 zł
-                  </td>
+                  <td className={clsx(styles.price, styles.lastItem)}>800 ₴</td>
                 </tr>
               </tbody>
             </table>

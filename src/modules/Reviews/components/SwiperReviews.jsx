@@ -1,8 +1,8 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
-  ChevronDoubleRightIcon,
   ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
 } from '@heroicons/react/24/outline';
 import { Transition } from '@headlessui/react';
 import AnimateHeight from 'react-animate-height';
@@ -12,6 +12,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import { formatDate } from '@/helpers';
+import Image from 'next/image';
 
 export const SwiperReviews = ({ reviews }) => {
   const [isShowingNextBtn, setIsShowingNextBtn] = useState(true);
@@ -54,9 +55,19 @@ export const SwiperReviews = ({ reviews }) => {
             <div key={review.id}>
               <div className='flex flex-nowrap gap-4 '>
                 <div className='h-10 w-10 flex-none'>
-                  <span className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-xl font-medium'>
-                    {review.name[0].toUpperCase()}
-                  </span>
+                  {review.user_avatar ? (
+                    <Image
+                      src={review.user_avatar}
+                      alt='User avatar'
+                      width={40}
+                      height={40}
+                      className='overflow-hidden rounded-full'
+                    />
+                  ) : (
+                    <span className='flex h-full w-full items-center justify-center rounded-full border border-white bg-transparent text-xl font-medium'>
+                      {review.name[0].toUpperCase()}
+                    </span>
+                  )}
                 </div>
 
                 <div className='grow pr-2.5'>
