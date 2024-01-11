@@ -11,6 +11,11 @@ import { useUserContext } from '@/context/userContext';
 import useScreenSize from '@/hooks/useScreenSize';
 import reviewsApi from '@/utils/supabase/api/reviewApi';
 
+function useForceUpdate() {
+  let [value, setState] = useState(true);
+  return () => setState(!value);
+}
+
 const Reviews = () => {
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(1);
@@ -20,6 +25,7 @@ const Reviews = () => {
 
   const screen = useScreenSize();
   const { currentUser } = useUserContext();
+  const handleForceUpdate = useForceUpdate();
 
   useLayoutEffect(() => {
     (async () => {
@@ -27,7 +33,7 @@ const Reviews = () => {
       setReviews(data);
       setTotal(data.length);
     })();
-  }, []);
+  }, [handleForceUpdate]);
 
   useEffect(() => {
     if (screen.width >= 768) {
@@ -104,7 +110,12 @@ const Reviews = () => {
         </div>
       </div>
 
-      {isOpen && <ReviewModal closeModal={closeModal} />}
+      {isOpen && (
+        <ReviewModal
+          closeModal={closeModal}
+          handleForceUpdate={handleForceUpdate}
+        />
+      )}
     </>
   );
 };

@@ -12,8 +12,6 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     authAPI.getUserFromSession().then((data) => {
-      console.log(data);
-      console.log(serializeUser(data));
       setCurrentUser(serializeUser(data));
     });
   }, []);

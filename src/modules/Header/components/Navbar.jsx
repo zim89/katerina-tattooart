@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import ConsultationModal from '@/components/ConsultationModal';
 import { Link } from 'react-scroll';
 import useScreenSize from '@/hooks/useScreenSize';
+import { useFeaturesContext } from '@/context/featuresContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [offset, setOffset] = useState(-140);
   const screen = useScreenSize();
+  const { setCurrentIndex } = useFeaturesContext();
 
   useEffect(() => {
     if (screen.width >= 768 && screen.width < 1280) {
@@ -26,13 +28,15 @@ const Navbar = () => {
           <li>
             <Link
               className='nav-link'
-              to='hero'
+              to='features'
               spy={true}
               smooth={true}
               offset={offset}
               duration={400}
             >
-              Про нас
+              <button type={'button'} onClick={() => setCurrentIndex('tab2')}>
+                Про нас
+              </button>
             </Link>
           </li>
           <li>
@@ -56,7 +60,9 @@ const Navbar = () => {
               offset={offset}
               duration={400}
             >
-              Догляд
+              <button type={'button'} onClick={() => setCurrentIndex('tab3')}>
+                Догляд
+              </button>
             </Link>
           </li>
         </ul>

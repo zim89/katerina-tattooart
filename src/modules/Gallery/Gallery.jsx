@@ -21,7 +21,7 @@ const Gallery = async ({ filter }) => {
 
   if (imagesError || typesError)
     return (
-      <section className='section'>
+      <section className='section' id={'gallery'}>
         <div className='container'>
           <div className='md:flex md:items-end md:justify-between' id='galery'>
             <h2 className='mb-4 font-raleway text-2xl/7 font-medium md:mb-8 md:text-2.5xl/[38px] xl:mb-20 xl:text-4.5xl/[47px]'>
@@ -41,7 +41,7 @@ const Gallery = async ({ filter }) => {
   types.unshift(DEFAULT_OPTION);
 
   return (
-    <section className='section'>
+    <section className='section' id={'gallery'}>
       <div className='container'>
         <div className='md:flex md:items-end md:justify-between' id='galery'>
           <h2 className='mb-4 font-raleway text-2xl/7 font-medium md:mb-8 md:text-2.5xl/[38px] xl:mb-20 xl:text-4.5xl/[47px]'>

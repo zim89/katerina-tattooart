@@ -10,7 +10,7 @@ import { useUserContext } from '@/context/userContext';
 import { schemas } from '@/helpers';
 import reviewsApi from '@/utils/supabase/api/reviewApi';
 
-const ReviewForm = ({ closeModal, router }) => {
+const ReviewForm = ({ closeModal, handleForceUpdate }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [review, setReview] = useState(null);
   const { currentUser } = useUserContext();
@@ -57,6 +57,7 @@ const ReviewForm = ({ closeModal, router }) => {
       setIsLoading(true);
       await reviewsApi.update(currentUser, review.id, formData);
       setIsLoading(false);
+      handleForceUpdate();
       closeModal();
       return;
     }
@@ -64,6 +65,7 @@ const ReviewForm = ({ closeModal, router }) => {
     setIsLoading(true);
     await reviewsApi.create(currentUser, formData);
     setIsLoading(false);
+    handleForceUpdate();
     closeModal();
   };
 
@@ -71,6 +73,7 @@ const ReviewForm = ({ closeModal, router }) => {
     setIsLoading(true);
     await reviewsApi.remove(id, currentUser.id);
     setIsLoading(false);
+    handleForceUpdate();
     closeModal();
   };
 
