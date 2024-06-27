@@ -33,7 +33,7 @@ const Reviews = () => {
       setReviews(data);
       setTotal(data.length);
     })();
-  }, [handleForceUpdate]);
+  }, []);
 
   useEffect(() => {
     if (screen.width >= 768) {
