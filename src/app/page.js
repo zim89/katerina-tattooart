@@ -14,7 +14,7 @@ export default function Home({ searchParams: { filter } }) {
       <Features />
       <Gallery filter={filter} />
       <Price />
-      {/* <Reviews /> */}
+      <Reviews />
       <Contacts />
 
       <ToastContainer
